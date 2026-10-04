@@ -9,6 +9,71 @@ retrieved and manually reviewed seven crossings in Germany, Libya and Nepal.
 The comparison viewer shows original image crops, manual annotations,
 coordinates, observation dates and source attribution.
 
+## Run the API against the shared database
+
+For frontend development, install [uv](https://docs.astral.sh/uv/getting-started/installation/),
+clone this repository, and run:
+
+```sh
+uv sync --locked
+cp .env.example .env
+```
+
+Edit `DATABASE_URL` in `.env` to use the shared PostgreSQL connection supplied
+by the project owner. Then start the API:
+
+```sh
+uv run --locked --env-file .env uvicorn floodbeacon.api:app --reload --port 8000
+```
+
+Open [the API documentation](http://localhost:8000/docs) and
+[database health](http://localhost:8000/health). The API reads completed runs
+already published to the shared database. The project owner initializes that
+database and prepares data on the processing machine; your teammate only needs
+the connection URL. This setup requires no local PostgreSQL, Docker, imagery,
+model weights, or training.
+
+`.env` is ignored by Git. `uv run --env-file .env` loads its variables explicitly;
+the application does not automatically read the file. `CORS_ORIGINS=*` permits
+requests from any frontend origin for the current demo, with credentialed CORS
+requests disabled.
+
+The bridge findings and comparison images are still research artifacts. They
+have not been published to PostgreSQL or exposed through bridge API endpoints.
+The current API serves the earlier historical flood-analysis runs.
+
+## Dependency groups and code responsibilities
+
+| Install | Purpose |
+| --- | --- |
+| `uv sync --locked` | FastAPI, Uvicorn, Pydantic and Psycopg, plus the default `dev` group for tests. |
+| `uv sync --locked --group processing` | Historical ingestion, CPU water modeling, spatial analysis and map previews. |
+| `uv sync --locked --group damage-research` | Processing dependencies plus the GPU/model research dependencies. |
+
+The `dev` group contains pytest and httpx. API serving lives in
+`src/floodbeacon/api.py` and `db.py`; other package modules support processing
+and analysis. `scripts/` holds research runners and viewers, while `tests/`
+holds automated checks. Processing runs publish data; API GET requests read it.
+
+Include the required group on each processing or research `uv run` command:
+uv synchronizes the environment for that command, so a prior installation of
+an optional group alone does not select it for later runs.
+
+API and database contract checks:
+
+```sh
+uv run --locked pytest tests/test_api.py tests/test_db.py
+```
+
+Database integration checks are skipped unless `FLOODBEACON_TEST_DATABASE_URL`
+points to a separate test database. API contract checks run without a database.
+
+Full checks, including processing and research:
+
+```sh
+uv run --locked --group processing --group damage-research pytest
+```
+
 ## How the bridge findings were made
 
 1. Use news and agency damage reports to select likely damaged crossings.
@@ -33,8 +98,8 @@ examples with more uncertainty about when each crossing was lost.
 If the research inputs have already been retrieved locally:
 
 ```sh
-uv run python scripts/render_bridge_demo.py
-uv run python -m http.server 8080 --bind 127.0.0.1 --directory artifacts
+uv run --locked python scripts/render_bridge_demo.py
+uv run --locked python -m http.server 8080 --bind 127.0.0.1 --directory artifacts
 ```
 
 Open [the bridge comparison viewer](http://127.0.0.1:8080/bridge-demo/).
@@ -79,19 +144,22 @@ Merritt/Nicola Valley floods in British Columbia.
   **no forecast time or likelihood**. No model predicts that a bridge will
   collapse in two days, and no layer certifies road passability or boat access.
 
-## Run the historical flood pipeline
+## Project owner: run the historical flood pipeline
 
-Requires uv and Docker Compose. [Python's release list](https://www.python.org/downloads/)
+Run this workflow on the processing machine. It uses Docker Compose for a local
+database, or an existing shared database through `DATABASE_URL`.
+[Python's release list](https://www.python.org/downloads/)
 was checked on 2026-10-03: Python 3.14.8 is the current stable release and is
 pinned in `.python-version`. Dependencies are locked in `uv.lock`.
 [PostgreSQL 18.6](https://www.postgresql.org/docs/release/) is pinned in Compose.
 
 ```sh
 uv python install 3.14.8
-uv sync --locked
+uv sync --locked --group processing
 docker compose up -d --wait
-uv run floodbeacon init-db
-uv run floodbeacon train --chips-per-event 3
+export DATABASE_URL=postgresql://floodbeacon:floodbeacon@localhost:55432/floodbeacon
+uv run --locked --group processing floodbeacon init-db
+uv run --locked --group processing floodbeacon train --chips-per-event 3
 ```
 
 If the installed uv does not yet list Python 3.14.8, use Astral's current official
@@ -105,9 +173,9 @@ Training prints the locally generated `model` path. Pass that exact path to
 batch processing; the following path is from the initial verified training run:
 
 ```sh
-uv run floodbeacon batch --case all --model data/models/water-rf-10958a17b65a7d7f/model.pkl
-uv run floodbeacon preview --output-dir artifacts
-uv run uvicorn floodbeacon.api:app --host 127.0.0.1 --port 8000
+uv run --locked --group processing floodbeacon batch --case all --model data/models/water-rf-10958a17b65a7d7f/model.pkl
+uv run --locked --group processing floodbeacon preview --output-dir artifacts
+uv run --locked uvicorn floodbeacon.api:app --host 127.0.0.1 --port 8000
 ```
 
 Open `artifacts/index.html` for a case selector, evidence layers, observations,
@@ -118,9 +186,12 @@ require internet. The API documentation is at
 models and previews live in ignored `data/` and `artifacts/` directories.
 
 PostgreSQL binds to `127.0.0.1:55432` and persists under `/var/lib/postgresql`
-using the PostgreSQL 18 layout. Default local credentials are in `.env.example`.
-The application reads the `DATABASE_URL` environment variable; it does not
-automatically load `.env`. Export an override when changing credentials or port.
+using the PostgreSQL 18 layout. The explicit local connection above uses
+Compose's default credentials. To publish to the shared instance, skip Compose
+and set `DATABASE_URL` to that instance before initializing or processing.
+The API-specific `.env.example` contains a placeholder shared connection, not
+local database credentials. Export the connection URL or add `--env-file .env`
+to the processing commands when using that file.
 `docker compose stop` preserves data for later use.
 
 ## REST API
@@ -149,7 +220,7 @@ of no damage. GeoJSON uses WGS84 longitude/latitude. Layer responses support
 curl http://127.0.0.1:8000/cases
 curl 'http://127.0.0.1:8000/cases/ahr-2021/layers/reported_damage?limit=20'
 curl http://127.0.0.1:8000/cases/bc-2021/observations
-uv run pytest
+uv run --locked pytest tests/test_api.py tests/test_db.py
 ```
 
 ## Evidence and verification
@@ -172,7 +243,7 @@ Starlette/httpx TestClient deprecation warning remains; it did not fail tests.
 To serve the preview locally:
 
 ```sh
-uv run python -m http.server 8080 --bind 127.0.0.1 --directory artifacts
+uv run --locked python -m http.server 8080 --bind 127.0.0.1 --directory artifacts
 ```
 
 Open [the inspection map](http://127.0.0.1:8080/). Its candidate-exposure overlay
@@ -180,7 +251,7 @@ shows flagged intersections; the API exposure layer retains every asset and its
 unknown/not-detected status.
 
 To inspect research imagery with synchronized zoom, human labels and separate
-model predictions, run `uv run --group damage-research python scripts/render_dataset_viewer.py`
+model predictions, run `uv run --locked --group damage-research python scripts/render_dataset_viewer.py`
 after retrieving the Ahr/BRIGHT research inputs. Open the
 [raw-data viewer](http://127.0.0.1:8080/dataset-viewer/).
 The [SpaceNet 8 experiment](docs/spacenet8-experiment.md) has its own raw-photo,

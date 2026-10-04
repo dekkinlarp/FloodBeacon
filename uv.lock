@@ -508,24 +508,24 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "fastapi" },
-    { name = "folium" },
-    { name = "httpx" },
-    { name = "numpy" },
     { name = "psycopg", extra = ["binary"] },
     { name = "pydantic" },
-    { name = "pyproj" },
-    { name = "pyshp" },
-    { name = "rasterio" },
-    { name = "scikit-learn" },
-    { name = "shapely" },
     { name = "uvicorn" },
 ]
 
 [package.dev-dependencies]
 damage-research = [
     { name = "ever-beta" },
+    { name = "folium" },
+    { name = "httpx" },
     { name = "matplotlib" },
+    { name = "numpy" },
     { name = "pillow" },
+    { name = "pyproj" },
+    { name = "pyshp" },
+    { name = "rasterio" },
+    { name = "scikit-learn" },
+    { name = "shapely" },
     { name = "timm" },
     { name = "torch", version = "2.14.1", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform != 'linux'" },
     { name = "torch", version = "2.14.1+cu130", source = { registry = "https://download.pytorch.org/whl/cu130" }, marker = "sys_platform == 'linux'" },
@@ -536,30 +536,41 @@ damage-research = [
     { name = "yacs" },
 ]
 dev = [
+    { name = "httpx" },
     { name = "pytest" },
+]
+processing = [
+    { name = "folium" },
+    { name = "httpx" },
+    { name = "numpy" },
+    { name = "pyproj" },
+    { name = "pyshp" },
+    { name = "rasterio" },
+    { name = "scikit-learn" },
+    { name = "shapely" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "fastapi", specifier = ">=0.142.2" },
-    { name = "folium", specifier = ">=0.20.0" },
-    { name = "httpx", specifier = ">=0.28.1" },
-    { name = "numpy", specifier = ">=2.5.3" },
     { name = "psycopg", extras = ["binary"], specifier = ">=3.3.6" },
     { name = "pydantic", specifier = ">=2.13.5" },
-    { name = "pyproj", specifier = ">=3.8.0" },
-    { name = "pyshp", specifier = ">=3.1.6" },
-    { name = "rasterio", specifier = ">=1.5.2" },
-    { name = "scikit-learn", specifier = ">=1.9.1" },
-    { name = "shapely", specifier = ">=2.1.2" },
     { name = "uvicorn", specifier = ">=0.54.0" },
 ]
 
 [package.metadata.requires-dev]
 damage-research = [
     { name = "ever-beta", specifier = ">=0.6.1" },
+    { name = "folium", specifier = ">=0.20.0" },
+    { name = "httpx", specifier = ">=0.28.1" },
     { name = "matplotlib", specifier = ">=3.11.2" },
+    { name = "numpy", specifier = ">=2.5.3" },
     { name = "pillow", specifier = ">=12.3.0" },
+    { name = "pyproj", specifier = ">=3.8.0" },
+    { name = "pyshp", specifier = ">=3.1.6" },
+    { name = "rasterio", specifier = ">=1.5.2" },
+    { name = "scikit-learn", specifier = ">=1.9.1" },
+    { name = "shapely", specifier = ">=2.1.2" },
     { name = "timm", specifier = ">=1.0.30" },
     { name = "torch", marker = "sys_platform != 'linux'", specifier = ">=2.14.1" },
     { name = "torch", marker = "sys_platform == 'linux'", specifier = ">=2.14.1", index = "https://download.pytorch.org/whl/cu130" },
@@ -569,7 +580,20 @@ damage-research = [
     { name = "transformers", specifier = ">=5.18.0" },
     { name = "yacs", specifier = ">=0.1.8" },
 ]
-dev = [{ name = "pytest", specifier = ">=9.1.1" }]
+dev = [
+    { name = "httpx", specifier = ">=0.28.1" },
+    { name = "pytest", specifier = ">=9.1.1" },
+]
+processing = [
+    { name = "folium", specifier = ">=0.20.0" },
+    { name = "httpx", specifier = ">=0.28.1" },
+    { name = "numpy", specifier = ">=2.5.3" },
+    { name = "pyproj", specifier = ">=3.8.0" },
+    { name = "pyshp", specifier = ">=3.1.6" },
+    { name = "rasterio", specifier = ">=1.5.2" },
+    { name = "scikit-learn", specifier = ">=1.9.1" },
+    { name = "shapely", specifier = ">=2.1.2" },
+]
 
 [[package]]
 name = "folium"

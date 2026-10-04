@@ -1,6 +1,6 @@
 """Retrieve a fixed public Ahr pre/post RGB pair for damage-model research.
 
-Run ``uv run python scripts/prepare_ahr_imagery.py`` for populated Altenahr.
+Run ``uv run --group processing python scripts/prepare_ahr_imagery.py`` for populated Altenahr.
 The initial forest crop remains available with ``--sample forest``.
 WMS 1.1.1 is retained to reproduce the verified source requests exactly.
 """

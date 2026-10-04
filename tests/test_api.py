@@ -1,3 +1,5 @@
+import importlib
+
 import psycopg
 import pytest
 from fastapi.testclient import TestClient
@@ -82,3 +84,33 @@ def test_run_and_case_not_found(monkeypatch):
     assert client.get("/cases/missing/runs").status_code == 404
     assert client.get("/cases/ahr/runs/missing").status_code == 404
     assert client.get("/cases/ahr/observations").status_code == 404
+
+
+@pytest.mark.parametrize("origins,origin,allowed", [
+    (None, "http://localhost:5173", "*"),
+    ("http://localhost:3000, http://localhost:5173", "http://localhost:5173", "http://localhost:5173"),
+    ("http://localhost:3000", "http://localhost:5173", None),
+])
+def test_frontend_cors_get_and_preflight(monkeypatch, origins, origin, allowed):
+    try:
+        with monkeypatch.context() as settings:
+            if origins is None:
+                settings.delenv("CORS_ORIGINS", raising=False)
+            else:
+                settings.setenv("CORS_ORIGINS", origins)
+            configured = importlib.reload(api)
+            settings.setattr(configured.db, "list_cases", lambda: [])
+            with TestClient(configured.app) as browser:
+                response = browser.get("/cases", headers={"Origin": origin})
+                assert response.status_code == 200
+                assert response.headers.get("access-control-allow-origin") == allowed
+                assert "access-control-allow-credentials" not in response.headers
+                preflight = browser.options("/cases", headers={
+                    "Origin": origin,
+                    "Access-Control-Request-Method": "GET",
+                    "Access-Control-Request-Headers": "Content-Type",
+                })
+                assert preflight.status_code == (200 if allowed else 400)
+                assert preflight.headers.get("access-control-allow-origin") == allowed
+    finally:
+        importlib.reload(api)

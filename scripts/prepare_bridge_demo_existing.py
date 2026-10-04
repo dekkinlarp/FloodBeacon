@@ -1,6 +1,6 @@
 """Reproduce manually reviewed Ahr bridge before/after imagery; no ML inference.
 
-Run: uv run python scripts/prepare_bridge_demo_existing.py
+Run: uv run --group damage-research python scripts/prepare_bridge_demo_existing.py
 
 Requires the existing EMSR517 AOI15 vector ZIP in data/raw/ahr-2021. Outputs
 are ignored research artifacts. Reuses the existing verified RLP WMS requests,

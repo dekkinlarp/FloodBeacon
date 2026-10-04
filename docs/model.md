@@ -16,7 +16,7 @@ local pending clarification before redistributing them.
 ## Reproduce
 
 ```sh
-uv run python -m floodbeacon.ml --data-dir data --chips-per-event 3
+uv run --locked --group processing python -m floodbeacon.ml --data-dir data --chips-per-event 3
 ```
 
 This fetches 12 chips and their hand labels, two official split CSVs, event

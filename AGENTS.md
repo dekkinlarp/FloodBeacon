@@ -53,6 +53,16 @@ and [structural-data limits](docs/structural-data.md).
 
 ## User requirements
 
+- Default application dependencies support API serving only: FastAPI, Uvicorn,
+  Pydantic and Psycopg. The default `dev` group contains pytest and httpx;
+  geospatial/CPU modeling and preview dependencies belong in `processing`.
+  `damage-research` includes `processing` alongside its research dependencies.
+- Frontend developers run `uv sync --locked`, set the shared `DATABASE_URL` in
+  `.env`, then run `uv run --locked --env-file .env uvicorn floodbeacon.api:app
+  --reload --port 8000`. The processing owner initializes and publishes to the
+  shared PostgreSQL instance; API-only users need no local database or imagery.
+  CORS permits `*` for the current demo with credentials disabled. Pass optional
+  groups on every processing/research `uv run` command.
 - Use Python for analysis and uv for environments and package management.
 - Use the latest stable compatible Python release. Commit `.python-version`,
   `pyproject.toml`, and `uv.lock` when implementation begins.

@@ -9,6 +9,11 @@ dependencies = [
   "uvicorn>=0.54.0",
   "pydantic>=2.13.5",
   "psycopg[binary]>=3.3.6",
+]
+
+[dependency-groups]
+dev = ["pytest>=9.1.1", "httpx>=0.28.1"]
+processing = [
   "httpx>=0.28.1",
   "numpy>=2.5.3",
   "rasterio>=1.5.2",
@@ -18,10 +23,8 @@ dependencies = [
   "pyshp>=3.1.6",
   "folium>=0.20.0",
 ]
-
-[dependency-groups]
-dev = ["pytest>=9.1.1"]
 damage-research = [
+  { include-group = "processing" },
   "torch>=2.14.1",
   "torchvision>=0.29.1",
   "pillow>=12.3.0",

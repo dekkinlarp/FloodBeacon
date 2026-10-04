@@ -2,10 +2,12 @@
 
 from datetime import datetime
 import math
+import os
 from typing import Annotated, Any
 
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import psycopg
 
@@ -13,6 +15,17 @@ from floodbeacon import db
 
 
 app = FastAPI(title="FloodBeacon", description="Historical evidence, exposure and scenarios.")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        origin.strip()
+        for origin in os.environ.get("CORS_ORIGINS", "*").split(",")
+        if origin.strip()
+    ],
+    allow_credentials=False,
+    allow_methods=["GET"],
+    allow_headers=["*"],
+)
 
 
 class Case(BaseModel):
@@ -43,7 +56,7 @@ RunQuery = Annotated[str | None, Query(max_length=128)]
 def database_unavailable(request: Request, exc: psycopg.Error):
     # Driver messages can contain host names or credentials. Return no connection details.
     return JSONResponse(status_code=503, content={
-        "detail": "Map storage is unavailable. Start PostgreSQL and initialize the schema."
+        "detail": "Map storage is unavailable. Check DATABASE_URL and access to the shared database."
     })
 
 
