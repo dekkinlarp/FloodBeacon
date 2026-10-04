@@ -1,6 +1,9 @@
 """Frontend contract checks using synthetic records, without PostgreSQL writes."""
 
 from copy import deepcopy
+import hashlib
+import json
+from pathlib import Path
 
 from fastapi.testclient import TestClient
 import psycopg
@@ -138,3 +141,61 @@ def test_imagery_contract_is_documented_in_openapi():
     assert schema["paths"]["/cases/{case_id}/imagery"]["get"]["responses"]["200"]
     assert "image_coordinates" in schema["components"]["schemas"]["SatelliteImage"]["properties"]
     assert schema["components"]["schemas"]["BridgeFinding"]["properties"]["failure_time"]["type"] == "null"
+
+
+def test_regional_contract_retains_agency_polygons_and_xyz_metadata(monkeypatch):
+    value = catalog()
+    value["study_bounds"] = [6.88, 50.37, 7.17, 50.59]
+    value["flood_extent"] = {"type": "FeatureCollection", "features": [{
+        "type": "Feature", "geometry": {"type": "MultiPolygon", "coordinates": []},
+        "properties": {"notation": "Flood trace", "evidence_source": "Copernicus EMS agency interpretation"},
+    }]}
+    value["flood_extent_source"] = {"observed_at": "2021-07-18T10:50:00Z",
+                                   "available_at": None, "fixture": "synthetic"}
+    value["observations"][1]["regional_tiles"] = {
+        "url": "/static/imagery/ahr-region/after/{z}/{x}/{y}.webp",
+        "bounds": value["study_bounds"], "minzoom": 10, "maxzoom": 14,
+        "tile_size": 256, "attribution": "Synthetic test fixture",
+        "license": "Synthetic", "license_url": "https://example.org/fixture",
+        "provenance": {"acquired_date": "2021-07-18", "fixture": "synthetic"},
+    }
+    monkeypatch.setattr(api.db, "get_imagery", lambda *args: value)
+    with TestClient(api.app) as browser:
+        response = browser.get("/cases/ahr-2021/imagery")
+    assert response.status_code == 200
+    body = response.json()
+    assert body["study_bounds"] == value["study_bounds"]
+    assert body["flood_extent"] == value["flood_extent"]
+    assert body["flood_extent_source"]["available_at"] is None
+    assert body["observations"][1]["regional_tiles"] == value["observations"][1]["regional_tiles"]
+    assert body["observations"][0]["regional_tiles"] is None
+
+
+def test_existing_catalog_remains_servable_without_regional_fields(monkeypatch):
+    monkeypatch.setattr(api.db, "get_imagery", lambda *args: catalog())
+    with TestClient(api.app) as browser:
+        body = browser.get("/cases/ahr-2021/imagery").json()
+    assert body["study_bounds"] is None
+    assert body["flood_extent"] is None
+    assert body["flood_extent_source"] is None
+    assert all(item["regional_tiles"] is None for item in body["observations"])
+
+
+def test_curated_cems_reference_is_attributed_and_served_without_database(monkeypatch):
+    monkeypatch.delenv("DATABASE_URL", raising=False)
+    root = Path(api.__file__).with_name("static") / "imagery/ahr-region"
+    source = json.loads((root / "flood-extent-source.json").read_text())
+    with TestClient(api.app) as browser:
+        response = browser.get(source["url"])
+    assert response.status_code == 200
+    assert hashlib.sha256(response.content).hexdigest() == source["sha256"]
+    body = response.json()
+    assert len(body["features"]) == source["feature_count"] == 77
+    counts = {notation: sum(f["properties"]["notation"] == notation for f in body["features"])
+              for notation in ("Flooded area", "Flood trace")}
+    assert counts == source["notation_counts"] == {"Flooded area": 36, "Flood trace": 41}
+    assert source["attribution"] == "Contains modified Copernicus EMS information (2021)."
+    assert source["source_product_id"] == "EMSR517_AOI15_GRA_PRODUCT_r1_RTP01_v1"
+    assert source["available_at"] is None
+    assert all(f["properties"]["evidence_source"] == "Copernicus EMS agency interpretation"
+               for f in body["features"])

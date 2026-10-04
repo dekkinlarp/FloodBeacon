@@ -34,6 +34,25 @@ def test_curated_catalog_bytes_dimensions_and_temporal_coverage():
     assert germany['metadata']['imagery']['bridges'][0]['agency_evidence']['grade'] == 'Destroyed'
 
 
+def test_germany_catalog_exposes_regional_tiles_and_separate_agency_extent():
+    germany = next(record for record in catalog()['cases'] if record['case']['id'] == 'ahr-2021')
+    region = json.loads((imagery.STATIC / 'imagery/ahr-region/manifest.json').read_text())
+    metadata = germany['metadata']['imagery']
+    assert metadata['study_bounds'] == metadata['bounds'] == germany['case']['bbox'] == region['bounds']
+    dated = {obs['acquired_date']: obs for obs in region['observations']}
+    for obs in germany['observations']:
+        tiles = obs['regional_tiles']
+        assert tiles['url'] == dated[obs['acquired_date']]['url']
+        assert tiles['provenance'] == dated[obs['acquired_date']]['provenance']
+        assert tiles['license'] == 'CC BY-NC 4.0'
+        assert obs['images'][0]['license'] == 'CC BY-SA 4.0'
+    assert {f['properties']['notation'] for f in metadata['flood_extent']['features']} == {'Flooded area', 'Flood trace'}
+    assert len(metadata['flood_extent']['features']) == 77
+    assert metadata['flood_extent_source']['observed_at'] == '2021-07-18T10:50:00Z'
+    urls = {asset['url'] for asset in germany['assets']}
+    assert all(asset['url'] in urls for asset in region['assets'])
+
+
 def test_changed_catalog_metadata_cannot_reuse_run_id():
     data = deepcopy(catalog())
     data['cases'][0]['observations'][0]['acquired_date'] = '2021-02-12'

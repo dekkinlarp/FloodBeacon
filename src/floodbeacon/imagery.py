@@ -54,6 +54,13 @@ def feature(bridge: dict, obs_id: str, date: str, geometry: dict,
                            'annotation': '90 m review square; not a surveyed damage boundary'}}
 
 
+def _set_run_identity(record: dict) -> None:
+    content = {key: value for key, value in record.items() if key != 'run'}
+    fingerprint = hashlib.sha256(json.dumps(content, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+    record['run'] = {'id': f'bridge-imagery-{fingerprint[:16]}',
+                     'case_id': record['case']['id'], 'content_sha256': fingerprint}
+
+
 def _case(case_id: str, name: str, country: str, bridges: list[dict],
           observations: list[dict], limitations: list[str]) -> dict:
     observations.sort(key=lambda obs: obs['acquired_date'])
@@ -70,9 +77,44 @@ def _case(case_id: str, name: str, country: str, bridges: list[dict],
     record['assets'] = [{'url': url, 'sha256': digest(STATIC / url.removeprefix('/static/')),
                          'bytes': (STATIC / url.removeprefix('/static/')).stat().st_size}
                         for url in sorted(urls)]
-    fingerprint = hashlib.sha256(json.dumps(record, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
-    record['run'] = {'id': f'bridge-imagery-{fingerprint[:16]}', 'case_id': case_id,
-                     'content_sha256': fingerprint}
+    _set_run_identity(record)
+    return record
+
+
+def _add_regional_imagery(record: dict) -> dict:
+    """Attach prepared regional tiles without fetching or processing imagery."""
+    path = STATIC / 'imagery/ahr-region/manifest.json'
+    if not path.exists():
+        return record
+    region = json.loads(path.read_text())
+    if region['case_id'] != record['case']['id']:
+        raise ValueError('Regional imagery case mismatch')
+    metadata = record['metadata']['imagery']
+    metadata['study_bounds'] = region['bounds']
+    metadata['bounds'] = region['bounds']
+    metadata['name'] = 'Ahr Valley — regional flood and bridge review'
+    metadata['limitations'] = list(dict.fromkeys(metadata['limitations'] + region['limitations']))
+    record['case'].update(name=metadata['name'], bbox=region['bounds'])
+    dated = {item['acquired_date']: item for item in region['observations']}
+    for observation in record['observations']:
+        source = dated.get(observation['acquired_date'])
+        if source is None:
+            continue
+        observation['regional_tiles'] = {
+            key: source[key] for key in ['url', 'bounds', 'minzoom', 'maxzoom',
+                                        'tile_size', 'attribution', 'license',
+                                        'license_url', 'provenance']
+        }
+    extent = path.with_name('flood-extent.geojson')
+    extent_source = path.with_name('flood-extent-source.json')
+    metadata['flood_extent'] = json.loads(extent.read_text())
+    metadata['flood_extent_source'] = json.loads(extent_source.read_text())
+    assets = {asset['url']: asset for asset in record['assets'] + region['assets']}
+    for file in [path, extent, extent_source]:
+        url = '/static/' + file.relative_to(STATIC).as_posix()
+        assets[url] = {'url': url, 'sha256': digest(file), 'bytes': file.stat().st_size}
+    record['assets'] = [assets[url] for url in sorted(assets)]
+    _set_run_identity(record)
     return record
 
 
@@ -105,7 +147,8 @@ def _rech() -> dict:
                                                            fc['features'][i]['geometry'],
                                                            fc['features'][i]['properties']['finding'],
                                                            'visible_crossing' if i == 0 else 'missing_span')])})
-    return _case('ahr-2021', 'Ahr Valley — Rech', 'Germany', [bridge], observations, manifest['limitations'])
+    return _add_regional_imagery(_case('ahr-2021', 'Ahr Valley — Rech', 'Germany',
+                                     [bridge], observations, manifest['limitations']))
 
 
 def _portable_provenance(source: dict) -> dict:

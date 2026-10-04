@@ -104,6 +104,27 @@ class BridgeFeatures(BaseModel):
     features: list[BridgeFeature]
 
 
+class RegionalTiles(BaseModel):
+    """Precomputed XYZ satellite tiles served as static package files."""
+
+    url: str
+    bounds: Bounds
+    minzoom: int
+    maxzoom: int
+    tile_size: int
+    attribution: str
+    license: str
+    license_url: str
+    provenance: dict[str, Any]
+
+
+class FloodExtent(BaseModel):
+    """Agency polygons retain their source properties and geometry types."""
+
+    type: Literal["FeatureCollection"]
+    features: list[dict[str, Any]]
+
+
 class ImageryObservation(BaseModel):
     id: str
     acquired_date: date
@@ -111,6 +132,7 @@ class ImageryObservation(BaseModel):
     label: str
     images: list[SatelliteImage]
     bridges: BridgeFeatures
+    regional_tiles: RegionalTiles | None = None
 
 
 class BridgeComparison(BaseModel):
@@ -135,6 +157,9 @@ class ImageryCatalog(BaseModel):
     run_id: str
     generated_at: datetime
     observations: list[ImageryObservation]
+    study_bounds: Bounds | None = None
+    flood_extent: FloodExtent | None = None
+    flood_extent_source: dict[str, Any] | None = None
 
 
 class ObservedBridges(BridgeFeatures):

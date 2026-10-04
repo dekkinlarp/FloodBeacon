@@ -1,0 +1,51 @@
+{
+  "source": "Copernicus EMSR517 AOI15 observedEventA",
+  "source_url": "https://cems-mapping-website.s3.eu-west-1.amazonaws.com/static/activations/EMSR517/EMSR517_AOI15_GRA_PRODUCT_r1_RTP01_v1_vector.zip",
+  "source_product_id": "EMSR517_AOI15_GRA_PRODUCT_r1_RTP01_v1",
+  "source_sha256": "e47c8c3ef9298a93b6e0696b0d279b31754bbb59a6ef2dfbe32451009c281bf3",
+  "source_member": "EMSR517_AOI15_GRA_PRODUCT_observedEventA_r1_v1.json",
+  "source_member_sha256": "075015107cc469578ee0c91a70703d3656d304b768e459ccb68dbfd79b858f1f",
+  "retrieved_at": "2026-10-03T23:26:10Z",
+  "observed_at": "2021-07-18T10:50:00Z",
+  "available_at": null,
+  "product_metadata_date": "2021-07-19",
+  "timestamp_precision_note": "Product map scene time; individual feature observation times are not provided.",
+  "license": "Copernicus EMS information; free reproduction, distribution and adaptation with attribution",
+  "license_url": "https://mapping.emergency.copernicus.eu/terms-and-conditions/",
+  "attribution": "Contains modified Copernicus EMS information (2021).",
+  "citation_url": "https://mapping.emergency.copernicus.eu/about/citation-guidelines/",
+  "source_crs": "OGC:CRS84",
+  "output_crs": "EPSG:4326; longitude/latitude",
+  "area_crs": "EPSG:25832",
+  "processing": "Validate source checksum and polygon geometry; intersect with study bounds; retain agency properties. No simplification.",
+  "study_bounds": [
+    6.88,
+    50.37,
+    7.17,
+    50.59
+  ],
+  "bounds": [
+    6.909508055000058,
+    50.44046886900003,
+    7.113690550000059,
+    50.54521132200005
+  ],
+  "feature_count": 77,
+  "notation_counts": {
+    "Flooded area": 36,
+    "Flood trace": 41
+  },
+  "area_km2_by_notation": {
+    "Flooded area": 0.29380763171160046,
+    "Flood trace": 4.512238517322536
+  },
+  "limitations": [
+    "Flood trace is retrospective evidence of inundation, not water present at the reference scene time.",
+    "Agency photo-interpretation; not output from a FloodBeacon detector.",
+    "Product reference time does not provide per-feature observation times or first public availability.",
+    "Coverage is EMSR517 AOI15 within the selected study area, not all of the German flood event."
+  ],
+  "url": "/static/imagery/ahr-region/flood-extent.geojson",
+  "sha256": "947827d9317a0338ad6f6bc97a694cca357c9460fa95a37b2cdd784909284c5d",
+  "bytes": 236861
+}

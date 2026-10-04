@@ -53,10 +53,11 @@ and [structural-data limits](docs/structural-data.md).
 
 The current bridge demo serves curated satellite observations for Rech, Germany
 (`ahr-2021`), Derna, Libya (`derna-2023`) and Syabrubesi, Nepal (`nepal-2026`).
-The dashboard Routes tab consumes Germany's dated imagery catalog with square
-review annotations. Findings are manual image reviews; agency evidence remains
-separate, and failure times remain unknown. Curated lawful PNGs and provenance
-are packaged under `src/floodbeacon/static/imagery/` (about 22 MiB total); raw
+The dashboard Routes tab opens on Germany's Ahr study area with dated regional
+XYZ tiles, separate Copernicus inundation/flood-trace polygons and detailed bridge
+images on zoom. It consumes dated imagery with square review annotations. Findings are manual image reviews; agency evidence remains
+separate, and failure times remain unknown. Curated lawful PNGs, WebP tiles and provenance
+are packaged under `src/floodbeacon/static/imagery/` (about 34 MiB total); raw
 TIFFs remain ignored. PostgreSQL stores metadata, observations and GeoJSON only.
 Preparation is separate from serving, and `floodbeacon publish-imagery` publishes
 immutable complete cases. See [integration](docs/imagery-integration.md) and

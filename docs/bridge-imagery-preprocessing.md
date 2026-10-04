@@ -3,6 +3,8 @@
 The Routes demo uses small georeferenced PNG files served by FastAPI at `/static`.
 PostgreSQL holds completed catalog metadata, observations and review polygons,
 never image bytes. Germany, Libya and Nepal share the same catalog and API shape.
+Germany also includes regional XYZ tiles and separate Copernicus inundation/flood
+trace polygons; see [regional preprocessing](regional-imagery.md).
 
 The checked-in catalog is
 `src/floodbeacon/static/imagery/bridge-catalog/catalog.json`. Each case has an
@@ -75,11 +77,11 @@ source validity masks do not encode a complete cloud, shadow or reliability mask
 Source publication timestamps are retained as supplied; unspecified timezone or
 availability times are not invented.
 
-Germany derivatives are CC BY-SA 4.0; Derna and Nepal imagery is CC BY-NC 4.0,
+Rech derivatives are CC BY-SA 4.0; regional Germany imagery is CC BY-NC 4.0; Derna and Nepal imagery is CC BY-NC 4.0,
 with Maxar, Vantor and Planet attribution recorded per image. These latter assets
 are for the noncommercial research/demo use described here. Raw TIFFs remain
 ignored. All curated images, comparisons and metadata together are approximately
-22 MiB; dated map images alone total approximately 19 MiB. Rech's two map images
+34 MiB including the regional tile pyramid; detail map images alone total approximately 19 MiB. Rech's two map images
 are approximately 1.31 MiB.
 
 ## Verification

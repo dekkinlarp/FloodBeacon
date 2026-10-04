@@ -46,6 +46,10 @@ query. The dated imagery catalog is published to the shared PostgreSQL database.
 dashboard Routes tab consumes `/cases/ahr-2021/imagery`; the same API supports
 `derna-2023` and `nepal-2026`. Image pixels remain in Git-tracked static files,
 while PostgreSQL stores dates, provenance, annotations and publication metadata.
+Germany opens on the full Ahr Valley study area with dated XYZ satellite tiles,
+a separate Copernicus inundation/flood-trace overlay and detailed Rech bridge
+pixels on zoom. Historical RGB coverage is approximately 53% before and 55% after;
+gaps remain unknown. All curated imagery and metadata total about 34 MiB.
 See [frontend integration and publication](docs/imagery-integration.md).
 
 ## Dependency groups and code responsibilities
@@ -216,7 +220,8 @@ Use a returned `run_id` to keep frontend requests on the same immutable run.
 | Historical observations | `/cases/{case_id}/observations?run_id=...` |
 | Dated satellite images and bridge comparisons | `/cases/{case_id}/imagery?run_id=...` |
 | Bridge annotations for one image date | `/cases/{case_id}/imagery/{observation_id}/bridges?run_id=...` |
-| Image pixels | `/static/imagery/.../*.png` |
+| Detail image pixels | `/static/imagery/.../*.png` |
+| Germany regional XYZ tiles | `/static/imagery/ahr-region/{date}/{z}/{x}/{y}.webp` |
 
 Layer names include `assets`, `reported_damage`, `agency_flood_reference`,
 `modeled_new_water`, `modeled_event_water`, `exposure`, `valid_coverage`,
