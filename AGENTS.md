@@ -51,6 +51,22 @@ See [research and implementation status](docs/research.md),
 [the current model](docs/model.md), [pretrained damage models](docs/pretrained-models.md)
 and [structural-data limits](docs/structural-data.md).
 
+The current bridge demo serves curated satellite observations for Rech, Germany
+(`ahr-2021`), Derna, Libya (`derna-2023`) and Syabrubesi, Nepal (`nepal-2026`).
+The dashboard Routes tab consumes Germany's dated imagery catalog with square
+review annotations. Findings are manual image reviews; agency evidence remains
+separate, and failure times remain unknown. Curated lawful PNGs and provenance
+are packaged under `src/floodbeacon/static/imagery/` (about 22 MiB total); raw
+TIFFs remain ignored. PostgreSQL stores metadata, observations and GeoJSON only.
+Preparation is separate from serving, and `floodbeacon publish-imagery` publishes
+immutable complete cases. See [integration](docs/imagery-integration.md) and
+[preprocessing](docs/bridge-imagery-preprocessing.md).
+
+All current work uses the hosted development database configured through the
+ignored `.env`. `DATABASE_URL` is required; there is no local database fallback.
+The local Compose PostgreSQL container is stopped. Real database tests create
+unique synthetic cases and clean up only their own case IDs.
+
 ## User requirements
 
 - Curated published imagery is stored as small Git-tracked package files under

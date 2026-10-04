@@ -30,7 +30,7 @@ Open [the API documentation](http://localhost:8000/docs) and
 [database health](http://localhost:8000/health). The API reads completed runs
 already published to the shared database. The project owner initializes that
 database and prepares data on the processing machine; your teammate only needs
-the connection URL. This setup requires no local PostgreSQL, Docker, imagery,
+the connection URL. This setup requires no local PostgreSQL, Docker, imagery downloads,
 model weights, or training.
 
 `.env` is ignored by Git. `uv run --env-file .env` loads its variables explicitly;
@@ -42,8 +42,11 @@ The [Rech satellite comparison](docs/rech-satellite.md) is now checked in and
 served as static files. Open `/static/imagery/rech-satellite/comparison.png`
 or fetch `/static/imagery/rech-satellite/manifest.json` for the aligned image
 URLs, dates, map coordinates and attribution. These files need no database
-query. Bridge findings have not been published to PostgreSQL or integrated
-into the Routes tab; the database API serves the earlier flood-analysis runs.
+query. The dated imagery catalog is published to the shared PostgreSQL database. The
+dashboard Routes tab consumes `/cases/ahr-2021/imagery`; the same API supports
+`derna-2023` and `nepal-2026`. Image pixels remain in Git-tracked static files,
+while PostgreSQL stores dates, provenance, annotations and publication metadata.
+See [frontend integration and publication](docs/imagery-integration.md).
 
 ## Dependency groups and code responsibilities
 
@@ -68,8 +71,10 @@ API and database contract checks:
 uv run --locked pytest tests/test_api.py tests/test_db.py
 ```
 
-Database integration checks are skipped unless `FLOODBEACON_TEST_DATABASE_URL`
-points to a separate test database. API contract checks run without a database.
+API contract checks run without a database. Database integration checks opt in
+through `FLOODBEACON_TEST_DATABASE_URL`. For the current shared development
+instance, load `.env` and set that variable to `DATABASE_URL` in the test process.
+These tests create uniquely named synthetic cases and delete only those cases.
 
 Full checks, including processing and research:
 
@@ -87,8 +92,8 @@ uv run --locked --group processing --group damage-research pytest
 **The delivered bridge findings are manual image assessments.** An AI assistant
 visually reviewed the images; the scripts cropped, annotated and displayed
 them. No trained bridge-collapse detector generated these findings. Agency damage grades are
-separate evidence and retain their source attribution. The demo is not yet
-integrated into the database or REST API.
+separate evidence and retain their source attribution. The curated bridge
+catalog is served by the REST API and integrated into the dashboard Routes tab.
 
 For the initial Germany satellite view, use the now-inspected
 [Rech February/July 2021 satellite pair](docs/rech-satellite.md). Its image files
@@ -96,8 +101,8 @@ and a square review annotation are included in this repository.
 Another satellite demo is **Derna, Libya, September 2023**: road bridge
 decks are visible before the flood and absent afterward. For the existing
 Germany case, **Nepomukbrücke in Rech, July 2021** has a clearly missing section;
-its comparison uses aerial orthophotos. Nepal provides additional satellite
-examples with more uncertainty about when each crossing was lost.
+both satellite and earlier aerial comparisons are available. Nepal provides
+additional satellite examples with more uncertainty about when each crossing was lost.
 
 ## Inspect the bridge demo
 
@@ -152,8 +157,9 @@ Merritt/Nicola Valley floods in British Columbia.
 
 ## Project owner: run the historical flood pipeline
 
-Run this workflow on the processing machine. It uses Docker Compose for a local
-database, or an existing shared database through `DATABASE_URL`.
+Run this workflow on the processing machine against the hosted development
+database configured in `.env`. The local Compose database is stopped; all current
+processing and API work uses the hosted instance.
 [Python's release list](https://www.python.org/downloads/)
 was checked on 2026-10-03: Python 3.14.8 is the current stable release and is
 pinned in `.python-version`. Dependencies are locked in `uv.lock`.
@@ -162,10 +168,8 @@ pinned in `.python-version`. Dependencies are locked in `uv.lock`.
 ```sh
 uv python install 3.14.8
 uv sync --locked --group processing
-docker compose up -d --wait
-export DATABASE_URL=postgresql://floodbeacon:floodbeacon@localhost:55432/floodbeacon
-uv run --locked --group processing floodbeacon init-db
-uv run --locked --group processing floodbeacon train --chips-per-event 3
+uv run --locked --group processing --env-file .env floodbeacon init-db
+uv run --locked --group processing --env-file .env floodbeacon train --chips-per-event 3
 ```
 
 If the installed uv does not yet list Python 3.14.8, use Astral's current official
@@ -179,9 +183,9 @@ Training prints the locally generated `model` path. Pass that exact path to
 batch processing; the following path is from the initial verified training run:
 
 ```sh
-uv run --locked --group processing floodbeacon batch --case all --model data/models/water-rf-10958a17b65a7d7f/model.pkl
-uv run --locked --group processing floodbeacon preview --output-dir artifacts
-uv run --locked uvicorn floodbeacon.api:app --host 127.0.0.1 --port 8000
+uv run --locked --group processing --env-file .env floodbeacon batch --case all --model data/models/water-rf-10958a17b65a7d7f/model.pkl
+uv run --locked --group processing --env-file .env floodbeacon preview --output-dir artifacts
+uv run --locked --env-file .env uvicorn floodbeacon.api:app --host 127.0.0.1 --port 8000
 ```
 
 Open `artifacts/index.html` for a case selector, evidence layers, observations,
@@ -191,14 +195,11 @@ require internet. The API documentation is at
 `--case ahr-2021` or `--case bc-2021` runs one case. Inputs, locally trained
 models and previews live in ignored `data/` and `artifacts/` directories.
 
-PostgreSQL binds to `127.0.0.1:55432` and persists under `/var/lib/postgresql`
-using the PostgreSQL 18 layout. The explicit local connection above uses
-Compose's default credentials. To publish to the shared instance, skip Compose
-and set `DATABASE_URL` to that instance before initializing or processing.
-The API-specific `.env.example` contains a placeholder shared connection, not
-local database credentials. Export the connection URL or add `--env-file .env`
-to the processing commands when using that file.
-`docker compose stop` preserves data for later use.
+Compose remains available as a historical local configuration, with its data
+preserved while stopped. Current processing and serving require the hosted
+development `DATABASE_URL`; there is no implicit local database fallback.
+The API-specific `.env.example` contains a placeholder shared connection.
+Use `--env-file .env` on processing and serving commands to load the connection.
 
 ## REST API
 
@@ -213,6 +214,9 @@ Use a returned `run_id` to keep frontend requests on the same immutable run.
 | Run provenance and parameters | `/cases/{case_id}/runs/{run_id}` |
 | GeoJSON | `/cases/{case_id}/layers/{layer}?run_id=...` |
 | Historical observations | `/cases/{case_id}/observations?run_id=...` |
+| Dated satellite images and bridge comparisons | `/cases/{case_id}/imagery?run_id=...` |
+| Bridge annotations for one image date | `/cases/{case_id}/imagery/{observation_id}/bridges?run_id=...` |
+| Image pixels | `/static/imagery/.../*.png` |
 
 Layer names include `assets`, `reported_damage`, `agency_flood_reference`,
 `modeled_new_water`, `modeled_event_water`, `exposure`, `valid_coverage`,

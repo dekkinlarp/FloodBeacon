@@ -1,0 +1,2247 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "case": {
+        "id": "ahr-2021",
+        "name": "Ahr Valley — Rech",
+        "bbox": [
+          7.034499078327662,
+          50.51161551706559,
+          7.0393649527833135,
+          50.51648139152126
+        ],
+        "description": "Retrospective satellite bridge review; manual findings."
+      },
+      "metadata": {
+        "kind": "bridge_imagery",
+        "imagery": {
+          "case_id": "ahr-2021",
+          "name": "Ahr Valley — Rech",
+          "country": "Germany",
+          "bounds": [
+            7.034499078327662,
+            50.51161551706559,
+            7.0393649527833135,
+            50.51648139152126
+          ],
+          "bridges": [
+            {
+              "id": "rech-nepomuk",
+              "name": "Nepomukbrücke, Rech",
+              "coordinate": [
+                7.03622715,
+                50.5141039
+              ],
+              "failure_time": null,
+              "comparison_url": "/static/imagery/rech-satellite/comparison.png",
+              "before_url": "/static/imagery/rech-satellite/before.png",
+              "after_url": "/static/imagery/rech-satellite/after.png",
+              "agency_evidence": {
+                "source": "Copernicus EMSR517 AOI15",
+                "grade": "Destroyed",
+                "observed_at": "2021-07-18T10:50:00Z",
+                "source_url": "https://mapping.emergency.copernicus.eu/activations/EMSR517/",
+                "note": "Separately imported agency assessment; not a model output."
+              },
+              "limitations": [
+                "The exact failure time is unknown.",
+                "Sensor-native GSD and exact UTC acquisition times are not established from the crop metadata.",
+                "The review square is an annotation, not measured damage geometry.",
+                "No automated detector ran; this assessment does not certify nearby routes or surviving structure safety."
+              ]
+            }
+          ],
+          "limitations": [
+            "The exact failure time is unknown.",
+            "Sensor-native GSD and exact UTC acquisition times are not established from the crop metadata.",
+            "The review square is an annotation, not measured damage geometry.",
+            "No automated detector ran; this assessment does not certify nearby routes or surviving structure safety."
+          ]
+        }
+      },
+      "observations": [
+        {
+          "id": "ahr-2021-2021-02-11",
+          "acquired_date": "2021-02-11",
+          "acquired_at": null,
+          "label": "Before flood",
+          "images": [
+            {
+              "url": "/static/imagery/rech-satellite/before.png",
+              "width": 542,
+              "height": 852,
+              "sha256": "22f4a5e16f3823adb825e87eee8764afbf57fdddf6ad1076732263ae699239f1",
+              "bytes": 764912,
+              "id": "rech-before",
+              "bounds": [
+                7.034499078327662,
+                50.51161551706559,
+                7.0393649527833135,
+                50.51648139152126
+              ],
+              "image_coordinates": [
+                [
+                  7.034499078327662,
+                  50.51648139152126
+                ],
+                [
+                  7.0393649527833135,
+                  50.51648139152126
+                ],
+                [
+                  7.0393649527833135,
+                  50.51161551706559
+                ],
+                [
+                  7.034499078327662,
+                  50.51161551706559
+                ]
+              ],
+              "attribution": "Satellite imagery © Maxar Technologies; SpaceNet Partners; CC BY-SA 4.0",
+              "license": "CC BY-SA 4.0",
+              "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "provenance": {
+                "id": "before",
+                "acquired_date": "2021-02-11",
+                "acquired_at": null,
+                "date_precision": "day; provider archive folder",
+                "catalog_id": "10500500C4DD7000",
+                "source_url": "https://spacenet-dataset.s3.amazonaws.com/spacenet/SN8_floods/Germany_Training_Public/PRE-event/10500500C4DD7000_0_40_62.tif",
+                "source_sha256": "dd73faaff21ad55b76a65a3b6f8a25fa747c2e50e63dadc8dcee7cb258d0d29c",
+                "source_bytes": 3892126,
+                "source_crs": "EPSG:4326",
+                "source_transform": [
+                  3.74298035050102e-06,
+                  0.0,
+                  7.034499078327663,
+                  0.0,
+                  -3.74298035050102e-06,
+                  50.51648139152125
+                ],
+                "source_bounds": [
+                  7.034499078327663,
+                  50.5116155170656,
+                  7.039364952783314,
+                  50.51648139152125
+                ],
+                "source_shape": [
+                  1300,
+                  1300
+                ],
+                "date_evidence_url": "https://dg-opendata.s3.amazonaws.com/?list-type=2&delimiter=/&prefix=events/western-europe-flooding21/pre-event/2021-02-11/",
+                "date_evidence_sha256": "3610a1fbd32e0f77f994196c6987294f13aa5db0655f26a88ed5199c29d1a76b",
+                "url": "/static/imagery/rech-satellite/before.png",
+                "sha256": "22f4a5e16f3823adb825e87eee8764afbf57fdddf6ad1076732263ae699239f1",
+                "bytes": 764912,
+                "width": 542,
+                "height": 852,
+                "retrieved_at": "2026-10-04T07:42:07.659834+00:00",
+                "output_crs": "EPSG:3857",
+                "output_transform": [
+                  0.9993849938507261,
+                  0.0,
+                  783076.8553851877,
+                  0.0,
+                  -0.9997955524294851,
+                  6536206.465111486
+                ],
+                "processing": "RGB bilinear resampling to one shared grid; mask nearest-neighbour; no color enhancement or generated pixels. Comparison zoom uses nearest-neighbour; square is a manual annotation.",
+                "dataset": "SpaceNet 8 Germany_Training_Public",
+                "license_source": "https://spacenet.ai/sn8-challenge/",
+                "publication_time": null,
+                "availability_time": null
+              }
+            }
+          ],
+          "bridges": {
+            "type": "FeatureCollection",
+            "features": [
+              {
+                "type": "Feature",
+                "id": "rech-nepomuk-2021-02-11",
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        7.035609617191854,
+                        50.513688736890714
+                      ],
+                      [
+                        7.036878254611559,
+                        50.51371014267651
+                      ],
+                      [
+                        7.036844693635285,
+                        50.51451905992864
+                      ],
+                      [
+                        7.035576034561303,
+                        50.51449765353103
+                      ],
+                      [
+                        7.035609617191854,
+                        50.513688736890714
+                      ]
+                    ]
+                  ]
+                },
+                "properties": {
+                  "bridge_id": "rech-nepomuk",
+                  "name": "Nepomukbrücke, Rech",
+                  "observation_id": "ahr-2021-2021-02-11",
+                  "observed_date": "2021-02-11",
+                  "finding": "Continuous crossing visible",
+                  "status": "visible_crossing",
+                  "assessment_method": "manual image review",
+                  "failure_time": null,
+                  "annotation": "90 m review square; not a surveyed damage boundary"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "ahr-2021-2021-07-18",
+          "acquired_date": "2021-07-18",
+          "acquired_at": null,
+          "label": "After flood",
+          "images": [
+            {
+              "url": "/static/imagery/rech-satellite/after.png",
+              "width": 542,
+              "height": 852,
+              "sha256": "074314817ef5d60abf8682d8da504d5e09c16882b6382ed3cb2613609684fb12",
+              "bytes": 607806,
+              "id": "rech-after",
+              "bounds": [
+                7.034499078327662,
+                50.51161551706559,
+                7.0393649527833135,
+                50.51648139152126
+              ],
+              "image_coordinates": [
+                [
+                  7.034499078327662,
+                  50.51648139152126
+                ],
+                [
+                  7.0393649527833135,
+                  50.51648139152126
+                ],
+                [
+                  7.0393649527833135,
+                  50.51161551706559
+                ],
+                [
+                  7.034499078327662,
+                  50.51161551706559
+                ]
+              ],
+              "attribution": "Satellite imagery © Maxar Technologies; SpaceNet Partners; CC BY-SA 4.0",
+              "license": "CC BY-SA 4.0",
+              "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "provenance": {
+                "id": "after",
+                "acquired_date": "2021-07-18",
+                "acquired_at": null,
+                "date_precision": "day; provider archive folder",
+                "catalog_id": "10500500E6DD3C00",
+                "source_url": "https://spacenet-dataset.s3.amazonaws.com/spacenet/SN8_floods/Germany_Training_Public/POST-event/10500500E6DD3C00_0_40_62.tif",
+                "source_sha256": "3f5468a4e9c1d35b46dfb87cffe049e4305719a0f6299573fc3f060a1e2a2e0b",
+                "source_bytes": 1852980,
+                "source_crs": "EPSG:4326",
+                "source_transform": [
+                  6.201369844702031e-06,
+                  0.0,
+                  7.034496972686098,
+                  0.0,
+                  -6.201369844702031e-06,
+                  50.51648660239541
+                ],
+                "source_bounds": [
+                  7.034496972686098,
+                  50.51161232569748,
+                  7.039365048014189,
+                  50.51648660239541
+                ],
+                "source_shape": [
+                  786,
+                  785
+                ],
+                "date_evidence_url": "https://dg-opendata.s3.amazonaws.com/?list-type=2&delimiter=/&prefix=events/western-europe-flooding21/post-event/2021-07-18/",
+                "date_evidence_sha256": "cd4b789ceb904ee239168621e483a8e25a5d0b8946761e0e3fe769fcc8d49c7c",
+                "url": "/static/imagery/rech-satellite/after.png",
+                "sha256": "074314817ef5d60abf8682d8da504d5e09c16882b6382ed3cb2613609684fb12",
+                "bytes": 607806,
+                "width": 542,
+                "height": 852,
+                "retrieved_at": "2026-10-04T07:42:07.659834+00:00",
+                "output_crs": "EPSG:3857",
+                "output_transform": [
+                  0.9993849938507261,
+                  0.0,
+                  783076.8553851877,
+                  0.0,
+                  -0.9997955524294851,
+                  6536206.465111486
+                ],
+                "processing": "RGB bilinear resampling to one shared grid; mask nearest-neighbour; no color enhancement or generated pixels. Comparison zoom uses nearest-neighbour; square is a manual annotation.",
+                "dataset": "SpaceNet 8 Germany_Training_Public",
+                "license_source": "https://spacenet.ai/sn8-challenge/",
+                "publication_time": null,
+                "availability_time": null
+              }
+            }
+          ],
+          "bridges": {
+            "type": "FeatureCollection",
+            "features": [
+              {
+                "type": "Feature",
+                "id": "rech-nepomuk-2021-07-18",
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        7.035609617191854,
+                        50.513688736890714
+                      ],
+                      [
+                        7.036878254611559,
+                        50.51371014267651
+                      ],
+                      [
+                        7.036844693635285,
+                        50.51451905992864
+                      ],
+                      [
+                        7.035576034561303,
+                        50.51449765353103
+                      ],
+                      [
+                        7.035609617191854,
+                        50.513688736890714
+                      ]
+                    ]
+                  ]
+                },
+                "properties": {
+                  "bridge_id": "rech-nepomuk",
+                  "name": "Nepomukbrücke, Rech",
+                  "observation_id": "ahr-2021-2021-07-18",
+                  "observed_date": "2021-07-18",
+                  "finding": "Northern remnant; missing span across the river",
+                  "status": "missing_span",
+                  "assessment_method": "manual image review",
+                  "failure_time": null,
+                  "annotation": "90 m review square; not a surveyed damage boundary"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "layers": {
+        "bridges": {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "id": "rech-nepomuk-2021-02-11",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                      7.035609617191854,
+                      50.513688736890714
+                    ],
+                    [
+                      7.036878254611559,
+                      50.51371014267651
+                    ],
+                    [
+                      7.036844693635285,
+                      50.51451905992864
+                    ],
+                    [
+                      7.035576034561303,
+                      50.51449765353103
+                    ],
+                    [
+                      7.035609617191854,
+                      50.513688736890714
+                    ]
+                  ]
+                ]
+              },
+              "properties": {
+                "bridge_id": "rech-nepomuk",
+                "name": "Nepomukbrücke, Rech",
+                "observation_id": "ahr-2021-2021-02-11",
+                "observed_date": "2021-02-11",
+                "finding": "Continuous crossing visible",
+                "status": "visible_crossing",
+                "assessment_method": "manual image review",
+                "failure_time": null,
+                "annotation": "90 m review square; not a surveyed damage boundary"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "rech-nepomuk-2021-07-18",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                      7.035609617191854,
+                      50.513688736890714
+                    ],
+                    [
+                      7.036878254611559,
+                      50.51371014267651
+                    ],
+                    [
+                      7.036844693635285,
+                      50.51451905992864
+                    ],
+                    [
+                      7.035576034561303,
+                      50.51449765353103
+                    ],
+                    [
+                      7.035609617191854,
+                      50.513688736890714
+                    ]
+                  ]
+                ]
+              },
+              "properties": {
+                "bridge_id": "rech-nepomuk",
+                "name": "Nepomukbrücke, Rech",
+                "observation_id": "ahr-2021-2021-07-18",
+                "observed_date": "2021-07-18",
+                "finding": "Northern remnant; missing span across the river",
+                "status": "missing_span",
+                "assessment_method": "manual image review",
+                "failure_time": null,
+                "annotation": "90 m review square; not a surveyed damage boundary"
+              }
+            }
+          ]
+        }
+      },
+      "assets": [
+        {
+          "url": "/static/imagery/rech-satellite/after.png",
+          "sha256": "074314817ef5d60abf8682d8da504d5e09c16882b6382ed3cb2613609684fb12",
+          "bytes": 607806
+        },
+        {
+          "url": "/static/imagery/rech-satellite/before.png",
+          "sha256": "22f4a5e16f3823adb825e87eee8764afbf57fdddf6ad1076732263ae699239f1",
+          "bytes": 764912
+        },
+        {
+          "url": "/static/imagery/rech-satellite/comparison.png",
+          "sha256": "24d4908f212d1b92225926be29708e2f3636e20b2c5884baa699578c8f8c76c2",
+          "bytes": 382485
+        }
+      ],
+      "run": {
+        "id": "bridge-imagery-aaf6e8048f92a8ef",
+        "case_id": "ahr-2021",
+        "content_sha256": "aaf6e8048f92a8efad2d91454c3e1c37161706498c0899e7d0bb23421e88a595"
+      }
+    },
+    {
+      "case": {
+        "id": "derna-2023",
+        "name": "Derna — Wadi crossings",
+        "bbox": [
+          22.63952943544876,
+          32.760874848459885,
+          22.645107074204592,
+          32.765759581874775
+        ],
+        "description": "Retrospective satellite bridge review; manual findings."
+      },
+      "metadata": {
+        "kind": "bridge_imagery",
+        "imagery": {
+          "case_id": "derna-2023",
+          "name": "Derna — Wadi crossings",
+          "country": "Libya",
+          "bounds": [
+            22.63952943544876,
+            32.760874848459885,
+            22.645107074204592,
+            32.765759581874775
+          ],
+          "bridges": [
+            {
+              "id": "derna_middle_bridge",
+              "name": "Derna middle Wadi crossing",
+              "coordinate": [
+                22.641427,
+                32.762475
+              ],
+              "failure_time": null,
+              "agency_evidence": {
+                "source": "UNOSAT",
+                "source_url": "https://unosat.org/static/unosat_filesystem/3672/UNOSAT_A3_Natural_Portrait_FL20230912LBY_DernaCity_ZoomInRiver_13Sep2023.pdf",
+                "grade": "Destroyed bridges (area assessment)",
+                "note": "UNOSAT preliminary analysis, not field validated; three destroyed bridges in map extent. Exact inventory identity was not independently matched."
+              },
+              "limitations": [
+                "Exact failure time is unknown.",
+                "Review squares are annotations, not surveyed damage boundaries.",
+                "Manual satellite review does not establish surrounding route passability.",
+                "No precision image coregistration or automated damage model was used.",
+                "UNOSAT preliminary analysis, not field validated; three destroyed bridges in map extent."
+              ],
+              "coordinate_source": "Approximate pre-event deck center from visual COG inspection; not surveyed",
+              "before_url": "/static/imagery/derna-satellite/derna_middle_bridge-before.png",
+              "after_url": "/static/imagery/derna-satellite/derna_middle_bridge-after.png",
+              "comparison_url": "/static/imagery/derna-satellite/derna_middle_bridge-comparison.png"
+            },
+            {
+              "id": "derna_north_bridge",
+              "name": "Derna northern Wadi crossing",
+              "coordinate": [
+                22.64321,
+                32.764157
+              ],
+              "failure_time": null,
+              "agency_evidence": {
+                "source": "UNOSAT",
+                "source_url": "https://unosat.org/static/unosat_filesystem/3672/UNOSAT_A3_Natural_Portrait_FL20230912LBY_DernaCity_ZoomInRiver_13Sep2023.pdf",
+                "grade": "Destroyed bridges (area assessment)",
+                "note": "UNOSAT preliminary analysis, not field validated; three destroyed bridges in map extent. Exact inventory identity was not independently matched."
+              },
+              "limitations": [
+                "Exact failure time is unknown.",
+                "Review squares are annotations, not surveyed damage boundaries.",
+                "Manual satellite review does not establish surrounding route passability.",
+                "No precision image coregistration or automated damage model was used.",
+                "UNOSAT preliminary analysis, not field validated; three destroyed bridges in map extent."
+              ],
+              "coordinate_source": "Approximate pre-event deck center from visual COG inspection; not surveyed",
+              "before_url": "/static/imagery/derna-satellite/derna_north_bridge-before.png",
+              "after_url": "/static/imagery/derna-satellite/derna_north_bridge-after.png",
+              "comparison_url": "/static/imagery/derna-satellite/derna_north_bridge-comparison.png"
+            }
+          ],
+          "limitations": [
+            "Exact failure time is unknown.",
+            "Review squares are annotations, not surveyed damage boundaries.",
+            "Manual satellite review does not establish surrounding route passability.",
+            "No precision image coregistration or automated damage model was used.",
+            "UNOSAT preliminary analysis, not field validated; three destroyed bridges in map extent."
+          ]
+        }
+      },
+      "observations": [
+        {
+          "id": "derna-2023-2023-07-01",
+          "acquired_date": "2023-07-01",
+          "acquired_at": "2023-07-01T09:07:42Z",
+          "label": "Earlier baseline",
+          "images": [
+            {
+              "id": "derna_middle_bridge-before",
+              "url": "/static/imagery/derna-satellite/derna_middle_bridge-before.png",
+              "bounds": [
+                22.63952943544876,
+                32.760874848459885,
+                22.643323612336598,
+                32.76407918112581
+              ],
+              "image_coordinates": [
+                [
+                  22.63952943544876,
+                  32.76407918112581
+                ],
+                [
+                  22.643323612336598,
+                  32.76407918112581
+                ],
+                [
+                  22.643323612336598,
+                  32.760874848459885
+                ],
+                [
+                  22.63952943544876,
+                  32.760874848459885
+                ]
+              ],
+              "width": 1162,
+              "height": 1167,
+              "sha256": "8d102ce2364e0c697ecd756b2fcbf9886bf706ae1d9d91ab930a9016ec69d3cb",
+              "bytes": 2723920,
+              "license": "CC-BY-NC-4.0",
+              "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+              "attribution": "© Maxar 2023",
+              "provenance": {
+                "item_id": "34/120200213130/105005005ADE7C00",
+                "item_url": "https://maxar-opendata.s3.amazonaws.com/events/Libya-Floods-Sept-2023/ard/34/120200213130/2023-07-01/105005005ADE7C00.json",
+                "visual_cog_url": "https://maxar-opendata.s3.amazonaws.com/events/Libya-Floods-Sept-2023/ard/34/120200213130/2023-07-01/105005005ADE7C00-visual.tif",
+                "acquired_at": "2023-07-01 09:07:42Z",
+                "native_gsd_m": 0.46,
+                "visual_grid_m": 0.30517578125,
+                "platform": "GE01",
+                "crs": "EPSG:32634",
+                "transform": [
+                  0.30517578125,
+                  0.0,
+                  653578.4912109375,
+                  0.0,
+                  -0.30517578125,
+                  3626322.6318359375,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "shape": [
+                  3,
+                  1147,
+                  1147
+                ],
+                "retrieved_at": "2026-10-04T05:40:13.072376+00:00",
+                "sha256": {
+                  "derna_middle_bridge_before.png": "c55b6e0dfb80cf96f948c05f89a9a43059180c7edb063a2771185889afca13b8",
+                  "derna_middle_bridge_before.tif": "bff638888641abd10e079c0f0bf92bf17c60a86744b79490d1fbb9b9b8a64bd2",
+                  "105005005ADE7C00_item.json": "b8a566d135414bfa93a51ff99d9130fb6a169e6404c532ae778468d3f42cedaa"
+                },
+                "output_crs": "EPSG:3857",
+                "output_transform": [
+                  0.3634817892720333,
+                  0.0,
+                  2520220.8885534843,
+                  0.0,
+                  -0.3634817892720333,
+                  3864031.1253838567
+                ],
+                "publication_time": null,
+                "availability_time": null,
+                "processing": "Native RGB window warped to Web Mercator; bilinear RGB, nearest source validity mask; no color enhancement.",
+                "license_source": "https://maxar-opendata.s3.amazonaws.com/events/Libya-Floods-Sept-2023/collection.json"
+              }
+            },
+            {
+              "id": "derna_north_bridge-before",
+              "url": "/static/imagery/derna-satellite/derna_north_bridge-before.png",
+              "bounds": [
+                22.641312828442665,
+                32.762555251522315,
+                22.645107074204592,
+                32.765759581874775
+              ],
+              "image_coordinates": [
+                [
+                  22.641312828442665,
+                  32.765759581874775
+                ],
+                [
+                  22.645107074204592,
+                  32.765759581874775
+                ],
+                [
+                  22.645107074204592,
+                  32.762555251522315
+                ],
+                [
+                  22.641312828442665,
+                  32.762555251522315
+                ]
+              ],
+              "width": 1162,
+              "height": 1167,
+              "sha256": "8df6a236a57e0a249ff8b2efd036fc55a807f1921c980c8c3bc8681046b5cd88",
+              "bytes": 2830613,
+              "license": "CC-BY-NC-4.0",
+              "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+              "attribution": "© Maxar 2023",
+              "provenance": {
+                "item_id": "34/120200213130/105005005ADE7C00",
+                "item_url": "https://maxar-opendata.s3.amazonaws.com/events/Libya-Floods-Sept-2023/ard/34/120200213130/2023-07-01/105005005ADE7C00.json",
+                "visual_cog_url": "https://maxar-opendata.s3.amazonaws.com/events/Libya-Floods-Sept-2023/ard/34/120200213130/2023-07-01/105005005ADE7C00-visual.tif",
+                "acquired_at": "2023-07-01 09:07:42Z",
+                "native_gsd_m": 0.46,
+                "visual_grid_m": 0.30517578125,
+                "platform": "GE01",
+                "crs": "EPSG:32634",
+                "transform": [
+                  0.30517578125,
+                  0.0,
+                  653742.67578125,
+                  0.0,
+                  -0.30517578125,
+                  3626511.5356445312,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "shape": [
+                  3,
+                  1147,
+                  1147
+                ],
+                "retrieved_at": "2026-10-04T05:40:15.282164+00:00",
+                "sha256": {
+                  "derna_north_bridge_before.png": "5b079886a211829c5bb13751fe7f5f1de8773696e5436873d4447c78f11fc49e",
+                  "derna_north_bridge_before.tif": "73f8dd0a850feb54e5294380aa86c049ce0afd89e16c84905cd14bf46f991a8a",
+                  "105005005ADE7C00_item.json": "b8a566d135414bfa93a51ff99d9130fb6a169e6404c532ae778468d3f42cedaa"
+                },
+                "output_crs": "EPSG:3857",
+                "output_transform": [
+                  0.363488387402848,
+                  0.0,
+                  2520419.41495345,
+                  0.0,
+                  -0.363488387402848,
+                  3864253.5796283386
+                ],
+                "publication_time": null,
+                "availability_time": null,
+                "processing": "Native RGB window warped to Web Mercator; bilinear RGB, nearest source validity mask; no color enhancement.",
+                "license_source": "https://maxar-opendata.s3.amazonaws.com/events/Libya-Floods-Sept-2023/collection.json"
+              }
+            }
+          ],
+          "bridges": {
+            "type": "FeatureCollection",
+            "features": [
+              {
+                "type": "Feature",
+                "id": "derna_middle_bridge-2023-07-01",
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        22.640939318824614,
+                        32.762075526054815
+                      ],
+                      [
+                        22.641899786621455,
+                        32.76206294141066
+                      ],
+                      [
+                        22.641914685528352,
+                        32.76287447188319
+                      ],
+                      [
+                        22.640954209025583,
+                        32.76288705691687
+                      ],
+                      [
+                        22.640939318824614,
+                        32.762075526054815
+                      ]
+                    ]
+                  ]
+                },
+                "properties": {
+                  "bridge_id": "derna_middle_bridge",
+                  "name": "Derna middle Wadi crossing",
+                  "observation_id": "derna-2023-2023-07-01",
+                  "observed_date": "2023-07-01",
+                  "finding": "Continuous crossing visible in this image; structural safety unverified.",
+                  "status": "visible_crossing",
+                  "assessment_method": "manual image review",
+                  "failure_time": null,
+                  "annotation": "90 m review square; not a surveyed damage boundary"
+                }
+              },
+              {
+                "type": "Feature",
+                "id": "derna_north_bridge-2023-07-01",
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        22.642722301657145,
+                        32.763757533645894
+                      ],
+                      [
+                        22.64368278665353,
+                        32.76374493476405
+                      ],
+                      [
+                        22.643697702696166,
+                        32.76455646429177
+                      ],
+                      [
+                        22.642737208993157,
+                        32.76456906356356
+                      ],
+                      [
+                        22.642722301657145,
+                        32.763757533645894
+                      ]
+                    ]
+                  ]
+                },
+                "properties": {
+                  "bridge_id": "derna_north_bridge",
+                  "name": "Derna northern Wadi crossing",
+                  "observation_id": "derna-2023-2023-07-01",
+                  "observed_date": "2023-07-01",
+                  "finding": "Continuous crossing visible in this image; structural safety unverified.",
+                  "status": "visible_crossing",
+                  "assessment_method": "manual image review",
+                  "failure_time": null,
+                  "annotation": "90 m review square; not a surveyed damage boundary"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "derna-2023-2023-09-13",
+          "acquired_date": "2023-09-13",
+          "acquired_at": "2023-09-13T09:18:09Z",
+          "label": "After flood",
+          "images": [
+            {
+              "id": "derna_middle_bridge-after",
+              "url": "/static/imagery/derna-satellite/derna_middle_bridge-after.png",
+              "bounds": [
+                22.63952943544876,
+                32.760874848459885,
+                22.643323612336598,
+                32.76407918112581
+              ],
+              "image_coordinates": [
+                [
+                  22.63952943544876,
+                  32.76407918112581
+                ],
+                [
+                  22.643323612336598,
+                  32.76407918112581
+                ],
+                [
+                  22.643323612336598,
+                  32.760874848459885
+                ],
+                [
+                  22.63952943544876,
+                  32.760874848459885
+                ]
+              ],
+              "width": 1162,
+              "height": 1167,
+              "sha256": "1107a80caa26b9fbd37dff637a0baae0cf9bd4d91b1d95a4bdc136f7a868d599",
+              "bytes": 2920243,
+              "license": "CC-BY-NC-4.0",
+              "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+              "attribution": "© Maxar 2023",
+              "provenance": {
+                "item_id": "34/120200213130/10500100363D0900",
+                "item_url": "https://maxar-opendata.s3.amazonaws.com/events/Libya-Floods-Sept-2023/ard/34/120200213130/2023-09-13/10500100363D0900.json",
+                "visual_cog_url": "https://maxar-opendata.s3.amazonaws.com/events/Libya-Floods-Sept-2023/ard/34/120200213130/2023-09-13/10500100363D0900-visual.tif",
+                "acquired_at": "2023-09-13 09:18:09Z",
+                "native_gsd_m": 0.42,
+                "visual_grid_m": 0.30517578125,
+                "platform": "GE01",
+                "crs": "EPSG:32634",
+                "transform": [
+                  0.30517578125,
+                  0.0,
+                  653578.4912109375,
+                  0.0,
+                  -0.30517578125,
+                  3626322.6318359375,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "shape": [
+                  3,
+                  1147,
+                  1147
+                ],
+                "retrieved_at": "2026-10-04T05:40:13.724372+00:00",
+                "sha256": {
+                  "derna_middle_bridge_after.png": "f284a191b67e243710f579bcc0977a2c39db8c71ce4b90de069b4cb928e8c8d6",
+                  "derna_middle_bridge_after.tif": "422d14e578b087a2f219854dbf961b41bcc1fd93e9bd0b81cf6ff62f2c145758",
+                  "10500100363D0900_item.json": "c191c00140e5decfc9132f235bbf6570280828c14a8ec5753ed00a3dfca940ce"
+                },
+                "output_crs": "EPSG:3857",
+                "output_transform": [
+                  0.3634817892720333,
+                  0.0,
+                  2520220.8885534843,
+                  0.0,
+                  -0.3634817892720333,
+                  3864031.1253838567
+                ],
+                "publication_time": null,
+                "availability_time": null,
+                "processing": "Native RGB window warped to Web Mercator; bilinear RGB, nearest source validity mask; no color enhancement.",
+                "license_source": "https://maxar-opendata.s3.amazonaws.com/events/Libya-Floods-Sept-2023/collection.json"
+              }
+            },
+            {
+              "id": "derna_north_bridge-after",
+              "url": "/static/imagery/derna-satellite/derna_north_bridge-after.png",
+              "bounds": [
+                22.641312828442665,
+                32.762555251522315,
+                22.645107074204592,
+                32.765759581874775
+              ],
+              "image_coordinates": [
+                [
+                  22.641312828442665,
+                  32.765759581874775
+                ],
+                [
+                  22.645107074204592,
+                  32.765759581874775
+                ],
+                [
+                  22.645107074204592,
+                  32.762555251522315
+                ],
+                [
+                  22.641312828442665,
+                  32.762555251522315
+                ]
+              ],
+              "width": 1162,
+              "height": 1167,
+              "sha256": "47f32566410281ea7a380b19543e8b4746a7fc6d6f449cb59ea9e8297e8453bf",
+              "bytes": 3091974,
+              "license": "CC-BY-NC-4.0",
+              "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+              "attribution": "© Maxar 2023",
+              "provenance": {
+                "item_id": "34/120200213130/10500100363D0900",
+                "item_url": "https://maxar-opendata.s3.amazonaws.com/events/Libya-Floods-Sept-2023/ard/34/120200213130/2023-09-13/10500100363D0900.json",
+                "visual_cog_url": "https://maxar-opendata.s3.amazonaws.com/events/Libya-Floods-Sept-2023/ard/34/120200213130/2023-09-13/10500100363D0900-visual.tif",
+                "acquired_at": "2023-09-13 09:18:09Z",
+                "native_gsd_m": 0.42,
+                "visual_grid_m": 0.30517578125,
+                "platform": "GE01",
+                "crs": "EPSG:32634",
+                "transform": [
+                  0.30517578125,
+                  0.0,
+                  653742.67578125,
+                  0.0,
+                  -0.30517578125,
+                  3626511.5356445312,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "shape": [
+                  3,
+                  1147,
+                  1147
+                ],
+                "retrieved_at": "2026-10-04T05:40:15.720235+00:00",
+                "sha256": {
+                  "derna_north_bridge_after.png": "019dc3324708d3e13f340913de46f1c5e55097b4988baa3f5daf0321f808f8f8",
+                  "derna_north_bridge_after.tif": "4659a11dbc6f159c874757a5750d39dfe6bdaaab7d10f4c2b07db834f28ebfa8",
+                  "10500100363D0900_item.json": "c191c00140e5decfc9132f235bbf6570280828c14a8ec5753ed00a3dfca940ce"
+                },
+                "output_crs": "EPSG:3857",
+                "output_transform": [
+                  0.363488387402848,
+                  0.0,
+                  2520419.41495345,
+                  0.0,
+                  -0.363488387402848,
+                  3864253.5796283386
+                ],
+                "publication_time": null,
+                "availability_time": null,
+                "processing": "Native RGB window warped to Web Mercator; bilinear RGB, nearest source validity mask; no color enhancement.",
+                "license_source": "https://maxar-opendata.s3.amazonaws.com/events/Libya-Floods-Sept-2023/collection.json"
+              }
+            }
+          ],
+          "bridges": {
+            "type": "FeatureCollection",
+            "features": [
+              {
+                "type": "Feature",
+                "id": "derna_middle_bridge-2023-09-13",
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        22.640939318824614,
+                        32.762075526054815
+                      ],
+                      [
+                        22.641899786621455,
+                        32.76206294141066
+                      ],
+                      [
+                        22.641914685528352,
+                        32.76287447188319
+                      ],
+                      [
+                        22.640954209025583,
+                        32.76288705691687
+                      ],
+                      [
+                        22.640939318824614,
+                        32.762075526054815
+                      ]
+                    ]
+                  ]
+                },
+                "properties": {
+                  "bridge_id": "derna_middle_bridge",
+                  "name": "Derna middle Wadi crossing",
+                  "observation_id": "derna-2023-2023-09-13",
+                  "observed_date": "2023-09-13",
+                  "finding": "Pre-event road deck crosses Wadi; post-event corresponding deck absent, road continuity severed and river corridor scoured. Image interpretation is a demo annotation, not validated automated detection.",
+                  "status": "missing_span",
+                  "assessment_method": "manual image review",
+                  "failure_time": null,
+                  "annotation": "90 m review square; not a surveyed damage boundary"
+                }
+              },
+              {
+                "type": "Feature",
+                "id": "derna_north_bridge-2023-09-13",
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        22.642722301657145,
+                        32.763757533645894
+                      ],
+                      [
+                        22.64368278665353,
+                        32.76374493476405
+                      ],
+                      [
+                        22.643697702696166,
+                        32.76455646429177
+                      ],
+                      [
+                        22.642737208993157,
+                        32.76456906356356
+                      ],
+                      [
+                        22.642722301657145,
+                        32.763757533645894
+                      ]
+                    ]
+                  ]
+                },
+                "properties": {
+                  "bridge_id": "derna_north_bridge",
+                  "name": "Derna northern Wadi crossing",
+                  "observation_id": "derna-2023-2023-09-13",
+                  "observed_date": "2023-09-13",
+                  "finding": "Pre-event road deck crosses Wadi; post-event corresponding deck absent, road continuity severed and river corridor scoured. Image interpretation is a demo annotation, not validated automated detection.",
+                  "status": "missing_span",
+                  "assessment_method": "manual image review",
+                  "failure_time": null,
+                  "annotation": "90 m review square; not a surveyed damage boundary"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "layers": {
+        "bridges": {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "id": "derna_middle_bridge-2023-07-01",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                      22.640939318824614,
+                      32.762075526054815
+                    ],
+                    [
+                      22.641899786621455,
+                      32.76206294141066
+                    ],
+                    [
+                      22.641914685528352,
+                      32.76287447188319
+                    ],
+                    [
+                      22.640954209025583,
+                      32.76288705691687
+                    ],
+                    [
+                      22.640939318824614,
+                      32.762075526054815
+                    ]
+                  ]
+                ]
+              },
+              "properties": {
+                "bridge_id": "derna_middle_bridge",
+                "name": "Derna middle Wadi crossing",
+                "observation_id": "derna-2023-2023-07-01",
+                "observed_date": "2023-07-01",
+                "finding": "Continuous crossing visible in this image; structural safety unverified.",
+                "status": "visible_crossing",
+                "assessment_method": "manual image review",
+                "failure_time": null,
+                "annotation": "90 m review square; not a surveyed damage boundary"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "derna_north_bridge-2023-07-01",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                      22.642722301657145,
+                      32.763757533645894
+                    ],
+                    [
+                      22.64368278665353,
+                      32.76374493476405
+                    ],
+                    [
+                      22.643697702696166,
+                      32.76455646429177
+                    ],
+                    [
+                      22.642737208993157,
+                      32.76456906356356
+                    ],
+                    [
+                      22.642722301657145,
+                      32.763757533645894
+                    ]
+                  ]
+                ]
+              },
+              "properties": {
+                "bridge_id": "derna_north_bridge",
+                "name": "Derna northern Wadi crossing",
+                "observation_id": "derna-2023-2023-07-01",
+                "observed_date": "2023-07-01",
+                "finding": "Continuous crossing visible in this image; structural safety unverified.",
+                "status": "visible_crossing",
+                "assessment_method": "manual image review",
+                "failure_time": null,
+                "annotation": "90 m review square; not a surveyed damage boundary"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "derna_middle_bridge-2023-09-13",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                      22.640939318824614,
+                      32.762075526054815
+                    ],
+                    [
+                      22.641899786621455,
+                      32.76206294141066
+                    ],
+                    [
+                      22.641914685528352,
+                      32.76287447188319
+                    ],
+                    [
+                      22.640954209025583,
+                      32.76288705691687
+                    ],
+                    [
+                      22.640939318824614,
+                      32.762075526054815
+                    ]
+                  ]
+                ]
+              },
+              "properties": {
+                "bridge_id": "derna_middle_bridge",
+                "name": "Derna middle Wadi crossing",
+                "observation_id": "derna-2023-2023-09-13",
+                "observed_date": "2023-09-13",
+                "finding": "Pre-event road deck crosses Wadi; post-event corresponding deck absent, road continuity severed and river corridor scoured. Image interpretation is a demo annotation, not validated automated detection.",
+                "status": "missing_span",
+                "assessment_method": "manual image review",
+                "failure_time": null,
+                "annotation": "90 m review square; not a surveyed damage boundary"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "derna_north_bridge-2023-09-13",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                      22.642722301657145,
+                      32.763757533645894
+                    ],
+                    [
+                      22.64368278665353,
+                      32.76374493476405
+                    ],
+                    [
+                      22.643697702696166,
+                      32.76455646429177
+                    ],
+                    [
+                      22.642737208993157,
+                      32.76456906356356
+                    ],
+                    [
+                      22.642722301657145,
+                      32.763757533645894
+                    ]
+                  ]
+                ]
+              },
+              "properties": {
+                "bridge_id": "derna_north_bridge",
+                "name": "Derna northern Wadi crossing",
+                "observation_id": "derna-2023-2023-09-13",
+                "observed_date": "2023-09-13",
+                "finding": "Pre-event road deck crosses Wadi; post-event corresponding deck absent, road continuity severed and river corridor scoured. Image interpretation is a demo annotation, not validated automated detection.",
+                "status": "missing_span",
+                "assessment_method": "manual image review",
+                "failure_time": null,
+                "annotation": "90 m review square; not a surveyed damage boundary"
+              }
+            }
+          ]
+        }
+      },
+      "assets": [
+        {
+          "url": "/static/imagery/derna-satellite/derna_middle_bridge-after.png",
+          "sha256": "1107a80caa26b9fbd37dff637a0baae0cf9bd4d91b1d95a4bdc136f7a868d599",
+          "bytes": 2920243
+        },
+        {
+          "url": "/static/imagery/derna-satellite/derna_middle_bridge-before.png",
+          "sha256": "8d102ce2364e0c697ecd756b2fcbf9886bf706ae1d9d91ab930a9016ec69d3cb",
+          "bytes": 2723920
+        },
+        {
+          "url": "/static/imagery/derna-satellite/derna_middle_bridge-comparison.png",
+          "sha256": "d814d81310a38a7be23ef68c283b8bc43e3ec4f741e494b17cd9cc85e953a361",
+          "bytes": 557443
+        },
+        {
+          "url": "/static/imagery/derna-satellite/derna_north_bridge-after.png",
+          "sha256": "47f32566410281ea7a380b19543e8b4746a7fc6d6f449cb59ea9e8297e8453bf",
+          "bytes": 3091974
+        },
+        {
+          "url": "/static/imagery/derna-satellite/derna_north_bridge-before.png",
+          "sha256": "8df6a236a57e0a249ff8b2efd036fc55a807f1921c980c8c3bc8681046b5cd88",
+          "bytes": 2830613
+        },
+        {
+          "url": "/static/imagery/derna-satellite/derna_north_bridge-comparison.png",
+          "sha256": "ec306f55128db90c5666be624cab58ced852cb0443d2a527abced7af346606d7",
+          "bytes": 563725
+        }
+      ],
+      "run": {
+        "id": "bridge-imagery-b9d6942547892d37",
+        "case_id": "derna-2023",
+        "content_sha256": "b9d6942547892d37a8d4366bdc7bd5b0a0068c3648959ad7d612e19b57cf17af"
+      }
+    },
+    {
+      "case": {
+        "id": "nepal-2026",
+        "name": "Syabrubesi — Trishuli crossings",
+        "bbox": [
+          85.3379223396644,
+          28.162163450133757,
+          85.34472940681766,
+          28.16788152300574
+        ],
+        "description": "Retrospective satellite bridge review; manual findings."
+      },
+      "metadata": {
+        "kind": "bridge_imagery",
+        "imagery": {
+          "case_id": "nepal-2026",
+          "name": "Syabrubesi — Trishuli crossings",
+          "country": "Nepal",
+          "bounds": [
+            85.3379223396644,
+            28.162163450133757,
+            85.34472940681766,
+            28.16788152300574
+          ],
+          "bridges": [
+            {
+              "id": "syabrubesi-trishuli-footbridge",
+              "name": "Syaphru Besi I / Trishuli footbridge",
+              "coordinate": [
+                85.342728,
+                28.165879
+              ],
+              "failure_time": null,
+              "agency_evidence": null,
+              "limitations": [
+                "Exact failure time is unknown.",
+                "Review squares are annotations, not surveyed damage boundaries.",
+                "Manual satellite review does not establish surrounding route passability.",
+                "No precision image coregistration or automated damage model was used.",
+                "Retrospective, manually inspected demonstration examples. Baseline is three years earlier and does not alone date the loss to the 2026 event. The July 2025 Rasuwa flood is an intervening event; its impact on these exact crossings is unverified. No model accuracy claim. Pixel windows are georeferenced, but no precision image coregistration was performed."
+              ],
+              "coordinate_source": "https://www.bridgemeister.com/bridge.php?bid=9351",
+              "before_url": "/static/imagery/nepal-satellite/syabrubesi-trishuli-footbridge-before.png",
+              "after_url": "/static/imagery/nepal-satellite/syabrubesi-trishuli-footbridge-after.png",
+              "comparison_url": "/static/imagery/nepal-satellite/syabrubesi-trishuli-footbridge-comparison.png"
+            },
+            {
+              "id": "syabrubesi-langtang-road-crossing",
+              "name": "Syabrubesi road crossing near Langtang confluence (name unverified)",
+              "coordinate": [
+                85.33999,
+                28.16422
+              ],
+              "failure_time": null,
+              "agency_evidence": null,
+              "limitations": [
+                "Exact failure time is unknown.",
+                "Review squares are annotations, not surveyed damage boundaries.",
+                "Manual satellite review does not establish surrounding route passability.",
+                "No precision image coregistration or automated damage model was used.",
+                "Retrospective, manually inspected demonstration examples. Baseline is three years earlier and does not alone date the loss to the 2026 event. The July 2025 Rasuwa flood is an intervening event; its impact on these exact crossings is unverified. No model accuracy claim. Pixel windows are georeferenced, but no precision image coregistration was performed."
+              ],
+              "coordinate_source": "Manually localized from retrieved georeferenced pre-event imagery; approximate center, not a surveyed inventory point.",
+              "before_url": "/static/imagery/nepal-satellite/syabrubesi-langtang-road-crossing-before.png",
+              "after_url": "/static/imagery/nepal-satellite/syabrubesi-langtang-road-crossing-after.png",
+              "comparison_url": "/static/imagery/nepal-satellite/syabrubesi-langtang-road-crossing-comparison.png"
+            }
+          ],
+          "limitations": [
+            "Exact failure time is unknown.",
+            "Review squares are annotations, not surveyed damage boundaries.",
+            "Manual satellite review does not establish surrounding route passability.",
+            "No precision image coregistration or automated damage model was used.",
+            "Retrospective, manually inspected demonstration examples. Baseline is three years earlier and does not alone date the loss to the 2026 event. The July 2025 Rasuwa flood is an intervening event; its impact on these exact crossings is unverified. No model accuracy claim. Pixel windows are georeferenced, but no precision image coregistration was performed."
+          ]
+        }
+      },
+      "observations": [
+        {
+          "id": "nepal-2026-2023-09-17",
+          "acquired_date": "2023-09-17",
+          "acquired_at": "2023-09-17T05:09:38.085154Z",
+          "label": "Earlier baseline",
+          "images": [
+            {
+              "id": "syabrubesi-trishuli-footbridge-before",
+              "url": "/static/imagery/nepal-satellite/syabrubesi-trishuli-footbridge-before.png",
+              "bounds": [
+                85.3407282758799,
+                28.163881453790214,
+                85.34472859723999,
+                28.16788152300574
+              ],
+              "image_coordinates": [
+                [
+                  85.3407282758799,
+                  28.16788152300574
+                ],
+                [
+                  85.34472859723999,
+                  28.16788152300574
+                ],
+                [
+                  85.34472859723999,
+                  28.163881453790214
+                ],
+                [
+                  85.3407282758799,
+                  28.163881453790214
+                ]
+              ],
+              "width": 946,
+              "height": 1073,
+              "sha256": "64aa406e31b5d6eb16a15fa3a7ba54cb319f4d757373fbc6de39c4787c9e81dd",
+              "bytes": 1608155,
+              "license": "CC-BY-NC-4.0",
+              "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+              "attribution": "Vantor Open Data Program; imagery WorldView/GeoEye",
+              "provenance": {
+                "item_id": "10500100364E8400",
+                "acquisition_time_utc": "2023-09-17T05:09:38.085154Z",
+                "publication_time": "2026-08-27T17:15:12.287544",
+                "source_url": "https://vantor-opendata.s3.amazonaws.com/events/Nepal-Flooding-Aug-2026/10500100364E8400.tif",
+                "pan_gsd_m": 0.43,
+                "multispectral_gsd_m": 1.71,
+                "crs": "EPSG:4326",
+                "transform": [
+                  4.2166987476943294e-06,
+                  0.0,
+                  85.3407282758799,
+                  0.0,
+                  -3.7361953335153076e-06,
+                  28.16788152300574,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "pixel_dimensions": [
+                  949,
+                  1071
+                ],
+                "scene_cloud_cover_percent": 46,
+                "local_observation": "Bridge crossing locally clear; no obstructing cloud seen in selected window.",
+                "png_sha256": "6b666f2ccd6e204e68ae3cf6d300fb23bdb20685cc7a4190957cb7dc3c08c3e3",
+                "geotiff_sha256": "f7bab76edb3cbacaf425c866118bf2e69ab7af3f7705660251dd3d6afc7d24d3",
+                "stac_sha256": "2a2a15fc4f71ec31b55f69a5c282c5d7c14b2a9acb84cc97514d6e5607fc67d9",
+                "retrieved_at": "2026-10-04T05:41:32.882469+00:00",
+                "output_crs": "EPSG:3857",
+                "output_transform": [
+                  0.4707333370137688,
+                  0.0,
+                  9500086.415598074,
+                  0.0,
+                  -0.4707333370137688,
+                  3270156.3441287642
+                ],
+                "availability_time": null,
+                "processing": "Native RGB window warped to Web Mercator; bilinear RGB, nearest source validity mask; no color enhancement.",
+                "license_source": "https://vantor-opendata.s3.amazonaws.com/events/Nepal-Flooding-Aug-2026/collection.json"
+              }
+            },
+            {
+              "id": "syabrubesi-langtang-road-crossing-before",
+              "url": "/static/imagery/nepal-satellite/syabrubesi-langtang-road-crossing-before.png",
+              "bounds": [
+                85.3379874216939,
+                28.162222555943146,
+                85.34198770816285,
+                28.166222652277657
+              ],
+              "image_coordinates": [
+                [
+                  85.3379874216939,
+                  28.166222652277657
+                ],
+                [
+                  85.34198770816285,
+                  28.166222652277657
+                ],
+                [
+                  85.34198770816285,
+                  28.162222555943146
+                ],
+                [
+                  85.3379874216939,
+                  28.162222555943146
+                ]
+              ],
+              "width": 946,
+              "height": 1073,
+              "sha256": "8a3110f103723a50b9450d17a437b28e9651bb7d5448aa33288c9a66d9a0803e",
+              "bytes": 1649773,
+              "license": "CC-BY-NC-4.0",
+              "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+              "attribution": "Vantor Open Data Program; imagery WorldView/GeoEye",
+              "provenance": {
+                "item_id": "10500100364E8400",
+                "acquisition_time_utc": "2023-09-17T05:09:38.085154Z",
+                "publication_time": "2026-08-27T17:15:12.287544",
+                "source_url": "https://vantor-opendata.s3.amazonaws.com/events/Nepal-Flooding-Aug-2026/10500100364E8400.tif",
+                "pan_gsd_m": 0.43,
+                "multispectral_gsd_m": 1.71,
+                "crs": "EPSG:4326",
+                "transform": [
+                  4.2166987476943294e-06,
+                  0.0,
+                  85.3379874216939,
+                  0.0,
+                  -3.7361953335153076e-06,
+                  28.16622265227766,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "pixel_dimensions": [
+                  949,
+                  1071
+                ],
+                "scene_cloud_cover_percent": 46,
+                "local_observation": "Bridge crossing locally clear; no obstructing cloud seen in selected window.",
+                "png_sha256": "459dc3b1d59178848cf658b7f023bbaa655b62c8fc20cdb93abfcf861a6ef7dc",
+                "geotiff_sha256": "e72b823a667c500dc3ddcb86ac17269b847a2d47447e9f168d98f4b92a35545e",
+                "stac_sha256": "2a2a15fc4f71ec31b55f69a5c282c5d7c14b2a9acb84cc97514d6e5607fc67d9",
+                "retrieved_at": "2026-10-04T05:41:32.882469+00:00",
+                "output_crs": "EPSG:3857",
+                "output_transform": [
+                  0.4707292312377629,
+                  0.0,
+                  9499781.30510575,
+                  0.0,
+                  -0.4707292312377629,
+                  3269946.8728585676
+                ],
+                "availability_time": null,
+                "processing": "Native RGB window warped to Web Mercator; bilinear RGB, nearest source validity mask; no color enhancement.",
+                "license_source": "https://vantor-opendata.s3.amazonaws.com/events/Nepal-Flooding-Aug-2026/collection.json"
+              }
+            }
+          ],
+          "bridges": {
+            "type": "FeatureCollection",
+            "features": [
+              {
+                "type": "Feature",
+                "id": "syabrubesi-trishuli-footbridge-2023-09-17",
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        85.34227607051044,
+                        28.165467405907556
+                      ],
+                      [
+                        85.34319244458,
+                        28.165478496622082
+                      ],
+                      [
+                        85.34317993294576,
+                        28.16629059272334
+                      ],
+                      [
+                        85.34226355196378,
+                        28.166279501632804
+                      ],
+                      [
+                        85.34227607051044,
+                        28.165467405907556
+                      ]
+                    ]
+                  ]
+                },
+                "properties": {
+                  "bridge_id": "syabrubesi-trishuli-footbridge",
+                  "name": "Syaphru Besi I / Trishuli footbridge",
+                  "observation_id": "nepal-2026-2023-09-17",
+                  "observed_date": "2023-09-17",
+                  "finding": "Continuous crossing visible in this image; structural safety unverified.",
+                  "status": "visible_crossing",
+                  "assessment_method": "manual image review",
+                  "failure_time": null,
+                  "annotation": "90 m review square; not a surveyed damage boundary"
+                }
+              },
+              {
+                "type": "Feature",
+                "id": "syabrubesi-langtang-road-crossing-2023-09-17",
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        85.33953808811277,
+                        28.163808397513428
+                      ],
+                      [
+                        85.34045444677707,
+                        28.163819505947927
+                      ],
+                      [
+                        85.3404419153431,
+                        28.164631601117893
+                      ],
+                      [
+                        85.33952554976703,
+                        28.16462049230677
+                      ],
+                      [
+                        85.33953808811277,
+                        28.163808397513428
+                      ]
+                    ]
+                  ]
+                },
+                "properties": {
+                  "bridge_id": "syabrubesi-langtang-road-crossing",
+                  "name": "Syabrubesi road crossing near Langtang confluence (name unverified)",
+                  "observation_id": "nepal-2026-2023-09-17",
+                  "observed_date": "2023-09-17",
+                  "finding": "Continuous crossing visible in this image; structural safety unverified.",
+                  "status": "visible_crossing",
+                  "assessment_method": "manual image review",
+                  "failure_time": null,
+                  "annotation": "90 m review square; not a surveyed damage boundary"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "nepal-2026-2026-05-27",
+          "acquired_date": "2026-05-27",
+          "acquired_at": "2026-05-27T05:32:21.964727Z",
+          "label": "Recent 3 m road reference",
+          "images": [
+            {
+              "id": "syabrubesi-langtang-road-crossing-recent-reference",
+              "url": "/static/imagery/nepal-satellite/syabrubesi-langtang-road-crossing-recent-reference.png",
+              "bounds": [
+                85.3379223396644,
+                28.162163450133757,
+                85.34205816877925,
+                28.166268734107977
+              ],
+              "image_coordinates": [
+                [
+                  85.3379223396644,
+                  28.166268734107977
+                ],
+                [
+                  85.34205816877925,
+                  28.166268734107977
+                ],
+                [
+                  85.34205816877925,
+                  28.162163450133757
+                ],
+                [
+                  85.3379223396644,
+                  28.162163450133757
+                ]
+              ],
+              "width": 135,
+              "height": 152,
+              "sha256": "4b54af35a93a856e2dab01a299261312e44d173761f6479f24a35b4d05815335",
+              "bytes": 48164,
+              "license": "CC-BY-NC-4.0",
+              "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+              "attribution": "Planet Labs PBC / Planet Crisis Response Program",
+              "provenance": {
+                "item_id": "20260527_053221_96_254a",
+                "acquisition_time_utc": "2026-05-27T05:32:21.964727Z",
+                "source_url": "https://data.source.coop/planet/disasterdata/nepal-flash-flood-2026-08-26/pre-event/planetscope-2026-05-27/items/20260527_053221_96_254a/20260527_053221_96_254a_visual.tif",
+                "resolution_m": 3,
+                "crs": "EPSG:32645",
+                "transform": [
+                  3.0,
+                  0.0,
+                  336819.0,
+                  0.0,
+                  -3.0,
+                  3116733.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "png_sha256": "ac191c47c1983a6e483d7b2f75f56d36d7ab7afefd48e44dc6404456b162444f",
+                "geotiff_sha256": "d68dbab4e0a42243cba2a4a1736614ff729dc91a280585afff559d404b6df995",
+                "stac_sha256": "e0f35b8169bc4c09995719c172ad5b81a53ebb59492245b6e1c611c8deff86df",
+                "license": "CC-BY-NC-4.0",
+                "attribution": "Planet Labs PBC / Planet Crisis Response Program",
+                "manual_finding": "Intact-looking diagonal road-crossing span is visible in this locally clear 3m image on May27 2026. Supports disappearance between May27 and Aug27 2026; does not independently establish exact loss time or structural condition. Narrow footbridge is too small for confident continuity assessment at3m.",
+                "retrieved_at": "2026-10-04T05:41:32.882469+00:00",
+                "output_crs": "EPSG:3857",
+                "output_transform": [
+                  3.4103584523821575,
+                  0.0,
+                  9499774.060207367,
+                  0.0,
+                  -3.4103584523821575,
+                  3269952.691724752
+                ],
+                "publication_time": null,
+                "availability_time": null,
+                "processing": "Native RGB window warped to Web Mercator; bilinear RGB, nearest source validity mask; no color enhancement.",
+                "license_source": "https://data.source.coop/planet/disasterdata/nepal-flash-flood-2026-08-26/pre-event/planetscope-2026-05-27/collection.json"
+              }
+            }
+          ],
+          "bridges": {
+            "type": "FeatureCollection",
+            "features": [
+              {
+                "type": "Feature",
+                "id": "syabrubesi-langtang-road-crossing-2026-05-27",
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        85.33953808811277,
+                        28.163808397513428
+                      ],
+                      [
+                        85.34045444677707,
+                        28.163819505947927
+                      ],
+                      [
+                        85.3404419153431,
+                        28.164631601117893
+                      ],
+                      [
+                        85.33952554976703,
+                        28.16462049230677
+                      ],
+                      [
+                        85.33953808811277,
+                        28.163808397513428
+                      ]
+                    ]
+                  ]
+                },
+                "properties": {
+                  "bridge_id": "syabrubesi-langtang-road-crossing",
+                  "name": "Syabrubesi road crossing near Langtang confluence (name unverified)",
+                  "observation_id": "nepal-2026-2026-05-27",
+                  "observed_date": "2026-05-27",
+                  "finding": "Intact-looking diagonal road-crossing span is visible in this locally clear 3m image on May27 2026. Supports disappearance between May27 and Aug27 2026; does not independently establish exact loss time or structural condition. Narrow footbridge is too small for confident continuity assessment at3m.",
+                  "status": "uncertain",
+                  "assessment_method": "manual image review",
+                  "failure_time": null,
+                  "annotation": "90 m review square; not a surveyed damage boundary"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "nepal-2026-2026-08-27",
+          "acquired_date": "2026-08-27",
+          "acquired_at": "2026-08-27T05:04:50.163085Z",
+          "label": "After flood",
+          "images": [
+            {
+              "id": "syabrubesi-trishuli-footbridge-after",
+              "url": "/static/imagery/nepal-satellite/syabrubesi-trishuli-footbridge-after.png",
+              "bounds": [
+                85.34072783451788,
+                28.16387818837996,
+                85.34472940681766,
+                28.167878854560524
+              ],
+              "image_coordinates": [
+                [
+                  85.34072783451788,
+                  28.167878854560524
+                ],
+                [
+                  85.34472940681766,
+                  28.167878854560524
+                ],
+                [
+                  85.34472940681766,
+                  28.16387818837996
+                ],
+                [
+                  85.34072783451788,
+                  28.16387818837996
+                ]
+              ],
+              "width": 1186,
+              "height": 1345,
+              "sha256": "85c05e78a4d8c894ae46122637383fdfeaf10a7134ccb0b558db765750f55b05",
+              "bytes": 1974149,
+              "license": "CC-BY-NC-4.0",
+              "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+              "attribution": "Vantor Open Data Program; imagery WorldView/GeoEye",
+              "provenance": {
+                "item_id": "B040001100881410",
+                "acquisition_time_utc": "2026-08-27T05:04:50.163085Z",
+                "publication_time": "2026-08-27T19:54:03.972132",
+                "source_url": "https://vantor-opendata.s3.amazonaws.com/events/Nepal-Flooding-Aug-2026/B040001100881410.tif",
+                "pan_gsd_m": 0.35,
+                "multispectral_gsd_m": 1.39,
+                "crs": "EPSG:4326",
+                "transform": [
+                  3.3654637399728276e-06,
+                  0.0,
+                  85.34072783451789,
+                  0.0,
+                  -2.9803718096047527e-06,
+                  28.167878854560524,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "pixel_dimensions": [
+                  1189,
+                  1342
+                ],
+                "scene_cloud_cover_percent": 73,
+                "local_observation": "Bridge crossing locally clear; no obstructing cloud seen in selected window.",
+                "png_sha256": "7438bd1e7a6be116ae650e0d34c6d96b2e0c9297222a0a16b3c8d6e6101314e1",
+                "geotiff_sha256": "30ed3351f7dcf4cae7b338b533675f3d30acac547fb1dd819a125c5a8718858d",
+                "stac_sha256": "9873a933bda478a574e3bfafc1b7d7dd735b68642bec024b5fa054928f064766",
+                "retrieved_at": "2026-10-04T05:41:32.882469+00:00",
+                "output_crs": "EPSG:3857",
+                "output_transform": [
+                  0.3755927409657457,
+                  0.0,
+                  9500086.36646588,
+                  0.0,
+                  -0.3755927409657457,
+                  3270156.00717247
+                ],
+                "availability_time": null,
+                "processing": "Native RGB window warped to Web Mercator; bilinear RGB, nearest source validity mask; no color enhancement.",
+                "license_source": "https://vantor-opendata.s3.amazonaws.com/events/Nepal-Flooding-Aug-2026/collection.json"
+              }
+            },
+            {
+              "id": "syabrubesi-langtang-road-crossing-after",
+              "url": "/static/imagery/nepal-satellite/syabrubesi-langtang-road-crossing-after.png",
+              "bounds": [
+                85.33798834703354,
+                28.16222107454703,
+                85.34198988448175,
+                28.166221767834383
+              ],
+              "image_coordinates": [
+                [
+                  85.33798834703354,
+                  28.166221767834383
+                ],
+                [
+                  85.34198988448175,
+                  28.166221767834383
+                ],
+                [
+                  85.34198988448175,
+                  28.16222107454703
+                ],
+                [
+                  85.33798834703354,
+                  28.16222107454703
+                ]
+              ],
+              "width": 1186,
+              "height": 1345,
+              "sha256": "43af0119542306660c3aba0bb906f5e5e7516e2d3b0ac8524c78125885134282",
+              "bytes": 1845949,
+              "license": "CC-BY-NC-4.0",
+              "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+              "attribution": "Vantor Open Data Program; imagery WorldView/GeoEye",
+              "provenance": {
+                "item_id": "B040001100881410",
+                "acquisition_time_utc": "2026-08-27T05:04:50.163085Z",
+                "publication_time": "2026-08-27T19:54:03.972132",
+                "source_url": "https://vantor-opendata.s3.amazonaws.com/events/Nepal-Flooding-Aug-2026/B040001100881410.tif",
+                "pan_gsd_m": 0.35,
+                "multispectral_gsd_m": 1.39,
+                "crs": "EPSG:4326",
+                "transform": [
+                  3.3654637399728276e-06,
+                  0.0,
+                  85.33798834703356,
+                  0.0,
+                  -2.9803718096047527e-06,
+                  28.166221767834383,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "pixel_dimensions": [
+                  1189,
+                  1342
+                ],
+                "scene_cloud_cover_percent": 73,
+                "local_observation": "Bridge crossing locally clear; no obstructing cloud seen in selected window.",
+                "png_sha256": "839bdfd55569739f0b69d369f3f54fd44d7e3ae062069e6f4e2721772bf78e8a",
+                "geotiff_sha256": "b1a0138e3bcd5416960d49c788f8bd92e9ae6dc69b45ce9b54886826aa900630",
+                "stac_sha256": "9873a933bda478a574e3bfafc1b7d7dd735b68642bec024b5fa054928f064766",
+                "retrieved_at": "2026-10-04T05:41:32.882469+00:00",
+                "output_crs": "EPSG:3857",
+                "output_transform": [
+                  0.3755894697511382,
+                  0.0,
+                  9499781.408114089,
+                  0.0,
+                  -0.3755894697511382,
+                  3269946.761177762
+                ],
+                "availability_time": null,
+                "processing": "Native RGB window warped to Web Mercator; bilinear RGB, nearest source validity mask; no color enhancement.",
+                "license_source": "https://vantor-opendata.s3.amazonaws.com/events/Nepal-Flooding-Aug-2026/collection.json"
+              }
+            }
+          ],
+          "bridges": {
+            "type": "FeatureCollection",
+            "features": [
+              {
+                "type": "Feature",
+                "id": "syabrubesi-trishuli-footbridge-2026-08-27",
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        85.34227607051044,
+                        28.165467405907556
+                      ],
+                      [
+                        85.34319244458,
+                        28.165478496622082
+                      ],
+                      [
+                        85.34317993294576,
+                        28.16629059272334
+                      ],
+                      [
+                        85.34226355196378,
+                        28.166279501632804
+                      ],
+                      [
+                        85.34227607051044,
+                        28.165467405907556
+                      ]
+                    ]
+                  ]
+                },
+                "properties": {
+                  "bridge_id": "syabrubesi-trishuli-footbridge",
+                  "name": "Syaphru Besi I / Trishuli footbridge",
+                  "observation_id": "nepal-2026-2026-08-27",
+                  "observed_date": "2026-08-27",
+                  "finding": "Continuous narrow span is visible in the 2023 image. No continuous span is visible at the same crossing in the 2026 image; approach paths and riverside buildings are also absent or buried. Human visual assessment corroborates reported bridge destruction, not an automated detector result.",
+                  "status": "missing_span",
+                  "assessment_method": "manual image review",
+                  "failure_time": null,
+                  "annotation": "90 m review square; not a surveyed damage boundary"
+                }
+              },
+              {
+                "type": "Feature",
+                "id": "syabrubesi-langtang-road-crossing-2026-08-27",
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        85.33953808811277,
+                        28.163808397513428
+                      ],
+                      [
+                        85.34045444677707,
+                        28.163819505947927
+                      ],
+                      [
+                        85.3404419153431,
+                        28.164631601117893
+                      ],
+                      [
+                        85.33952554976703,
+                        28.16462049230677
+                      ],
+                      [
+                        85.33953808811277,
+                        28.163808397513428
+                      ]
+                    ]
+                  ]
+                },
+                "properties": {
+                  "bridge_id": "syabrubesi-langtang-road-crossing",
+                  "name": "Syabrubesi road crossing near Langtang confluence (name unverified)",
+                  "observation_id": "nepal-2026-2026-08-27",
+                  "observed_date": "2026-08-27",
+                  "finding": "Road-linked bridge deck is visible in the 2023 image. Deck and approaches are no longer visible across the widened debris channel in the 2026 image. Human image interpretation; precise official bridge identity and time of destruction unverified.",
+                  "status": "missing_span",
+                  "assessment_method": "manual image review",
+                  "failure_time": null,
+                  "annotation": "90 m review square; not a surveyed damage boundary"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "layers": {
+        "bridges": {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "id": "syabrubesi-trishuli-footbridge-2023-09-17",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                      85.34227607051044,
+                      28.165467405907556
+                    ],
+                    [
+                      85.34319244458,
+                      28.165478496622082
+                    ],
+                    [
+                      85.34317993294576,
+                      28.16629059272334
+                    ],
+                    [
+                      85.34226355196378,
+                      28.166279501632804
+                    ],
+                    [
+                      85.34227607051044,
+                      28.165467405907556
+                    ]
+                  ]
+                ]
+              },
+              "properties": {
+                "bridge_id": "syabrubesi-trishuli-footbridge",
+                "name": "Syaphru Besi I / Trishuli footbridge",
+                "observation_id": "nepal-2026-2023-09-17",
+                "observed_date": "2023-09-17",
+                "finding": "Continuous crossing visible in this image; structural safety unverified.",
+                "status": "visible_crossing",
+                "assessment_method": "manual image review",
+                "failure_time": null,
+                "annotation": "90 m review square; not a surveyed damage boundary"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "syabrubesi-langtang-road-crossing-2023-09-17",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                      85.33953808811277,
+                      28.163808397513428
+                    ],
+                    [
+                      85.34045444677707,
+                      28.163819505947927
+                    ],
+                    [
+                      85.3404419153431,
+                      28.164631601117893
+                    ],
+                    [
+                      85.33952554976703,
+                      28.16462049230677
+                    ],
+                    [
+                      85.33953808811277,
+                      28.163808397513428
+                    ]
+                  ]
+                ]
+              },
+              "properties": {
+                "bridge_id": "syabrubesi-langtang-road-crossing",
+                "name": "Syabrubesi road crossing near Langtang confluence (name unverified)",
+                "observation_id": "nepal-2026-2023-09-17",
+                "observed_date": "2023-09-17",
+                "finding": "Continuous crossing visible in this image; structural safety unverified.",
+                "status": "visible_crossing",
+                "assessment_method": "manual image review",
+                "failure_time": null,
+                "annotation": "90 m review square; not a surveyed damage boundary"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "syabrubesi-langtang-road-crossing-2026-05-27",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                      85.33953808811277,
+                      28.163808397513428
+                    ],
+                    [
+                      85.34045444677707,
+                      28.163819505947927
+                    ],
+                    [
+                      85.3404419153431,
+                      28.164631601117893
+                    ],
+                    [
+                      85.33952554976703,
+                      28.16462049230677
+                    ],
+                    [
+                      85.33953808811277,
+                      28.163808397513428
+                    ]
+                  ]
+                ]
+              },
+              "properties": {
+                "bridge_id": "syabrubesi-langtang-road-crossing",
+                "name": "Syabrubesi road crossing near Langtang confluence (name unverified)",
+                "observation_id": "nepal-2026-2026-05-27",
+                "observed_date": "2026-05-27",
+                "finding": "Intact-looking diagonal road-crossing span is visible in this locally clear 3m image on May27 2026. Supports disappearance between May27 and Aug27 2026; does not independently establish exact loss time or structural condition. Narrow footbridge is too small for confident continuity assessment at3m.",
+                "status": "uncertain",
+                "assessment_method": "manual image review",
+                "failure_time": null,
+                "annotation": "90 m review square; not a surveyed damage boundary"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "syabrubesi-trishuli-footbridge-2026-08-27",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                      85.34227607051044,
+                      28.165467405907556
+                    ],
+                    [
+                      85.34319244458,
+                      28.165478496622082
+                    ],
+                    [
+                      85.34317993294576,
+                      28.16629059272334
+                    ],
+                    [
+                      85.34226355196378,
+                      28.166279501632804
+                    ],
+                    [
+                      85.34227607051044,
+                      28.165467405907556
+                    ]
+                  ]
+                ]
+              },
+              "properties": {
+                "bridge_id": "syabrubesi-trishuli-footbridge",
+                "name": "Syaphru Besi I / Trishuli footbridge",
+                "observation_id": "nepal-2026-2026-08-27",
+                "observed_date": "2026-08-27",
+                "finding": "Continuous narrow span is visible in the 2023 image. No continuous span is visible at the same crossing in the 2026 image; approach paths and riverside buildings are also absent or buried. Human visual assessment corroborates reported bridge destruction, not an automated detector result.",
+                "status": "missing_span",
+                "assessment_method": "manual image review",
+                "failure_time": null,
+                "annotation": "90 m review square; not a surveyed damage boundary"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "syabrubesi-langtang-road-crossing-2026-08-27",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                      85.33953808811277,
+                      28.163808397513428
+                    ],
+                    [
+                      85.34045444677707,
+                      28.163819505947927
+                    ],
+                    [
+                      85.3404419153431,
+                      28.164631601117893
+                    ],
+                    [
+                      85.33952554976703,
+                      28.16462049230677
+                    ],
+                    [
+                      85.33953808811277,
+                      28.163808397513428
+                    ]
+                  ]
+                ]
+              },
+              "properties": {
+                "bridge_id": "syabrubesi-langtang-road-crossing",
+                "name": "Syabrubesi road crossing near Langtang confluence (name unverified)",
+                "observation_id": "nepal-2026-2026-08-27",
+                "observed_date": "2026-08-27",
+                "finding": "Road-linked bridge deck is visible in the 2023 image. Deck and approaches are no longer visible across the widened debris channel in the 2026 image. Human image interpretation; precise official bridge identity and time of destruction unverified.",
+                "status": "missing_span",
+                "assessment_method": "manual image review",
+                "failure_time": null,
+                "annotation": "90 m review square; not a surveyed damage boundary"
+              }
+            }
+          ]
+        }
+      },
+      "assets": [
+        {
+          "url": "/static/imagery/nepal-satellite/syabrubesi-langtang-road-crossing-after.png",
+          "sha256": "43af0119542306660c3aba0bb906f5e5e7516e2d3b0ac8524c78125885134282",
+          "bytes": 1845949
+        },
+        {
+          "url": "/static/imagery/nepal-satellite/syabrubesi-langtang-road-crossing-before.png",
+          "sha256": "8a3110f103723a50b9450d17a437b28e9651bb7d5448aa33288c9a66d9a0803e",
+          "bytes": 1649773
+        },
+        {
+          "url": "/static/imagery/nepal-satellite/syabrubesi-langtang-road-crossing-comparison.png",
+          "sha256": "42abf175a030fda197a2aec28ebf45f5c72f1fb958d09d46524b206e8331f884",
+          "bytes": 362005
+        },
+        {
+          "url": "/static/imagery/nepal-satellite/syabrubesi-langtang-road-crossing-recent-reference.png",
+          "sha256": "4b54af35a93a856e2dab01a299261312e44d173761f6479f24a35b4d05815335",
+          "bytes": 48164
+        },
+        {
+          "url": "/static/imagery/nepal-satellite/syabrubesi-trishuli-footbridge-after.png",
+          "sha256": "85c05e78a4d8c894ae46122637383fdfeaf10a7134ccb0b558db765750f55b05",
+          "bytes": 1974149
+        },
+        {
+          "url": "/static/imagery/nepal-satellite/syabrubesi-trishuli-footbridge-before.png",
+          "sha256": "64aa406e31b5d6eb16a15fa3a7ba54cb319f4d757373fbc6de39c4787c9e81dd",
+          "bytes": 1608155
+        },
+        {
+          "url": "/static/imagery/nepal-satellite/syabrubesi-trishuli-footbridge-comparison.png",
+          "sha256": "a3e5170161cadb45d0fcaa621d248c96226e12b82c82d47ff8a3777199d43fb2",
+          "bytes": 351438
+        }
+      ],
+      "run": {
+        "id": "bridge-imagery-2977875e8d4bb03a",
+        "case_id": "nepal-2026",
+        "content_sha256": "2977875e8d4bb03a6282f594a579cce0eedf5540fbe6051d927e4d7ddd129410"
+      }
+    }
+  ]
+}

@@ -1,16 +1,16 @@
 """Read-only map API over completed PostgreSQL analysis runs."""
 
-from datetime import datetime
+from datetime import date, datetime
 import math
 import os
 from pathlib import Path
-from typing import Annotated, Any
+from typing import Annotated, Any, Literal
 
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 import psycopg
 
 from floodbeacon import db
@@ -50,6 +50,100 @@ class ObservationSeries(BaseModel):
     run_id: str
     generated_at: datetime
     observations: list[dict[str, Any]]
+
+
+Position = tuple[float, float]
+Bounds = tuple[float, float, float, float]
+
+
+class SatelliteImage(BaseModel):
+    """A static, georeferenced PNG; corners are NW, NE, SE, SW in WGS84."""
+
+    id: str
+    url: str
+    bounds: Bounds
+    image_coordinates: tuple[Position, Position, Position, Position]
+    width: int
+    height: int
+    sha256: str
+    bytes: int
+    attribution: str
+    license: str
+    license_url: str
+    provenance: dict[str, Any]
+
+
+class BridgeFinding(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
+    bridge_id: str
+    name: str
+    observation_id: str
+    observed_date: date
+    finding: str
+    status: Literal["visible_crossing", "missing_span", "uncertain"]
+    assessment_method: Literal["manual image review"]
+    failure_time: None
+    annotation: str
+
+
+class ReviewSquare(BaseModel):
+    type: Literal["Polygon"]
+    coordinates: list[list[Position]]
+
+
+class BridgeFeature(BaseModel):
+    type: Literal["Feature"]
+    id: str | int | None = None
+    geometry: ReviewSquare
+    properties: BridgeFinding
+
+
+class BridgeFeatures(BaseModel):
+    type: Literal["FeatureCollection"]
+    features: list[BridgeFeature]
+
+
+class ImageryObservation(BaseModel):
+    id: str
+    acquired_date: date
+    acquired_at: datetime | None
+    label: str
+    images: list[SatelliteImage]
+    bridges: BridgeFeatures
+
+
+class BridgeComparison(BaseModel):
+    id: str
+    name: str
+    coordinate: Position
+    failure_time: None
+    comparison_url: str | None
+    before_url: str | None
+    after_url: str | None
+    agency_evidence: dict[str, Any] | None
+    limitations: list[str]
+
+
+class ImageryCatalog(BaseModel):
+    case_id: str
+    name: str
+    country: str
+    bounds: Bounds
+    bridges: list[BridgeComparison]
+    limitations: list[str]
+    run_id: str
+    generated_at: datetime
+    observations: list[ImageryObservation]
+
+
+class ObservedBridges(BridgeFeatures):
+    case_id: str
+    run_id: str
+    generated_at: datetime
+    observation_id: str
+    acquired_date: date
+    acquired_at: datetime | None
 
 
 RunQuery = Annotated[str | None, Query(max_length=128)]
@@ -168,3 +262,37 @@ def observations(case_id: str, run_id: RunQuery = None):
         raise HTTPException(404, "Case or run not found")
     return {"case_id": case_id, "run_id": selected["id"],
             "generated_at": selected["generated_at"], "observations": data}
+
+
+@app.get("/cases/{case_id}/imagery", response_model=ImageryCatalog)
+def imagery(case_id: str, run_id: RunQuery = None):
+    """Dated satellite files and manual bridge findings from one published run."""
+    result = db.get_imagery(case_id, run_id)
+    if result is None:
+        raise HTTPException(404, "Case or imagery run not found")
+    return result
+
+
+@app.get(
+    "/cases/{case_id}/imagery/{observation_id}/bridges",
+    response_model=ObservedBridges,
+)
+def imagery_bridges(case_id: str, observation_id: str, run_id: RunQuery = None):
+    """Review squares describe image observations, not a surveyed damage boundary."""
+    catalog = db.get_imagery(case_id, run_id)
+    if catalog is None:
+        raise HTTPException(404, "Case or imagery run not found")
+    selected = next(
+        (item for item in catalog["observations"] if item["id"] == observation_id), None
+    )
+    if selected is None:
+        raise HTTPException(404, "Imagery observation not found")
+    return {
+        **selected["bridges"],
+        "case_id": case_id,
+        "run_id": catalog["run_id"],
+        "generated_at": catalog["generated_at"],
+        "observation_id": selected["id"],
+        "acquired_date": selected["acquired_date"],
+        "acquired_at": selected["acquired_at"],
+    }

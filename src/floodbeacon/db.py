@@ -8,12 +8,12 @@ from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
 
 
-DEFAULT_DATABASE_URL = "postgresql://floodbeacon:floodbeacon@localhost:55432/floodbeacon"
-
-
 def connect():
+    database_url = os.environ.get("DATABASE_URL")
+    if not database_url:
+        raise psycopg.OperationalError("DATABASE_URL must point to the shared database")
     return psycopg.connect(
-        os.environ.get("DATABASE_URL", DEFAULT_DATABASE_URL),
+        database_url,
         connect_timeout=5,
         row_factory=dict_row,
     )
@@ -127,3 +127,33 @@ def get_observations(case_id: str, run_id: str | None = None) -> list[dict] | No
             (case_id, run["id"]),
         ).fetchall()
         return [row["data"] for row in rows]
+
+
+def get_imagery(case_id: str, run_id: str | None = None) -> dict | None:
+    """Read a complete imagery publication, independent of newer analysis runs."""
+    with connect() as conn:
+        query = (
+            "SELECT id,case_id,generated_at,metadata FROM runs WHERE case_id=%s "
+            "AND metadata->>'kind'='bridge_imagery'"
+        )
+        params = (case_id,)
+        if run_id is None:
+            query += " ORDER BY generated_at DESC,id DESC LIMIT 1"
+        else:
+            query += " AND id=%s"
+            params = (case_id, run_id)
+        run = _run(conn.execute(query, params).fetchone())
+        if run is None:
+            return None
+        # Select once and pin all observations to the immutable publication.
+        rows = conn.execute(
+            "SELECT data FROM observations WHERE case_id=%s AND run_id=%s ORDER BY ordinal",
+            (case_id, run["id"]),
+        ).fetchall()
+        return {
+            **run["metadata"]["imagery"],
+            "case_id": case_id,
+            "run_id": run["id"],
+            "generated_at": run["generated_at"],
+            "observations": [row["data"] for row in rows],
+        }
