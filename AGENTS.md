@@ -97,10 +97,9 @@ unique synthetic cases and clean up only their own case IDs.
   currently required.
 - Provide a way to inspect results before the actual frontend exists: a
   notebook, HTML map, or image is acceptable.
-- Use a Luna subagent for the initial data and modeling research. The user also
-  authorized multiple subagents and other models as needed; parallelize
-  independent research, implementation and review work where useful. Give
-  implementation agents distinct file ownership to avoid conflicting edits.
+- Use a subagent for the initial data and modeling research, use multiple 
+  subagents and other models as needed; parallelize
+  independent research, implementation and review work where useful.
 - Stop and ask the user when a business decision is needed or materially
   different implementation approaches are available. Explain the tradeoffs and
   recommend a concrete option. Routine details within an approved approach do
