@@ -6,6 +6,21 @@ access, including manual image review. Three parallel researchers inspected
 the existing cases, Nepal, and other flood events. These are deliberately
 selected examples, not a model benchmark or production integration.
 
+## Current implementation
+
+The bridge findings were made by visual review of the retrieved before/after
+images. News and agency reports selected likely targets; the scripts retrieve
+and crop imagery, draw manual review annotations, and render the viewer. No
+pretrained bridge-collapse model generated the findings. Copernicus/UNOSAT
+assessments remain separately attributed agency evidence.
+
+The model research did not produce a validated bridge-collapse detector for
+these examples. It produced runnable experiments for water, road obstruction
+and building damage, with limitations documented in the
+[model experiment report](damage-identification-research.md). The bridge viewer
+and review points are standalone research artifacts; they have not been
+published through the PostgreSQL/FastAPI pipeline.
+
 ## Recommendation
 
 Use **Derna, Libya, September 2023** for a satellite-specific demo: a road

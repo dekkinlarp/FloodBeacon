@@ -1,14 +1,73 @@
 # FloodBeacon
 
-Historical satellite flood analysis, agency infrastructure-damage evidence,
-and access-risk scenarios for a future first-responder map frontend. Python/uv
-batch analysis publishes complete PostgreSQL runs; FastAPI and an HTML preview
-read those same artifacts.
+FloodBeacon explores how disaster imagery can help responders identify damaged
+infrastructure and disrupted access. The current hackathon focus is **visible
+bridge destruction in before/after imagery**.
 
-The two cases are the July 2021 Ahr Valley flood in Germany (CEMS EMSR517 AOI15)
-and the November 2021 Merritt/Nicola Valley floods in British Columbia.
+Start with the [bridge demo and findings](docs/bridge-demo-research.md). We
+retrieved and manually reviewed seven crossings in Germany, Libya and Nepal.
+The comparison viewer shows original image crops, manual annotations,
+coordinates, observation dates and source attribution.
 
-## What the POC does
+## How the bridge findings were made
+
+1. Use news and agency damage reports to select likely damaged crossings.
+2. Locate the crossing and retrieve high-resolution before/after images.
+3. Visually compare the bridge span and approaches, then record the finding.
+4. Show the image evidence and marked location for human review.
+
+**The delivered bridge findings are manual image assessments.** An AI assistant
+visually reviewed the images; the scripts cropped, annotated and displayed
+them. No trained bridge-collapse detector generated these findings. Agency damage grades are
+separate evidence and retain their source attribution. The demo is not yet
+integrated into the database or REST API.
+
+For a satellite demo, start with **Derna, Libya, September 2023**: road bridge
+decks are visible before the flood and absent afterward. For the existing
+Germany case, **Nepomukbrücke in Rech, July 2021** has a clearly missing section;
+its comparison uses aerial orthophotos. Nepal provides additional satellite
+examples with more uncertainty about when each crossing was lost.
+
+## Inspect the bridge demo
+
+If the research inputs have already been retrieved locally:
+
+```sh
+uv run python scripts/render_bridge_demo.py
+uv run python -m http.server 8080 --bind 127.0.0.1 --directory artifacts
+```
+
+Open [the bridge comparison viewer](http://127.0.0.1:8080/bridge-demo/).
+Downloaded imagery and generated viewers are ignored by Git, so a fresh clone
+must first follow the [retrieval instructions](docs/bridge-demo-research.md#inspect-and-reproduce)
+and the linked source reports. Viewing the comparisons does not require
+PostgreSQL or running a model. Preserve each source's attribution and license;
+the selected Maxar/Vantor collections use CC BY-NC 4.0.
+
+## What the model research established
+
+We did not obtain and validate a pretrained model that detects bridge collapse
+in these images. Bridge-location detectors are research leads; locating a
+bridge does not establish its damage status.
+
+| Experiment | Result relevant to this demo |
+| --- | --- |
+| Sentinel-1 Random Forest | Classifies surface water and estimates asset exposure; it does not detect missing bridge spans. |
+| SpaceNet 8 | Ran on six Germany tiles. Obstructed-road recall was 31.88%; its labels describe obstruction, not bridge collapse. |
+| BRIGHT building models | Both tested baselines failed to detect positive building damage in the selected Libya evaluation. They do not supply bridge-collapse findings. |
+| ChangeOS building model | Inference ran, but local damage accuracy was not validated. Its task is building damage. |
+
+The research supplied reproducible experiments and helped select suitable
+imagery, but **the current bridge demo relies on manual before/after review**.
+See the [measured model results](docs/damage-identification-research.md) and
+[SpaceNet 8 experiment](docs/spacenet8-experiment.md) for details.
+
+## Earlier historical flood-analysis POC
+
+The existing batch pipeline publishes complete PostgreSQL runs; FastAPI and an
+HTML map read those same artifacts. Its configured cases are the July 2021 Ahr
+Valley flood in Germany (CEMS EMSR517 AOI15) and the November 2021
+Merritt/Nicola Valley floods in British Columbia.
 
 - A supervised Random Forest classifies surface water from pre/post Sentinel-1
   imagery and maps candidate newly water-like areas and asset exposure.
@@ -20,14 +79,7 @@ and the November 2021 Merritt/Nicola Valley floods in British Columbia.
   **no forecast time or likelihood**. No model predicts that a bridge will
   collapse in two days, and no layer certifies road passability or boat access.
 
-Automated structural damage is a separate next product decision. The deeper
-[damage research and CUDA experiments](docs/damage-identification-research.md)
-test public pretrained models and distinguish building damage, road disruption
-and bridge destruction. Research outputs are separate from the API. The local
-RTX 3080 Laptop GPU now works with Python 3.14 and PyTorch CUDA; the current
-production flood classifier remains a CPU Random Forest.
-
-## Run locally
+## Run the historical flood pipeline
 
 Requires uv and Docker Compose. [Python's release list](https://www.python.org/downloads/)
 was checked on 2026-10-03: Python 3.14.8 is the current stable release and is
