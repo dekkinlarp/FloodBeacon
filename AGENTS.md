@@ -36,6 +36,17 @@ same layers. Runtime/dependency locking and real small-sample model training
 are implemented. Full pipeline and delivery verification must be reported from
 actual runs. Automated building damage is a possible additional scope,
 pending the user's choice; research alone does not authorize adding it.
+The user subsequently authorized deep damage-model research and local CUDA
+experiments. Standalone runners, pinned research dependencies and ignored
+experimental outputs live separately from the production batch/API. The local
+RTX 3080 Laptop GPU is working. See
+[actual CUDA experiments and recommendations](docs/damage-identification-research.md)
+before choosing a damage model; successful inference is not validated damage
+detection. Research authorization does not itself approve a product scope change.
+The user also approved the SpaceNet 8 experiment. Its standalone native CUDA
+runner and six-tile same-event results are documented in
+[the SpaceNet experiment](docs/spacenet8-experiment.md); they do not validate
+unseen-event road damage or authorize production integration.
 See [research and implementation status](docs/research.md),
 [the current model](docs/model.md), [pretrained damage models](docs/pretrained-models.md)
 and [structural-data limits](docs/structural-data.md).

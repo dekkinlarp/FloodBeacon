@@ -1,9 +1,12 @@
 # Pretrained models for identifying damage
 
-Checked 2026-10-03 against author repositories, papers and model hosts. No model
-in this document has been installed or evaluated in FloodBeacon. Checkpoint
-availability means a small byte-range request succeeded, not verified inference
-or verified accuracy on the two case studies.
+Initial access review, checked 2026-10-03 against author repositories, papers
+and model hosts. The subsequent
+[deep research and actual CUDA results](damage-identification-research.md)
+supersede this document's preliminary recommendations. ChangeOS and two BRIGHT
+models have since run locally, followed by the
+[SpaceNet 8 CUDA experiment](spacenet8-experiment.md); ETH checks below remain
+access checks. A successful checkpoint download does not establish damage accuracy.
 
 Pretrained damage models exist. The best verified candidates currently assess
 **buildings**. Flooded-road models are relevant to access, but their labels do
@@ -91,12 +94,14 @@ verified pretrained integration.
   Apache-2.0 licensing. Neither public data nor public source code guarantees
   that an old pretrained checkpoint link still works.
 - [PyPI Torch metadata](https://pypi.org/pypi/torch/json) reports stable Torch
-  2.14.1 and Python 3.14 wheels. This removes an interpreter-level reason to
-  downgrade FloodBeacon. No GPU or end-to-end model runtime has been checked.
+  2.14.1 and Python 3.14 wheels. Actual inference now works using Torch
+  2.14.1+cu130 on the RTX 3080 Laptop GPU; Python remains 3.14.8.
 - The current [torchange source metadata](https://github.com/Z-Zheng/pytorch-change-models/blob/main/pyproject.toml)
   declares Python 3.14 support. Its PyPI 0.0.4 distribution has older dependency
-  metadata, so verify that the selected distribution contains the model-card
-  API before adding it. The original ChangeOS repository pins Torch 1.10;
+  metadata. Wheel inspection and actual strict checkpoint loading confirmed
+  stable torchange 0.0.4 with ever-beta 0.6.1 supports ChangeOS; its Swin encoder
+  must disable the obsolete default ImageNet weights argument before restoring
+  all pretrained parameters. The original ChangeOS repository pins Torch 1.10;
   those legacy instructions are not a suitable direct install recipe here.
 - The [ETH source metadata](https://github.com/prs-eth/xbd-s12/blob/main/pyproject.toml)
   accepts Python ≥3.12 but includes an old GDAL 3.6.2 pin and acquisition/training
@@ -119,9 +124,9 @@ for the same byte-range check without credentials. Their legacy code describes
 four-GPU inference; actual CPU/GPU performance and modern dependency compatibility
 remain unchecked.
 
-Pin a verified revision and checksum the full weights when implementing.
-Only 64-byte samples were retrieved; full checkpoint checksums are not available
-yet.
+These were initial byte-range checks. The subsequent research runners pin
+revisions and verify complete ChangeOS/BRIGHT/LADI weights; receipts and measured
+results are linked in the [current research report](damage-identification-research.md).
 
 The recommended next choice is whether to add **automated building damage**
 using ChangeOS or xBD-S12, or retain **roads/bridges** as the exclusive damage

@@ -20,11 +20,12 @@ and the November 2021 Merritt/Nicola Valley floods in British Columbia.
   **no forecast time or likelihood**. No model predicts that a bridge will
   collapse in two days, and no layer certifies road passability or boat access.
 
-Automated structural damage is a separate next decision. Researched pretrained
-building-damage models exist; see [their scope and access checks](docs/pretrained-models.md).
-They are not integrated in this POC. The user has GPU access, but the local
-NVIDIA driver was not reachable during the environment check; current analysis
-works on CPU.
+Automated structural damage is a separate next product decision. The deeper
+[damage research and CUDA experiments](docs/damage-identification-research.md)
+test public pretrained models and distinguish building damage, road disruption
+and bridge destruction. Research outputs are separate from the API. The local
+RTX 3080 Laptop GPU now works with Python 3.14 and PyTorch CUDA; the current
+production flood classifier remains a CPU Random Forest.
 
 ## Run locally
 
@@ -125,6 +126,13 @@ uv run python -m http.server 8080 --bind 127.0.0.1 --directory artifacts
 Open [the inspection map](http://127.0.0.1:8080/). Its candidate-exposure overlay
 shows flagged intersections; the API exposure layer retains every asset and its
 unknown/not-detected status.
+
+To inspect research imagery with synchronized zoom, human labels and separate
+model predictions, run `uv run --group damage-research python scripts/render_dataset_viewer.py`
+after retrieving the Ahr/BRIGHT research inputs. Open the
+[raw-data viewer](http://127.0.0.1:8080/dataset-viewer/).
+The [SpaceNet 8 experiment](docs/spacenet8-experiment.md) has its own raw-photo,
+annotation and prediction gallery; these are research outputs.
 
 The Ahr model output had **poor agreement** with the retrospective agency
 reference: modeled new-water area 0.8028 km², reference union 4.806 km²,
