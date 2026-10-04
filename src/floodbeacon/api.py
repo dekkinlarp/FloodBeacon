@@ -3,11 +3,13 @@
 from datetime import datetime
 import math
 import os
+from pathlib import Path
 from typing import Annotated, Any
 
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 import psycopg
 
@@ -26,6 +28,7 @@ app.add_middleware(
     allow_methods=["GET"],
     allow_headers=["*"],
 )
+app.mount("/static", StaticFiles(directory=Path(__file__).with_name("static")), name="static")
 
 
 class Case(BaseModel):

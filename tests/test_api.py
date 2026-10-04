@@ -1,4 +1,6 @@
 import importlib
+import hashlib
+from pathlib import Path
 
 import psycopg
 import pytest
@@ -114,3 +116,63 @@ def test_frontend_cors_get_and_preflight(monkeypatch, origins, origin, allowed):
                 assert preflight.headers.get("access-control-allow-origin") == allowed
     finally:
         importlib.reload(api)
+
+
+@pytest.mark.parametrize("filename", ["before.png", "after.png", "comparison.png"])
+def test_static_imagery_bytes_and_cors_without_database(monkeypatch, tmp_path, filename):
+    def unexpected(*args, **kwargs):
+        pytest.fail("Static imagery should not connect to storage")
+
+    monkeypatch.setattr(api.db, "connect", unexpected)
+    monkeypatch.chdir(tmp_path)
+    path = Path(api.__file__).with_name("static") / "imagery" / "rech-satellite" / filename
+    with TestClient(api.app) as browser:
+        response = browser.get(f"/static/imagery/rech-satellite/{filename}",
+                               headers={"Origin": "http://localhost:5173"})
+    assert response.status_code == 200
+    assert response.headers["content-type"] == "image/png"
+    assert response.headers["access-control-allow-origin"] == "*"
+    assert "access-control-allow-credentials" not in response.headers
+    assert response.content.startswith(b"\x89PNG\r\n\x1a\n")
+    assert hashlib.sha256(response.content).digest() == hashlib.sha256(path.read_bytes()).digest()
+
+
+def test_static_manifest_image_urls_and_bridge_geojson_without_database(monkeypatch):
+    def unexpected(*args, **kwargs):
+        pytest.fail("Static metadata should not connect to storage")
+
+    def image_urls(value):
+        if isinstance(value, dict):
+            for child in value.values():
+                yield from image_urls(child)
+        elif isinstance(value, list):
+            for child in value:
+                yield from image_urls(child)
+        elif isinstance(value, str) and value.startswith("/static/") and value.endswith(".png"):
+            yield value
+
+    monkeypatch.setattr(api.db, "connect", unexpected)
+    response = client.get("/static/imagery/rech-satellite/manifest.json")
+    assert response.status_code == 200
+    assert response.headers["content-type"] == "application/json"
+    urls = set(image_urls(response.json()))
+    assert {"/static/imagery/rech-satellite/before.png",
+            "/static/imagery/rech-satellite/after.png"} <= urls
+    for url in urls:
+        image = client.get(url)
+        assert image.status_code == 200
+        assert image.headers["content-type"] == "image/png"
+    bridges = client.get("/static/imagery/rech-satellite/bridges.geojson")
+    assert bridges.status_code == 200
+    assert bridges.json()["type"] == "FeatureCollection"
+    assert bridges.json()["features"]
+
+
+@pytest.mark.parametrize("path", [
+    "/static/%2e%2e/schema.sql",
+    "/static/%2e%2e/%2e%2e/%2e%2e/.env",
+    "/static/schema.sql",
+    "/static/.env",
+])
+def test_static_files_do_not_expose_repository_files(path):
+    assert client.get(path).status_code == 404

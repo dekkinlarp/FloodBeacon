@@ -1,0 +1,87 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "rech-before",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              7.035609617191854,
+              50.513688736890714
+            ],
+            [
+              7.036878254611559,
+              50.51371014267651
+            ],
+            [
+              7.036844693635285,
+              50.51451905992864
+            ],
+            [
+              7.035576034561303,
+              50.51449765353103
+            ],
+            [
+              7.035609617191854,
+              50.513688736890714
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "bridge_id": "rech-nepomuk",
+        "name": "Nepomukbr\u00fccke",
+        "imagery_id": "before",
+        "observed_date": "2021-02-11",
+        "finding": "Continuous crossing visible",
+        "assessment_method": "manual image review",
+        "failure_time": null,
+        "annotation": "90 m review square; not a surveyed damage boundary"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "rech-after",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              7.035609617191854,
+              50.513688736890714
+            ],
+            [
+              7.036878254611559,
+              50.51371014267651
+            ],
+            [
+              7.036844693635285,
+              50.51451905992864
+            ],
+            [
+              7.035576034561303,
+              50.51449765353103
+            ],
+            [
+              7.035609617191854,
+              50.513688736890714
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "bridge_id": "rech-nepomuk",
+        "name": "Nepomukbr\u00fccke",
+        "imagery_id": "after",
+        "observed_date": "2021-07-18",
+        "finding": "Northern remnant; missing span across the river",
+        "assessment_method": "manual image review",
+        "failure_time": null,
+        "annotation": "90 m review square; not a surveyed damage boundary"
+      }
+    }
+  ]
+}

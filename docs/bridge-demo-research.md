@@ -6,6 +6,14 @@ access, including manual image review. Three parallel researchers inspected
 the existing cases, Nepal, and other flood events. These are deliberately
 selected examples, not a model benchmark or production integration.
 
+**2026-10-04 update:** a public SpaceNet 8 satellite pair actually covering Rech
+has now been downloaded and visually inspected. It shows a complete crossing
+on February 11 and a missing span on July 18, 2021. The
+[Rech satellite report](rech-satellite.md) documents the checked-in PNGs, date
+evidence, square review annotation and static FastAPI URLs. The original
+six-tile experiment omitted this location; that did not establish a lack of
+satellite coverage. This pair can support the initial Germany imagery view.
+
 ## Current implementation
 
 The bridge findings were made by visual review of the retrieved before/after
@@ -18,8 +26,8 @@ The model research did not produce a validated bridge-collapse detector for
 these examples. It produced runnable experiments for water, road obstruction
 and building damage, with limitations documented in the
 [model experiment report](damage-identification-research.md). The bridge viewer
-and review points are standalone research artifacts; they have not been
-published through the PostgreSQL/FastAPI pipeline.
+and review points remain separate from the PostgreSQL pipeline. The newer Rech
+satellite comparison is served by FastAPI as checked-in static files.
 
 ## Recommendation
 

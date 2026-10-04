@@ -38,16 +38,19 @@ the application does not automatically read the file. `CORS_ORIGINS=*` permits
 requests from any frontend origin for the current demo, with credentialed CORS
 requests disabled.
 
-The bridge findings and comparison images are still research artifacts. They
-have not been published to PostgreSQL or exposed through bridge API endpoints.
-The current API serves the earlier historical flood-analysis runs.
+The [Rech satellite comparison](docs/rech-satellite.md) is now checked in and
+served as static files. Open `/static/imagery/rech-satellite/comparison.png`
+or fetch `/static/imagery/rech-satellite/manifest.json` for the aligned image
+URLs, dates, map coordinates and attribution. These files need no database
+query. Bridge findings have not been published to PostgreSQL or integrated
+into the Routes tab; the database API serves the earlier flood-analysis runs.
 
 ## Dependency groups and code responsibilities
 
 | Install | Purpose |
 | --- | --- |
 | `uv sync --locked` | FastAPI, Uvicorn, Pydantic and Psycopg, plus the default `dev` group for tests. |
-| `uv sync --locked --group processing` | Historical ingestion, CPU water modeling, spatial analysis and map previews. |
+| `uv sync --locked --group processing` | Imagery preparation, historical ingestion, CPU water modeling, spatial analysis and map previews. |
 | `uv sync --locked --group damage-research` | Processing dependencies plus the GPU/model research dependencies. |
 
 The `dev` group contains pytest and httpx. API serving lives in
@@ -87,7 +90,10 @@ them. No trained bridge-collapse detector generated these findings. Agency damag
 separate evidence and retain their source attribution. The demo is not yet
 integrated into the database or REST API.
 
-For a satellite demo, start with **Derna, Libya, September 2023**: road bridge
+For the initial Germany satellite view, use the now-inspected
+[Rech February/July 2021 satellite pair](docs/rech-satellite.md). Its image files
+and a square review annotation are included in this repository.
+Another satellite demo is **Derna, Libya, September 2023**: road bridge
 decks are visible before the flood and absent afterward. For the existing
 Germany case, **Nepomukbrücke in Rech, July 2021** has a clearly missing section;
 its comparison uses aerial orthophotos. Nepal provides additional satellite

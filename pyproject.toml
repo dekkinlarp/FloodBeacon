@@ -22,12 +22,12 @@ processing = [
   "scikit-learn>=1.9.1",
   "pyshp>=3.1.6",
   "folium>=0.20.0",
+  "pillow>=12.3.0",
 ]
 damage-research = [
   { include-group = "processing" },
   "torch>=2.14.1",
   "torchvision>=0.29.1",
-  "pillow>=12.3.0",
   "matplotlib>=3.11.2",
   "transformers>=5.18.0",
   "torchange>=0.0.4",

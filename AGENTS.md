@@ -53,6 +53,11 @@ and [structural-data limits](docs/structural-data.md).
 
 ## User requirements
 
+- Curated published imagery is stored as small Git-tracked package files under
+  `src/floodbeacon/static/`, served at `/static`; do not store image bytes in
+  PostgreSQL. The inspected Rech satellite pair and manual review square are
+  documented in `docs/rech-satellite.md`. Raw TIFFs remain ignored. Static
+  delivery must work without processing dependencies or a database connection.
 - Default application dependencies support API serving only: FastAPI, Uvicorn,
   Pydantic and Psycopg. The default `dev` group contains pytest and httpx;
   geospatial/CPU modeling and preview dependencies belong in `processing`.
