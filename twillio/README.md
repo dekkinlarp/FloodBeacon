@@ -234,3 +234,65 @@ and `/reports/gemini` endpoint using an isolated database and dry-run SMS. This 
 observed failure to the model route; it does not establish Google's internal cause or guarantee
 future availability. Restart the worker after changing `GEMINI_MODEL` in `.env`. Messages already
 marked `failed` do not automatically retry; send a new test message to verify the updated worker.
+
+## Synthetic Vancouver dashboard data
+
+From `twillio/`, using the project virtual environment:
+
+```bash
+python -m app.seed_vancouver
+```
+
+This populates the SQLite database configured by `DATABASE_PATH` in `.env` with
+12 fictional Vancouver cases: 10 approximate neighbourhood map points and two
+unlocated reports. The cases cover evacuation, medical and mobility assistance,
+supplies, and a simulated resolved report. All remain unverified; operational
+priorities and response statuses are exercise fixtures. House numbers and postal
+codes remain unknown rather than suggesting real households are in danger.
+
+Every summary and source message is labeled `[SYNTHETIC VANCOUVER DEMO]`.
+Extraction metadata uses `synthetic-fixture`, not a Gemini model. Messages are
+already extracted, demo conversations are opted out, and no outbound SMS jobs
+or Gemini requests are created. Original message evidence and audit records are
+included for the detail panel. Stable `demo-vancouver-*` IDs make reruns skip
+existing fixtures, preserving dispatcher edits and other reports.
+
+Before seeding an existing database, the command creates a consistent SQLite
+backup in its adjacent `backups/` directory. To seed a separate database instead:
+
+```bash
+python -m app.seed_vancouver --database data/vancouver-demo.sqlite3
+```
+
+The live dashboard receives these through the normal authenticated `/incidents`
+feed. Connect it to the same backend/database and refresh the page to fit the map
+to the loaded locations. Do not use `?demo=1`, which uses the original static demo.
+
+
+## Ahr Valley demo (current)
+
+Run `python -m app.seed_ahr` from twillio to add 12 fictional rescue cases
+around Rech and nearby Ahr Valley towns in Rhineland-Palatinate, Germany. Ten
+approximate points lie within the satellite study area; two remain unlocated.
+The seeder backs up an existing database and skips existing `demo-ahr-*` IDs.
+It makes no Gemini calls or SMS jobs. These are synthetic exercise reports
+with current intake timestamps, not historical July 2021 rescue records.
+The Vancouver seeder remains available for an optional separate demo; the
+previous Vancouver fixture records have been removed from the active database.
+
+## Gemini latency and timeouts
+
+`GEMINI_TIMEOUT_SECONDS` defaults to 90 (allowed range 5–300). The SDK makes
+one attempt per worker attempt; the persistent queue owns retries. Transient
+failures such as HTTP 429/503/504 retry up to three total attempts, with delays
+of 10–15 then 20–25 seconds. HTTP 400/401/403/404/422 fail immediately for review.
+The message lease exceeds the configured request timeout by 60 seconds.
+Logs record model, timeout, history size, elapsed time and next retry delay,
+without logging SMS bodies or credentials. The worker remains sequential;
+its periodic status line waits for the current request to finish.
+
+Restart `python -m app.worker` after code or configuration changes. A 504 means
+the provider did not complete within its deadline; a larger client deadline
+may help but does not fix provider congestion. Failed records are retained and
+are not automatically replayed on restart. Diagnose with synthetic input rather
+than replaying a real message, which could cause a new SMS follow-up.

@@ -324,3 +324,37 @@ def test_gemini_reports_pagination_and_conversation_filter(settings, client):
     for query in ('limit=0', 'limit=501', 'offset=-1'):
         assert client.get('/reports/gemini?' + query, headers=AUTH).status_code == 422
     assert client.get('/reports/gemini', params={'conversation_id': "' OR 1=1 --"}, headers=AUTH).json() == []
+
+
+@pytest.mark.parametrize('code,retrying', [(400, False), (401, False), (403, False), (404, False), (429, True), (503, True), (504, True)])
+def test_provider_retry_policy(settings, code, retrying):
+    class ProviderError(Exception):
+        pass
+    class Broken:
+        def extract(self, history):
+            error = ProviderError()
+            error.code = code
+            raise error
+    sms(settings)
+    before = time.time()
+    process_one(settings, Broken())
+    with connect(settings) as db:
+        row = db.execute('SELECT * FROM messages').fetchone()
+        assert row['status'] == ('processing' if retrying else 'failed')
+        if retrying:
+            assert before + 10 <= row['lease_until'] <= time.time() + 15
+        else:
+            assert row['lease_until'] is None
+        assert db.execute('SELECT count(*) FROM outbox').fetchone()[0] == 0
+
+
+def test_gemini_timeout_and_sdk_retry_settings(monkeypatch):
+    from app.extractor import GeminiExtractor
+    captured = {}
+    def client(**kwargs):
+        captured.update(kwargs)
+        return object()
+    monkeypatch.setattr('app.extractor.genai.Client', client)
+    GeminiExtractor(Settings(_env_file=None, gemini_api_key='test', gemini_timeout_seconds=120))
+    assert captured['http_options'].timeout == 120000
+    assert captured['http_options'].retry_options.attempts == 1

@@ -1,6 +1,7 @@
 """Run exactly one worker process: python -m app.worker."""
 import json
 import logging
+import random
 import time
 from pathlib import Path
 from twilio.rest import Client
@@ -25,7 +26,7 @@ def process_one(settings, extractor):
         if row is None:
             return False
         db.execute("UPDATE messages SET status='processing', attempts=attempts+1, lease_until=?, claim=? WHERE sid=?",
-                   (now + 180, claim, row['sid']))
+                   (now + settings.gemini_timeout_seconds + 60, claim, row['sid']))
         history = [dict(r) for r in db.execute('''SELECT sid AS message_sid, body, received_at FROM messages
             WHERE conversation_id=? AND rowid <= (SELECT rowid FROM messages WHERE sid=?)
             AND status != 'control' ORDER BY rowid''', (row['conversation_id'], row['sid']))]
@@ -38,7 +39,10 @@ def process_one(settings, extractor):
                                   (message['message_sid'], cutoff)).fetchone()
             if question:
                 message['assistant_followup'] = question['body']
-    log.info('Processing message %s with Gemini (attempt %s/3)', row['sid'], row['attempts'] + 1)
+    started = time.monotonic()
+    log.info('Processing message %s with Gemini (attempt %s/3; model=%s; timeout=%ss; history=%s messages/%s characters)',
+             row['sid'], row['attempts'] + 1, settings.gemini_model, settings.gemini_timeout_seconds,
+             len(history), sum(len(m['body']) for m in history))
     try:
         report = extractor.extract(history)
         validate_evidence(report, history)
@@ -86,17 +90,21 @@ def process_one(settings, extractor):
                 db.execute('UPDATE conversations SET questions=? WHERE id=?',
                            (json.dumps(asked + [field]), row['conversation_id']))
             db.execute("UPDATE messages SET status='extracted', error=NULL, lease_until=NULL WHERE sid=?", (row['sid'],))
-        log.info('Gemini report saved for message %s', row['sid'])
+        log.info('Gemini report saved for message %s in %.1fs', row['sid'], time.monotonic() - started)
     except Exception as exc:
         # Do not log message contents, secrets, or raw provider exceptions.
         with connect(settings) as db:
-            retry = row['attempts'] + 1 < 3
+            code = getattr(exc, 'code', None)
+            # Permanent request/authentication errors cannot recover by waiting.
+            retry = row['attempts'] + 1 < 3 and code not in {400, 401, 403, 404, 422}
+            delay = min(60, 10 * (2 ** row['attempts'])) + random.uniform(0, 5)
             db.execute('''UPDATE messages SET status=?, lease_until=?, error=? WHERE sid=? AND claim=?''',
-                       ('processing' if retry else 'failed', time.time() + 30,
+                       ('processing' if retry else 'failed', time.time() + delay if retry else None,
                         type(exc).__name__, row['sid'], claim))
-        log.warning('Extraction failed for message %s (%s; HTTP=%s; status=%s)',
+        log.warning('Extraction failed for message %s (%s; HTTP=%s; status=%s; elapsed=%.1fs; next=%s)',
                     row['sid'], type(exc).__name__, getattr(exc, 'code', 'n/a'),
-                    getattr(exc, 'status', 'n/a'))
+                    getattr(exc, 'status', 'n/a'), time.monotonic() - started,
+                    f'retry in {delay:.1f}s' if retry else 'failed; manual review required')
     return True
 
 
@@ -152,6 +160,8 @@ def main():
     if not settings.sms_dry_run and not all((settings.twilio_account_sid, settings.twilio_auth_token)):
         raise RuntimeError('Twilio credentials required for outbound SMS')
     log.info('Listening for queued reports in %s (polling every second)', Path(settings.database_path).resolve())
+    log.info('Gemini: model=%s timeout=%ss; at most 3 worker attempts, SDK retries disabled',
+             settings.gemini_model, settings.gemini_timeout_seconds)
     log.info('SMS mode: %s', 'DRY RUN (no messages sent)' if settings.sms_dry_run else 'LIVE')
     log.info('Keep the API and tunnel running to receive webhooks. Ctrl+C stops this worker.')
     log_status(settings)

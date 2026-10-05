@@ -29,7 +29,10 @@ class GeminiExtractor:
         if not settings.gemini_api_key:
             raise RuntimeError('GEMINI_API_KEY is required for the worker')
         self.client = genai.Client(api_key=settings.gemini_api_key,
-                                  http_options=types.HttpOptions(timeout=60000))
+                                  http_options=types.HttpOptions(
+                                      timeout=settings.gemini_timeout_seconds * 1000,
+                                      # Persistent worker owns retries, not the SDK.
+                                      retry_options=types.HttpRetryOptions(attempts=1)))
         self.model = settings.gemini_model
 
     def extract(self, history):

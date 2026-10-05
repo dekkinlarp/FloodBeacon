@@ -1,3 +1,4 @@
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -9,6 +10,7 @@ class Settings(BaseSettings):
     twilio_webhook_url: str = ''
     gemini_api_key: str = ''
     gemini_model: str = 'gemini-3.5-flash'
+    gemini_timeout_seconds: int = Field(default=90, ge=5, le=300)
     operator_api_key: str = ''
     database_path: str = 'data/intake.sqlite3'
     sms_dry_run: bool = True
