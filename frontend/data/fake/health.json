@@ -1,0 +1,93 @@
+[
+  {
+    "incident_id": "INC-001",
+    "priority": "critical",
+    "medical_needs": ["dialysis", "mobility"],
+    "mobility": "assisted",
+    "vulnerable": { "elderly": 1, "children": 0, "pregnant": 0, "disabled": 0 },
+    "injuries": [],
+    "supplies_left": "Missed today's dialysis session",
+    "notes": "Woman, 67. Hemodialysis 3x/week; today's session missed. Needs transfer to a dialysis unit today.",
+    "ai_extracted": true,
+    "verified_by_human": true,
+    "updated_at": "2026-10-02T05:30:00+07:00"
+  },
+  {
+    "incident_id": "INC-002",
+    "priority": "critical",
+    "medical_needs": ["oxygen", "mobility"],
+    "mobility": "bedridden",
+    "vulnerable": { "elderly": 1, "children": 0, "pregnant": 0, "disabled": 1 },
+    "injuries": [],
+    "supplies_left": "Backup oxygen cylinder, a few hours left",
+    "notes": "Man, 81, bedridden, home oxygen concentrator. Power out, backup cylinder running low.",
+    "ai_extracted": false,
+    "verified_by_human": true,
+    "updated_at": "2026-10-02T05:52:00+07:00"
+  },
+  {
+    "incident_id": "INC-006",
+    "priority": "high",
+    "medical_needs": ["insulin"],
+    "mobility": "independent",
+    "vulnerable": { "elderly": 0, "children": 0, "pregnant": 0, "disabled": 0 },
+    "injuries": [],
+    "supplies_left": "About 1 day of insulin",
+    "notes": "Man, 58, type 1 diabetes. About one day of insulin left.",
+    "ai_extracted": true,
+    "verified_by_human": false,
+    "updated_at": "2026-10-02T06:22:00+07:00"
+  },
+  {
+    "incident_id": "INC-011",
+    "priority": "high",
+    "medical_needs": ["pregnancy"],
+    "mobility": "assisted",
+    "vulnerable": { "elderly": 0, "children": 0, "pregnant": 1, "disabled": 0 },
+    "injuries": [],
+    "supplies_left": null,
+    "notes": "Woman, about 8 months pregnant (per SMS). No complications reported yet.",
+    "ai_extracted": true,
+    "verified_by_human": true,
+    "updated_at": "2026-10-02T07:20:00+07:00"
+  },
+  {
+    "incident_id": "INC-012",
+    "priority": "medium",
+    "medical_needs": ["mobility"],
+    "mobility": "assisted",
+    "vulnerable": { "elderly": 1, "children": 0, "pregnant": 0, "disabled": 0 },
+    "injuries": [],
+    "supplies_left": "Out of heart medication since yesterday",
+    "notes": "Woman, 79. Out of regular heart medication since yesterday.",
+    "ai_extracted": true,
+    "verified_by_human": false,
+    "updated_at": "2026-10-02T07:15:00+07:00"
+  },
+  {
+    "incident_id": "INC-018",
+    "priority": "medium",
+    "medical_needs": ["injury"],
+    "mobility": "assisted",
+    "vulnerable": { "elderly": 0, "children": 0, "pregnant": 0, "disabled": 0 },
+    "injuries": ["Cut on lower leg from glass, bleeding"],
+    "supplies_left": null,
+    "notes": "Laceration on lower leg from glass, bleeding. Walked through floodwater.",
+    "ai_extracted": true,
+    "verified_by_human": false,
+    "updated_at": "2026-10-02T07:55:00+07:00"
+  },
+  {
+    "incident_id": "INC-019",
+    "priority": "high",
+    "medical_needs": ["mobility"],
+    "mobility": "bedridden",
+    "vulnerable": { "elderly": 1, "children": 2, "pregnant": 0, "disabled": 1 },
+    "injuries": [],
+    "supplies_left": "Food and water for about 1 day",
+    "notes": "Bedridden elderly woman after stroke. Family of 5, ground floor flooded.",
+    "ai_extracted": false,
+    "verified_by_human": true,
+    "updated_at": "2026-10-02T08:15:00+07:00"
+  }
+]

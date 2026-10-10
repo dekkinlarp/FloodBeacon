@@ -1,0 +1,9 @@
+# Local OS files, credentials, environments and generated output
+.DS_Store
+.env
+.env.*
+!.env.example
+node_modules/
+.venv/
+__pycache__/
+.pytest_cache/

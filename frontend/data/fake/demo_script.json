@@ -1,0 +1,161 @@
+{
+  "version": 1,
+  "title": "Bang Kapi dialysis rescue",
+  "description": "Stand-in demo story for Person 4's demo script. Times are minutes after T+0 (demo start).",
+  "steps": [
+    {
+      "id": "S1",
+      "at_minutes": 0,
+      "type": "note",
+      "label": "Normal incidents loaded"
+    },
+    {
+      "id": "S2",
+      "at_minutes": 60,
+      "type": "incident_reported",
+      "label": "Dialysis patient SMS arrives in Bang Kapi",
+      "incident": {
+        "id": "INC-021",
+        "status": "new",
+        "severity": "critical",
+        "access_type": "boat_only",
+        "district": "Bang Kapi",
+        "location": {
+          "lat": 13.776,
+          "lon": 100.662
+        },
+        "address_note": "Soi Ramkhamhaeng 24, house beside the canal, second floor",
+        "needs": [
+          "medical",
+          "evacuation"
+        ],
+        "people_count": 2,
+        "reporter_language": "thai",
+        "contact_phone": "+66000000021",
+        "source": "sms",
+        "original_message": "ช่วยด้วยค่ะ พ่ออายุ 72 ต้องฟอกไตพรุ่งนี้เช้า น้ำท่วมถึงอก ออกจากบ้านไม่ได้ ซอยรามคำแหง 24 บางกะปิ มี 2 คน",
+        "ai_extracted": true,
+        "verified_by_human": false
+      },
+      "health": {
+        "incident_id": "INC-021",
+        "priority": "critical",
+        "medical_needs": [
+          "dialysis",
+          "mobility"
+        ],
+        "mobility": "assisted",
+        "vulnerable": {
+          "elderly": 1,
+          "children": 0,
+          "pregnant": 0,
+          "disabled": 0
+        },
+        "injuries": [],
+        "supplies_left": "Dialysis due tomorrow morning",
+        "notes": "Man, 72, on hemodialysis. Chest-deep water at the house.",
+        "ai_extracted": true,
+        "verified_by_human": false
+      },
+      "travel_times": [
+        {
+          "team_id": "TEAM-01",
+          "incident_id": "INC-021",
+          "minutes": 14
+        },
+        {
+          "team_id": "TEAM-02",
+          "incident_id": "INC-021",
+          "minutes": 74
+        },
+        {
+          "team_id": "TEAM-03",
+          "incident_id": "INC-021",
+          "minutes": 256
+        },
+        {
+          "team_id": "TEAM-04",
+          "incident_id": "INC-021",
+          "minutes": 258
+        },
+        {
+          "team_id": "TEAM-05",
+          "incident_id": "INC-021",
+          "minutes": 469
+        },
+        {
+          "team_id": "TEAM-06",
+          "incident_id": "INC-021",
+          "minutes": 137
+        }
+      ]
+    },
+    {
+      "id": "S3",
+      "at_minutes": 85,
+      "type": "verify_incident",
+      "label": "Dispatcher verifies the SMS",
+      "incident_id": "INC-021"
+    },
+    {
+      "id": "S4",
+      "at_minutes": 90,
+      "type": "assign_suggested",
+      "label": "Dispatcher assigns the suggested boat team",
+      "incident_id": "INC-021",
+      "vehicles": [
+        "flat_boat",
+        "kayak"
+      ]
+    },
+    {
+      "id": "S5",
+      "at_minutes": 95,
+      "type": "field_report",
+      "label": "Boat team sets off",
+      "incident_id": "INC-021",
+      "to": "en_route"
+    },
+    {
+      "id": "S6",
+      "at_minutes": 120,
+      "type": "route_change",
+      "label": "Bridge closed: route changes to truck then boat",
+      "incident_id": "INC-021",
+      "reason": "Ramkhamhaeng 24 canal bridge closed to boats",
+      "legs": [
+        {
+          "mode": "truck",
+          "minutes": 25
+        },
+        {
+          "mode": "boat",
+          "minutes": 30
+        }
+      ]
+    },
+    {
+      "id": "S7",
+      "at_minutes": 180,
+      "type": "field_report",
+      "label": "Team on scene",
+      "incident_id": "INC-021",
+      "to": "on_scene"
+    },
+    {
+      "id": "S8",
+      "at_minutes": 210,
+      "type": "feedback",
+      "label": "Resolved with field feedback",
+      "incident_id": "INC-021",
+      "feedback": {
+        "water_depth_cm": 120,
+        "route_worked": false,
+        "blocked_routes": "Ramkhamhaeng 24 canal bridge closed to boats; launched from Soi 26 by truck",
+        "people_helped": 2,
+        "outcome": "evacuated",
+        "photo_ref": "demo_bridge.jpg"
+      }
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "case_id": "ahr-2021",
+  "target": "Nepomukbr\u00fccke, Rech",
+  "target_coordinate": [
+    7.03622715,
+    50.5141039
+  ],
+  "imagery_type": "satellite RGB",
+  "dataset": "SpaceNet 8 Germany_Training_Public",
+  "tile_id": "0_40_62",
+  "bounds": [
+    7.034499078327662,
+    50.51161551706559,
+    7.0393649527833135,
+    50.51648139152126
+  ],
+  "image_coordinates": [
+    [
+      7.034499078327662,
+      50.51648139152126
+    ],
+    [
+      7.0393649527833135,
+      50.51648139152126
+    ],
+    [
+      7.0393649527833135,
+      50.51161551706559
+    ],
+    [
+      7.034499078327662,
+      50.51161551706559
+    ]
+  ],
+  "output_crs": "EPSG:3857",
+  "output_transform": [
+    0.9993849938507261,
+    0.0,
+    783076.8553851877,
+    0.0,
+    -0.9997955524294851,
+    6536206.465111486
+  ],
+  "processing": "RGB bilinear resampling to one shared grid; mask nearest-neighbour; no color enhancement or generated pixels. Comparison zoom uses nearest-neighbour; square is a manual annotation.",
+  "images": [
+    {
+      "id": "before",
+      "acquired_date": "2021-02-11",
+      "acquired_at": null,
+      "date_precision": "day; provider archive folder",
+      "catalog_id": "10500500C4DD7000",
+      "source_url": "https://spacenet-dataset.s3.amazonaws.com/spacenet/SN8_floods/Germany_Training_Public/PRE-event/10500500C4DD7000_0_40_62.tif",
+      "source_sha256": "dd73faaff21ad55b76a65a3b6f8a25fa747c2e50e63dadc8dcee7cb258d0d29c",
+      "source_bytes": 3892126,
+      "source_crs": "EPSG:4326",
+      "source_transform": [
+        3.74298035050102e-06,
+        0.0,
+        7.034499078327663,
+        0.0,
+        -3.74298035050102e-06,
+        50.51648139152125
+      ],
+      "source_bounds": [
+        7.034499078327663,
+        50.5116155170656,
+        7.039364952783314,
+        50.51648139152125
+      ],
+      "source_shape": [
+        1300,
+        1300
+      ],
+      "date_evidence_url": "https://dg-opendata.s3.amazonaws.com/?list-type=2&delimiter=/&prefix=events/western-europe-flooding21/pre-event/2021-02-11/",
+      "date_evidence_sha256": "3610a1fbd32e0f77f994196c6987294f13aa5db0655f26a88ed5199c29d1a76b",
+      "url": "/static/imagery/rech-satellite/before.png",
+      "sha256": "22f4a5e16f3823adb825e87eee8764afbf57fdddf6ad1076732263ae699239f1",
+      "bytes": 764912,
+      "width": 542,
+      "height": 852
+    },
+    {
+      "id": "after",
+      "acquired_date": "2021-07-18",
+      "acquired_at": null,
+      "date_precision": "day; provider archive folder",
+      "catalog_id": "10500500E6DD3C00",
+      "source_url": "https://spacenet-dataset.s3.amazonaws.com/spacenet/SN8_floods/Germany_Training_Public/POST-event/10500500E6DD3C00_0_40_62.tif",
+      "source_sha256": "3f5468a4e9c1d35b46dfb87cffe049e4305719a0f6299573fc3f060a1e2a2e0b",
+      "source_bytes": 1852980,
+      "source_crs": "EPSG:4326",
+      "source_transform": [
+        6.201369844702031e-06,
+        0.0,
+        7.034496972686098,
+        0.0,
+        -6.201369844702031e-06,
+        50.51648660239541
+      ],
+      "source_bounds": [
+        7.034496972686098,
+        50.51161232569748,
+        7.039365048014189,
+        50.51648660239541
+      ],
+      "source_shape": [
+        786,
+        785
+      ],
+      "date_evidence_url": "https://dg-opendata.s3.amazonaws.com/?list-type=2&delimiter=/&prefix=events/western-europe-flooding21/post-event/2021-07-18/",
+      "date_evidence_sha256": "cd4b789ceb904ee239168621e483a8e25a5d0b8946761e0e3fe769fcc8d49c7c",
+      "url": "/static/imagery/rech-satellite/after.png",
+      "sha256": "074314817ef5d60abf8682d8da504d5e09c16882b6382ed3cb2613609684fb12",
+      "bytes": 607806,
+      "width": 542,
+      "height": 852
+    }
+  ],
+  "comparison_url": "/static/imagery/rech-satellite/comparison.png",
+  "bridges_url": "/static/imagery/rech-satellite/bridges.geojson",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "license_source": "https://spacenet.ai/sn8-challenge/",
+  "attribution": "Satellite imagery \u00a9 Maxar Technologies; SpaceNet Partners; CC BY-SA 4.0",
+  "manual_finding": "Before: complete crossing visible. After: northern remnant with a missing span across the widened river.",
+  "agency_evidence": {
+    "source": "Copernicus EMSR517 AOI15",
+    "grade": "Destroyed",
+    "observed_at": "2021-07-18T10:50:00Z",
+    "source_url": "https://mapping.emergency.copernicus.eu/activations/EMSR517/",
+    "note": "Separately imported agency assessment; not a model output."
+  },
+  "limitations": [
+    "The exact failure time is unknown.",
+    "Sensor-native GSD and exact UTC acquisition times are not established from the crop metadata.",
+    "The review square is an annotation, not measured damage geometry.",
+    "No automated detector ran; this assessment does not certify nearby routes or surviving structure safety."
+  ],
+  "retrieved_at": "2026-10-04T07:42:07.659834+00:00",
+  "generated_files": [
+    {
+      "name": "after.png",
+      "sha256": "074314817ef5d60abf8682d8da504d5e09c16882b6382ed3cb2613609684fb12",
+      "bytes": 607806
+    },
+    {
+      "name": "before.png",
+      "sha256": "22f4a5e16f3823adb825e87eee8764afbf57fdddf6ad1076732263ae699239f1",
+      "bytes": 764912
+    },
+    {
+      "name": "bridges.geojson",
+      "sha256": "7a8b3956e7c682cb490859a7bc9e2d682b30ae66966c2181f39e439ac034df40",
+      "bytes": 2140
+    },
+    {
+      "name": "comparison.png",
+      "sha256": "24d4908f212d1b92225926be29708e2f3636e20b2c5884baa699578c8f8c76c2",
+      "bytes": 382485
+    }
+  ]
+}

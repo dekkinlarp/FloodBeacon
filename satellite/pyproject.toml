@@ -1,0 +1,56 @@
+[project]
+name = "floodbeacon"
+version = "0.1.0"
+description = "Historical flood detection and infrastructure exposure for map clients"
+readme = "README.md"
+requires-python = ">=3.14,<3.15"
+dependencies = [
+  "fastapi>=0.142.2",
+  "uvicorn>=0.54.0",
+  "pydantic>=2.13.5",
+  "psycopg[binary]>=3.3.6",
+]
+
+[dependency-groups]
+dev = ["pytest>=9.1.1", "httpx>=0.28.1"]
+processing = [
+  "httpx>=0.28.1",
+  "numpy>=2.5.3",
+  "rasterio>=1.5.2",
+  "shapely>=2.1.2",
+  "pyproj>=3.8.0",
+  "scikit-learn>=1.9.1",
+  "pyshp>=3.1.6",
+  "folium>=0.20.0",
+  "pillow>=12.3.0",
+]
+damage-research = [
+  { include-group = "processing" },
+  "torch>=2.14.1",
+  "torchvision>=0.29.1",
+  "matplotlib>=3.11.2",
+  "transformers>=5.18.0",
+  "torchange>=0.0.4",
+  "ever-beta>=0.6.1",
+  "timm>=1.0.30",
+  "yacs>=0.1.8",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu130", marker = "sys_platform == 'linux'" }]
+torchvision = [{ index = "pytorch-cu130", marker = "sys_platform == 'linux'" }]
+
+[project.scripts]
+floodbeacon = "floodbeacon.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12.23,<0.13"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

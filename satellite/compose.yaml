@@ -1,0 +1,19 @@
+name: floodbeacon
+services:
+  postgres:
+    image: postgres:18.6
+    environment:
+      POSTGRES_DB: floodbeacon
+      POSTGRES_USER: floodbeacon
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-floodbeacon}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-55432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U floodbeacon -d floodbeacon"]
+      interval: 3s
+      timeout: 5s
+      retries: 20
+volumes:
+  postgres_data:

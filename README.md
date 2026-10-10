@@ -1,13 +1,15 @@
 # FloodBeacon
 
 Flood disaster assessment prototype combining SMS help reports, Gemini extraction, and an
-operator dashboard. Satellite flood analysis remains a separate integration effort.
+operator dashboard. This monorepo contains the intake backend, dispatcher frontend, and satellite analysis service.
 
 - [`twillio/`](twillio/README.md): Python FastAPI webhook, Gemini worker, conversation storage,
   address follow-ups, authenticated incident/report APIs.
 - [`frontend/`](frontend/INTAKE.md): React dispatcher cloned from
   [Flood-Beacon_Dispatch](https://github.com/dekkinlarp/Flood-Beacon_Dispatch), connected to the
   live intake feed by default. Synthetic dispatcher demo is explicitly available at `?demo=1`.
+
+- [`satellite/`](satellite/README.md): Satellite analysis, curated bridge imagery, and the map REST API.
 
 ## Run locally
 
@@ -28,5 +30,12 @@ coordinates remain visible in the queue. Live mode does not use fake teams or di
 See [frontend integration setup](frontend/INTAKE.md) and [backend setup](twillio/README.md) for
 configuration, endpoints, test commands and limitations. The live dashboard needs no PostgreSQL.
 
-The cloned frontend retains its own Git checkout. No submodule registration, parent commit, or
-remote push is performed automatically. Decide how to include it before committing the parent.
+## Repository layout
+
+All three components are tracked by this root Git repository. Run Git commands from the
+repository root; `frontend/` and `satellite/` are ordinary directories, not nested checkouts
+or submodules. Their original commit histories are retained as parents of the consolidation
+commit and on the `consolidation/frontend-history` and `consolidation/satellite-history` branches.
+Existing component setup commands and paths are unchanged. Follow `satellite/AGENTS.md` when
+working on the satellite service. Local credentials, virtual environments, downloaded inputs,
+and generated artifacts remain ignored.
