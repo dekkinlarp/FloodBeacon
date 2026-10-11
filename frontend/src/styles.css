@@ -667,3 +667,6 @@ select.btn { appearance: auto; }
 .satellite-controls select { width:100%; background:#f1f5f9; color:var(--text); padding:6px; }
 .satellite-controls small { display:block; font-size:11px; line-height:1.4; }
 .satellite-controls a { color:#0369a1; }
+.satellite-controls summary { cursor: pointer; }
+.satellite-controls:not([open]) { width: auto; }
+

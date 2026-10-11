@@ -64,8 +64,10 @@ export function SatelliteLayers({ map, onReturn }: { map: MapLibreMap | null; on
       for (const id of sources) if (map.getSource(id)) map.removeSource(id);
     };
   }, [map, ready, current, observation]);
-  return <section className="satellite-controls" aria-label="Historical satellite imagery">
-    <strong>Historical satellite imagery</strong>
+  // Collapsed by default on phones, where the panel would cover most of the map.
+  return <details className="satellite-controls" aria-label="Historical satellite imagery"
+    open={!window.matchMedia('(max-width: 760px)').matches || undefined}>
+    <summary><strong>Historical satellite imagery</strong></summary>
     <select aria-label="Satellite study area" value={caseId} onChange={e => {
       if (e.target.value in SITES) selectSite(e.target.value as SiteId);
     }}>{Object.entries(SITES).map(([id, site]) => <option key={id} value={id}>{site.name}</option>)}</select>
@@ -78,5 +80,5 @@ export function SatelliteLayers({ map, onReturn }: { map: MapLibreMap | null; on
       {[...observation.images, ...(observation.regional_tiles ? [observation.regional_tiles] : [])].map((im, i) => <small key={i}>{im.attribution} · <a href={im.license_url} target="_blank" rel="noreferrer">{im.license}</a></small>)}
     </>}
     {error && <small role="alert">{error}</small>}
-  </section>;
+  </details>;
 }
