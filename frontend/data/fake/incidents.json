@@ -6,16 +6,22 @@
     "status": "verified",
     "severity": "critical",
     "access_type": "boat_only",
-    "district": "Bang Khun Thian",
-    "location": { "lat": 13.615, "lon": 100.438 },
-    "address_note": "Soi Thian Thale 20, two-storey house behind the temple",
-    "needs": ["medical", "evacuation"],
+    "district": "Rech exercise zone 01",
+    "location": {
+      "lat": 50.5122289,
+      "lon": 7.0330272
+    },
+    "address_note": "Fictional exercise location 1 \u2014 not a surveyed address",
+    "needs": [
+      "medical",
+      "evacuation"
+    ],
     "people_count": 2,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000001",
+    "reporter_language": "english",
+    "contact_phone": "DEMO-ahr-2021-001",
     "last_contact_at": "2026-10-02T05:28:00+07:00",
     "source": "sms",
-    "original_message": "ช่วยด้วย แม่อายุ 67 ต้องฟอกไตวันนี้ ไปโรงพยาบาลไม่ได้ น้ำท่วมสูงระดับเอว ซอยเทียนทะเล 20 บางขุนเทียน มี 2 คน",
+    "original_message": "SYNTHETIC Ahr Valley exercise: 2 people requesting medical, evacuation.",
     "ai_extracted": true,
     "verified_by_human": true
   },
@@ -26,13 +32,19 @@
     "status": "verified",
     "severity": "critical",
     "access_type": "boat_only",
-    "district": "Don Mueang",
-    "location": { "lat": 13.912, "lon": 100.596 },
-    "address_note": "Village near Khlong Prem Prachakon, house no. 41",
-    "needs": ["medical", "rescue"],
+    "district": "Rech exercise zone 02",
+    "location": {
+      "lat": 50.5122289,
+      "lon": 7.0346272
+    },
+    "address_note": "Fictional exercise location 2 \u2014 not a surveyed address",
+    "needs": [
+      "medical",
+      "rescue"
+    ],
     "people_count": 3,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000002",
+    "reporter_language": "german",
+    "contact_phone": "DEMO-ahr-2021-002",
     "last_contact_at": "2026-10-02T05:50:00+07:00",
     "source": "phone",
     "original_message": null,
@@ -46,16 +58,21 @@
     "status": "new",
     "severity": "high",
     "access_type": "walk_only",
-    "district": "Lat Krabang",
-    "location": { "lat": 13.723, "lon": 100.784 },
-    "address_note": "Near Hua Takhe market, on the roof",
-    "needs": ["rescue"],
+    "district": "Rech exercise zone 03",
+    "location": {
+      "lat": 50.5122289,
+      "lon": 7.0362272
+    },
+    "address_note": "Fictional exercise location 3 \u2014 not a surveyed address",
+    "needs": [
+      "rescue"
+    ],
     "people_count": 5,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000003",
+    "reporter_language": "german",
+    "contact_phone": "DEMO-ahr-2021-003",
     "last_contact_at": "2026-10-02T06:05:00+07:00",
     "source": "sms",
-    "original_message": "ติดอยู่บนหลังคา 5 คน น้ำขึ้นเร็วมาก ลาดกระบัง ใกล้ตลาดหัวตะเข้",
+    "original_message": "SYNTHETIC Ahr Valley exercise: 5 people requesting rescue.",
     "ai_extracted": true,
     "verified_by_human": false
   },
@@ -66,16 +83,22 @@
     "status": "verified",
     "severity": "high",
     "access_type": "boat_only",
-    "district": "Nong Chok",
-    "location": { "lat": 13.855, "lon": 100.862 },
-    "address_note": "House on Khlong Saen Saep bank",
-    "needs": ["evacuation", "food_water"],
+    "district": "Rech exercise zone 04",
+    "location": {
+      "lat": 50.5122289,
+      "lon": 7.0378272
+    },
+    "address_note": "Fictional exercise location 4 \u2014 not a surveyed address",
+    "needs": [
+      "evacuation",
+      "food_water"
+    ],
     "people_count": 8,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000004",
+    "reporter_language": "english",
+    "contact_phone": "DEMO-ahr-2021-004",
     "last_contact_at": "2026-10-02T06:20:00+07:00",
     "source": "sms",
-    "original_message": "บ้านริมคลองแสนแสบ หนองจอก มีเด็ก 3 ผู้ใหญ่ 5 อาหารกับน้ำหมดแล้ว อยากออกจากบ้าน",
+    "original_message": "SYNTHETIC Ahr Valley exercise: 8 people requesting evacuation, food_water.",
     "ai_extracted": true,
     "verified_by_human": true
   },
@@ -86,13 +109,18 @@
     "status": "verified",
     "severity": "medium",
     "access_type": "truck",
-    "district": "Min Buri",
-    "location": { "lat": 13.813, "lon": 100.729 },
-    "address_note": "Townhouse row off Ramkhamhaeng Road",
-    "needs": ["food_water"],
+    "district": "Rech exercise zone 05",
+    "location": {
+      "lat": 50.5122289,
+      "lon": 7.0394271
+    },
+    "address_note": "Fictional exercise location 5 \u2014 not a surveyed address",
+    "needs": [
+      "food_water"
+    ],
     "people_count": 4,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000005",
+    "reporter_language": "german",
+    "contact_phone": "DEMO-ahr-2021-005",
     "last_contact_at": "2026-10-02T06:15:00+07:00",
     "source": "dispatcher",
     "original_message": null,
@@ -106,16 +134,22 @@
     "status": "new",
     "severity": "high",
     "access_type": "boat_only",
-    "district": "Khlong Sam Wa",
-    "location": { "lat": 13.86, "lon": 100.715 },
-    "address_note": "Soi Sukhaphiban 2",
-    "needs": ["medication", "evacuation"],
+    "district": "Rech exercise zone 06",
+    "location": {
+      "lat": 50.5134789,
+      "lon": 7.0330272
+    },
+    "address_note": "Fictional exercise location 6 \u2014 not a surveyed address",
+    "needs": [
+      "medication",
+      "evacuation"
+    ],
     "people_count": 3,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000006",
+    "reporter_language": "german",
+    "contact_phone": "DEMO-ahr-2021-006",
     "last_contact_at": "2026-10-02T06:22:00+07:00",
     "source": "sms",
-    "original_message": "พ่อเป็นเบาหวาน อินซูลินเหลือวันเดียว ออกจากบ้านไม่ได้ คลองสามวา ซอยสุขาภิบาล 2 มี 3 คน",
+    "original_message": "SYNTHETIC Ahr Valley exercise: 3 people requesting medication, evacuation.",
     "ai_extracted": true,
     "verified_by_human": false
   },
@@ -126,13 +160,19 @@
     "status": "verified",
     "severity": "medium",
     "access_type": "truck",
-    "district": "Bang Khae",
-    "location": { "lat": 13.712, "lon": 100.405 },
-    "address_note": "Apartment block near Phetkasem Road",
-    "needs": ["power", "food_water"],
+    "district": "Rech exercise zone 07",
+    "location": {
+      "lat": 50.5134789,
+      "lon": 7.0346272
+    },
+    "address_note": "Fictional exercise location 7 \u2014 not a surveyed address",
+    "needs": [
+      "power",
+      "food_water"
+    ],
     "people_count": 3,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000007",
+    "reporter_language": "english",
+    "contact_phone": "DEMO-ahr-2021-007",
     "last_contact_at": "2026-10-02T06:40:00+07:00",
     "source": "phone",
     "original_message": null,
@@ -146,13 +186,18 @@
     "status": "verified",
     "severity": "low",
     "access_type": "truck",
-    "district": "Thawi Watthana",
-    "location": { "lat": 13.782, "lon": 100.362 },
-    "address_note": "Reported by field volunteer, garden house",
-    "needs": ["food_water"],
+    "district": "Rech exercise zone 08",
+    "location": {
+      "lat": 50.5134789,
+      "lon": 7.0362272
+    },
+    "address_note": "Fictional exercise location 8 \u2014 not a surveyed address",
+    "needs": [
+      "food_water"
+    ],
     "people_count": 2,
-    "reporter_language": "thai",
-    "contact_phone": null,
+    "reporter_language": "german",
+    "contact_phone": "DEMO-ahr-2021-008",
     "last_contact_at": "2026-10-02T06:45:00+07:00",
     "source": "field",
     "original_message": null,
@@ -166,13 +211,18 @@
     "status": "verified",
     "severity": "critical",
     "access_type": "walk_only",
-    "district": "Lak Si",
-    "location": { "lat": 13.885, "lon": 100.58 },
-    "address_note": "Narrow soi off Chaeng Watthana, water rising fast",
-    "needs": ["rescue"],
+    "district": "Rech exercise zone 09",
+    "location": {
+      "lat": 50.5134789,
+      "lon": 7.0378272
+    },
+    "address_note": "Fictional exercise location 9 \u2014 not a surveyed address",
+    "needs": [
+      "rescue"
+    ],
     "people_count": 3,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000009",
+    "reporter_language": "german",
+    "contact_phone": "DEMO-ahr-2021-009",
     "last_contact_at": "2026-10-02T06:55:00+07:00",
     "source": "phone",
     "original_message": null,
@@ -186,16 +236,21 @@
     "status": "new",
     "severity": "medium",
     "access_type": "walk_only",
-    "district": "Sai Mai",
-    "location": { "lat": 13.92, "lon": 100.655 },
-    "address_note": "Construction worker camp",
-    "needs": ["evacuation"],
+    "district": "Rech exercise zone 10",
+    "location": {
+      "lat": 50.5134789,
+      "lon": 7.0394271
+    },
+    "address_note": "Fictional exercise location 10 \u2014 not a surveyed address",
+    "needs": [
+      "evacuation"
+    ],
     "people_count": 6,
-    "reporter_language": "burmese",
-    "contact_phone": "+66000000010",
+    "reporter_language": "english",
+    "contact_phone": "DEMO-ahr-2021-010",
     "last_contact_at": "2026-10-02T07:02:00+07:00",
     "source": "sms",
-    "original_message": "ရေကြီးနေတယ်။ အကူအညီလိုတယ်။ လူ ၆ ယောက်",
+    "original_message": "SYNTHETIC Ahr Valley exercise: 6 people requesting evacuation.",
     "ai_extracted": true,
     "verified_by_human": false
   },
@@ -206,16 +261,22 @@
     "status": "verified",
     "severity": "high",
     "access_type": "boat_only",
-    "district": "Bang Phlat",
-    "location": { "lat": 13.793, "lon": 100.492 },
-    "address_note": "Riverside house by the Chao Phraya",
-    "needs": ["medical", "evacuation"],
+    "district": "Rech exercise zone 01",
+    "location": {
+      "lat": 50.5147289,
+      "lon": 7.0330272
+    },
+    "address_note": "Fictional exercise location 11 \u2014 not a surveyed address",
+    "needs": [
+      "medical",
+      "evacuation"
+    ],
     "people_count": 2,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000011",
+    "reporter_language": "german",
+    "contact_phone": "DEMO-ahr-2021-011",
     "last_contact_at": "2026-10-02T07:18:00+07:00",
     "source": "sms",
-    "original_message": "ภรรยาท้อง 8 เดือน น้ำท่วมถึงหน้าอก บางพลัด ริมเจ้าพระยา ต้องการเรือ",
+    "original_message": "SYNTHETIC Ahr Valley exercise: 2 people requesting medical, evacuation.",
     "ai_extracted": true,
     "verified_by_human": true
   },
@@ -226,16 +287,21 @@
     "status": "new",
     "severity": "medium",
     "access_type": "truck",
-    "district": "Taling Chan",
-    "location": { "lat": 13.777, "lon": 100.456 },
-    "address_note": "Near the floating market",
-    "needs": ["medication"],
+    "district": "Rech exercise zone 02",
+    "location": {
+      "lat": 50.5147289,
+      "lon": 7.0346272
+    },
+    "address_note": "Fictional exercise location 12 \u2014 not a surveyed address",
+    "needs": [
+      "medication"
+    ],
     "people_count": 1,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000012",
+    "reporter_language": "german",
+    "contact_phone": "DEMO-ahr-2021-012",
     "last_contact_at": "2026-10-02T07:15:00+07:00",
     "source": "sms",
-    "original_message": "ยายยาโรคหัวใจหมด ตลิ่งชัน ใกล้ตลาดน้ำ รถยังเข้าได้",
+    "original_message": "SYNTHETIC Ahr Valley exercise: 1 people requesting medication.",
     "ai_extracted": true,
     "verified_by_human": false
   },
@@ -246,16 +312,21 @@
     "status": "new",
     "severity": "low",
     "access_type": "truck",
-    "district": "Bang Kapi",
-    "location": { "lat": 13.768, "lon": 100.645 },
-    "address_note": "Condo, 3rd floor",
-    "needs": ["power"],
+    "district": "Rech exercise zone 03",
+    "location": {
+      "lat": 50.5147289,
+      "lon": 7.0362272
+    },
+    "address_note": "Fictional exercise location 13 \u2014 not a surveyed address",
+    "needs": [
+      "power"
+    ],
     "people_count": 2,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000013",
+    "reporter_language": "english",
+    "contact_phone": "DEMO-ahr-2021-013",
     "last_contact_at": "2026-10-02T07:25:00+07:00",
     "source": "sms",
-    "original_message": "ไฟดับมา 2 วันแล้ว บางกะปิ อยู่ 2 คน",
+    "original_message": "SYNTHETIC Ahr Valley exercise: 2 people requesting power.",
     "ai_extracted": true,
     "verified_by_human": false
   },
@@ -266,13 +337,18 @@
     "status": "verified",
     "severity": "medium",
     "access_type": "walk_only",
-    "district": "Phasi Charoen",
-    "location": { "lat": 13.722, "lon": 100.437 },
-    "address_note": "Community along Khlong Phasi Charoen",
-    "needs": ["food_water"],
+    "district": "Rech exercise zone 04",
+    "location": {
+      "lat": 50.5147289,
+      "lon": 7.0378272
+    },
+    "address_note": "Fictional exercise location 14 \u2014 not a surveyed address",
+    "needs": [
+      "food_water"
+    ],
     "people_count": 10,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000014",
+    "reporter_language": "german",
+    "contact_phone": "DEMO-ahr-2021-014",
     "last_contact_at": "2026-10-02T07:40:00+07:00",
     "source": "phone",
     "original_message": null,
@@ -286,13 +362,18 @@
     "status": "verified",
     "severity": "high",
     "access_type": "truck",
-    "district": "Lat Krabang",
-    "location": { "lat": 13.738, "lon": 100.76 },
-    "address_note": "Village gate, road still passable for high trucks",
-    "needs": ["evacuation"],
+    "district": "Rech exercise zone 05",
+    "location": {
+      "lat": 50.5147289,
+      "lon": 7.0394271
+    },
+    "address_note": "Fictional exercise location 15 \u2014 not a surveyed address",
+    "needs": [
+      "evacuation"
+    ],
     "people_count": 12,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000015",
+    "reporter_language": "german",
+    "contact_phone": "DEMO-ahr-2021-015",
     "last_contact_at": "2026-10-02T07:48:00+07:00",
     "source": "dispatcher",
     "original_message": null,
@@ -306,16 +387,21 @@
     "status": "new",
     "severity": "high",
     "access_type": "boat_only",
-    "district": "Bang Khun Thian",
-    "location": { "lat": 13.64, "lon": 100.42 },
-    "address_note": "Near Tha Kham, second floor",
-    "needs": ["rescue"],
+    "district": "Rech exercise zone 06",
+    "location": {
+      "lat": 50.5159789,
+      "lon": 7.0330272
+    },
+    "address_note": "Fictional exercise location 16 \u2014 not a surveyed address",
+    "needs": [
+      "rescue"
+    ],
     "people_count": 4,
     "reporter_language": "english",
-    "contact_phone": "+66000000016",
+    "contact_phone": "DEMO-ahr-2021-016",
     "last_contact_at": "2026-10-02T07:40:00+07:00",
     "source": "sms",
-    "original_message": "Help, 4 of us stuck on second floor, water still rising, Bang Khun Thian near Tha Kham. We don't speak Thai.",
+    "original_message": "SYNTHETIC Ahr Valley exercise: 4 people requesting rescue.",
     "ai_extracted": true,
     "verified_by_human": false
   },
@@ -326,13 +412,18 @@
     "status": "cancelled",
     "severity": "low",
     "access_type": "truck",
-    "district": "Nong Chok",
-    "location": { "lat": 13.83, "lon": 100.835 },
-    "address_note": "Duplicate of an earlier phone report",
-    "needs": ["food_water"],
+    "district": "Rech exercise zone 07",
+    "location": {
+      "lat": 50.5159789,
+      "lon": 7.0346272
+    },
+    "address_note": "Fictional exercise location 17 \u2014 not a surveyed address",
+    "needs": [
+      "food_water"
+    ],
     "people_count": 3,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000017",
+    "reporter_language": "german",
+    "contact_phone": "DEMO-ahr-2021-017",
     "last_contact_at": "2026-10-02T07:58:00+07:00",
     "source": "phone",
     "original_message": null,
@@ -346,16 +437,21 @@
     "status": "new",
     "severity": "medium",
     "access_type": "walk_only",
-    "district": "Don Mueang",
-    "location": { "lat": 13.93, "lon": 100.6 },
-    "address_note": "Soi off Song Prapha Road",
-    "needs": ["medical"],
+    "district": "Rech exercise zone 08",
+    "location": {
+      "lat": 50.5159789,
+      "lon": 7.0362272
+    },
+    "address_note": "Fictional exercise location 18 \u2014 not a surveyed address",
+    "needs": [
+      "medical"
+    ],
     "people_count": 1,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000018",
+    "reporter_language": "german",
+    "contact_phone": "DEMO-ahr-2021-018",
     "last_contact_at": "2026-10-02T07:55:00+07:00",
     "source": "sms",
-    "original_message": "ขาถูกเศษกระจกบาด เลือดออก ดอนเมือง เดินลุยน้ำได้แต่รถเข้าไม่ได้",
+    "original_message": "SYNTHETIC Ahr Valley exercise: 1 people requesting medical.",
     "ai_extracted": true,
     "verified_by_human": false
   },
@@ -366,13 +462,19 @@
     "status": "verified",
     "severity": "high",
     "access_type": "boat_only",
-    "district": "Min Buri",
-    "location": { "lat": 13.798, "lon": 100.74 },
-    "address_note": "Single-storey house, ground floor flooded",
-    "needs": ["evacuation", "medication"],
+    "district": "Rech exercise zone 09",
+    "location": {
+      "lat": 50.5159789,
+      "lon": 7.0378272
+    },
+    "address_note": "Fictional exercise location 19 \u2014 not a surveyed address",
+    "needs": [
+      "evacuation",
+      "medication"
+    ],
     "people_count": 5,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000019",
+    "reporter_language": "english",
+    "contact_phone": "DEMO-ahr-2021-019",
     "last_contact_at": "2026-10-02T08:12:00+07:00",
     "source": "phone",
     "original_message": null,
@@ -386,16 +488,22 @@
     "status": "new",
     "severity": "low",
     "access_type": "walk_only",
-    "district": "Sai Mai",
-    "location": { "lat": 13.895, "lon": 100.68 },
-    "address_note": "Village near Sai Mai Road",
-    "needs": ["food_water", "power"],
+    "district": "Rech exercise zone 10",
+    "location": {
+      "lat": 50.5159789,
+      "lon": 7.0394271
+    },
+    "address_note": "Fictional exercise location 20 \u2014 not a surveyed address",
+    "needs": [
+      "food_water",
+      "power"
+    ],
     "people_count": 4,
-    "reporter_language": "thai",
-    "contact_phone": "+66000000020",
+    "reporter_language": "german",
+    "contact_phone": "DEMO-ahr-2021-020",
     "last_contact_at": "2026-10-02T08:10:00+07:00",
     "source": "sms",
-    "original_message": "อาหารกับน้ำดื่มใกล้หมด ไฟดับ สายไหม อยู่ 4 คน",
+    "original_message": "SYNTHETIC Ahr Valley exercise: 4 people requesting food_water, power.",
     "ai_extracted": true,
     "verified_by_human": false
   }

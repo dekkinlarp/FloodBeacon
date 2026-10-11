@@ -189,7 +189,7 @@ describe('rule: a busy team cannot be assigned again until recalled', () => {
   it('refuses a team that has an active assignment', () => {
     const s = ok(assignTeam(initialState(), 'INC-005', 'TEAM-01', ctx));
     const r = assignTeam(s, 'INC-001', 'TEAM-01', ctx); // also blocked by access; check busy reason
-    expect(!r.ok && r.reasons).toContainEqual('Truck 1 is already assigned to INC-005. Recall it first.');
+    expect(!r.ok && r.reasons).toContainEqual('Rech Truck 1 is already assigned to INC-005. Recall it first.');
   });
 
   it('refuses a busy team even as a backup on another incident', () => {
@@ -202,11 +202,11 @@ describe('rule: a busy team cannot be assigned again until recalled', () => {
   it('refuses a team that is resting, off duty or returning', () => {
     const s = initialState();
     expect(canAssign(s, incident(s, 'INC-005'), team(s, 'TEAM-06'), ctx.now).reasons).toContainEqual(
-      'Truck 2 is off duty, not available.',
+      'Rech Truck 2 is off duty, not available.',
     );
     const v = ok(updateIncidentStatus(s, 'INC-003', 'verified', ctx));
     expect(canAssign(v, incident(v, 'INC-003'), team(v, 'TEAM-05'), ctx.now).reasons).toContainEqual(
-      'Walking Team 1 is resting, not available.',
+      'Rech Walking Team 1 is resting, not available.',
     );
   });
 
@@ -302,7 +302,7 @@ describe('access fit (blocking)', () => {
 
   it('refuses a truck for a boat-only incident', () => {
     const r = assignTeam(initialState(), 'INC-001', 'TEAM-01', ctx);
-    expect(!r.ok && r.reasons).toEqual(['Truck 1 (truck) cannot reach boat only incidents.']);
+    expect(!r.ok && r.reasons).toEqual(['Rech Truck 1 (truck) cannot reach boat only incidents.']);
   });
 });
 
@@ -397,7 +397,7 @@ describe('fatigue limit blocks new assignments', () => {
     const at = (h: number) => new Date(ctx.now.getTime() - h * 3_600_000).toISOString();
     const tired = { ...base, on_duty_since: at(16.5) };
     expect(canAssign({ ...s, teams: [tired] }, inc, tired, ctx.now).reasons).toEqual([
-      'Truck 1 has been on duty more than 16 hours. Rest first.',
+      'Rech Truck 1 has been on duty more than 16 hours. Rest first.',
     ]);
     const limit = { ...base, on_duty_since: at(16) };
     expect(canAssign({ ...s, teams: [limit] }, inc, limit, ctx.now).ok).toBe(true);
@@ -469,7 +469,7 @@ describe('changeRoute and alerts', () => {
   });
 
   it('describes the default route as one direct leg by the team vehicle', () => {
-    expect(routeFor(initialState(), 'TEAM-02', 'INC-001')!.legs).toEqual([{ mode: 'boat', minutes: 327 }]);
+    expect(routeFor(initialState(), 'TEAM-02', 'INC-001')!.legs).toEqual([{ mode: 'boat', minutes: 17 }]);
     expect(describeLegs([{ mode: 'truck', minutes: 25.4 }])).toBe('truck 25 min');
   });
 

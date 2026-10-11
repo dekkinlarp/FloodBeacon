@@ -1,0 +1,1608 @@
+{
+  "incidents": [
+    {
+      "id": "INC-001",
+      "created_at": "2026-10-02T05:12:00+07:00",
+      "updated_at": "2026-10-02T05:30:00+07:00",
+      "status": "verified",
+      "severity": "critical",
+      "access_type": "boat_only",
+      "district": "Syabrubesi exercise zone 01",
+      "location": {
+        "lat": 28.1635875,
+        "lon": 85.3394
+      },
+      "address_note": "Fictional exercise location 1 \u2014 not a surveyed address",
+      "needs": [
+        "medical",
+        "evacuation"
+      ],
+      "people_count": 2,
+      "reporter_language": "english",
+      "contact_phone": "DEMO-nepal-2026-001",
+      "last_contact_at": "2026-10-02T05:28:00+07:00",
+      "source": "sms",
+      "original_message": "SYNTHETIC Syabrubesi exercise: 2 people requesting medical, evacuation.",
+      "ai_extracted": true,
+      "verified_by_human": true
+    },
+    {
+      "id": "INC-002",
+      "created_at": "2026-10-02T05:40:00+07:00",
+      "updated_at": "2026-10-02T05:52:00+07:00",
+      "status": "verified",
+      "severity": "critical",
+      "access_type": "boat_only",
+      "district": "Syabrubesi exercise zone 02",
+      "location": {
+        "lat": 28.1635875,
+        "lon": 85.3402
+      },
+      "address_note": "Fictional exercise location 2 \u2014 not a surveyed address",
+      "needs": [
+        "medical",
+        "rescue"
+      ],
+      "people_count": 3,
+      "reporter_language": "nepali",
+      "contact_phone": "DEMO-nepal-2026-002",
+      "last_contact_at": "2026-10-02T05:50:00+07:00",
+      "source": "phone",
+      "original_message": null,
+      "ai_extracted": false,
+      "verified_by_human": true
+    },
+    {
+      "id": "INC-003",
+      "created_at": "2026-10-02T06:05:00+07:00",
+      "updated_at": "2026-10-02T06:05:00+07:00",
+      "status": "new",
+      "severity": "high",
+      "access_type": "walk_only",
+      "district": "Syabrubesi exercise zone 03",
+      "location": {
+        "lat": 28.1635875,
+        "lon": 85.341
+      },
+      "address_note": "Fictional exercise location 3 \u2014 not a surveyed address",
+      "needs": [
+        "rescue"
+      ],
+      "people_count": 5,
+      "reporter_language": "nepali",
+      "contact_phone": "DEMO-nepal-2026-003",
+      "last_contact_at": "2026-10-02T06:05:00+07:00",
+      "source": "sms",
+      "original_message": "SYNTHETIC Syabrubesi exercise: 5 people requesting rescue.",
+      "ai_extracted": true,
+      "verified_by_human": false
+    },
+    {
+      "id": "INC-004",
+      "created_at": "2026-10-02T06:10:00+07:00",
+      "updated_at": "2026-10-02T06:25:00+07:00",
+      "status": "verified",
+      "severity": "high",
+      "access_type": "boat_only",
+      "district": "Syabrubesi exercise zone 04",
+      "location": {
+        "lat": 28.1635875,
+        "lon": 85.3418
+      },
+      "address_note": "Fictional exercise location 4 \u2014 not a surveyed address",
+      "needs": [
+        "evacuation",
+        "food_water"
+      ],
+      "people_count": 8,
+      "reporter_language": "english",
+      "contact_phone": "DEMO-nepal-2026-004",
+      "last_contact_at": "2026-10-02T06:20:00+07:00",
+      "source": "sms",
+      "original_message": "SYNTHETIC Syabrubesi exercise: 8 people requesting evacuation, food_water.",
+      "ai_extracted": true,
+      "verified_by_human": true
+    },
+    {
+      "id": "INC-005",
+      "created_at": "2026-10-02T06:15:00+07:00",
+      "updated_at": "2026-10-02T06:15:00+07:00",
+      "status": "verified",
+      "severity": "medium",
+      "access_type": "truck",
+      "district": "Syabrubesi exercise zone 05",
+      "location": {
+        "lat": 28.1635875,
+        "lon": 85.3426
+      },
+      "address_note": "Fictional exercise location 5 \u2014 not a surveyed address",
+      "needs": [
+        "food_water"
+      ],
+      "people_count": 4,
+      "reporter_language": "nepali",
+      "contact_phone": "DEMO-nepal-2026-005",
+      "last_contact_at": "2026-10-02T06:15:00+07:00",
+      "source": "dispatcher",
+      "original_message": null,
+      "ai_extracted": false,
+      "verified_by_human": true
+    },
+    {
+      "id": "INC-006",
+      "created_at": "2026-10-02T06:22:00+07:00",
+      "updated_at": "2026-10-02T06:22:00+07:00",
+      "status": "new",
+      "severity": "high",
+      "access_type": "boat_only",
+      "district": "Syabrubesi exercise zone 06",
+      "location": {
+        "lat": 28.1644625,
+        "lon": 85.3394
+      },
+      "address_note": "Fictional exercise location 6 \u2014 not a surveyed address",
+      "needs": [
+        "medication",
+        "evacuation"
+      ],
+      "people_count": 3,
+      "reporter_language": "nepali",
+      "contact_phone": "DEMO-nepal-2026-006",
+      "last_contact_at": "2026-10-02T06:22:00+07:00",
+      "source": "sms",
+      "original_message": "SYNTHETIC Syabrubesi exercise: 3 people requesting medication, evacuation.",
+      "ai_extracted": true,
+      "verified_by_human": false
+    },
+    {
+      "id": "INC-007",
+      "created_at": "2026-10-02T06:30:00+07:00",
+      "updated_at": "2026-10-02T06:40:00+07:00",
+      "status": "verified",
+      "severity": "medium",
+      "access_type": "truck",
+      "district": "Syabrubesi exercise zone 07",
+      "location": {
+        "lat": 28.1644625,
+        "lon": 85.3402
+      },
+      "address_note": "Fictional exercise location 7 \u2014 not a surveyed address",
+      "needs": [
+        "power",
+        "food_water"
+      ],
+      "people_count": 3,
+      "reporter_language": "english",
+      "contact_phone": "DEMO-nepal-2026-007",
+      "last_contact_at": "2026-10-02T06:40:00+07:00",
+      "source": "phone",
+      "original_message": null,
+      "ai_extracted": false,
+      "verified_by_human": true
+    },
+    {
+      "id": "INC-008",
+      "created_at": "2026-10-02T06:45:00+07:00",
+      "updated_at": "2026-10-02T06:45:00+07:00",
+      "status": "verified",
+      "severity": "low",
+      "access_type": "truck",
+      "district": "Syabrubesi exercise zone 08",
+      "location": {
+        "lat": 28.1644625,
+        "lon": 85.341
+      },
+      "address_note": "Fictional exercise location 8 \u2014 not a surveyed address",
+      "needs": [
+        "food_water"
+      ],
+      "people_count": 2,
+      "reporter_language": "nepali",
+      "contact_phone": "DEMO-nepal-2026-008",
+      "last_contact_at": "2026-10-02T06:45:00+07:00",
+      "source": "field",
+      "original_message": null,
+      "ai_extracted": false,
+      "verified_by_human": true
+    },
+    {
+      "id": "INC-009",
+      "created_at": "2026-10-02T06:50:00+07:00",
+      "updated_at": "2026-10-02T06:58:00+07:00",
+      "status": "verified",
+      "severity": "critical",
+      "access_type": "walk_only",
+      "district": "Syabrubesi exercise zone 09",
+      "location": {
+        "lat": 28.1644625,
+        "lon": 85.3418
+      },
+      "address_note": "Fictional exercise location 9 \u2014 not a surveyed address",
+      "needs": [
+        "rescue"
+      ],
+      "people_count": 3,
+      "reporter_language": "nepali",
+      "contact_phone": "DEMO-nepal-2026-009",
+      "last_contact_at": "2026-10-02T06:55:00+07:00",
+      "source": "phone",
+      "original_message": null,
+      "ai_extracted": false,
+      "verified_by_human": true
+    },
+    {
+      "id": "INC-010",
+      "created_at": "2026-10-02T07:02:00+07:00",
+      "updated_at": "2026-10-02T07:02:00+07:00",
+      "status": "new",
+      "severity": "medium",
+      "access_type": "walk_only",
+      "district": "Syabrubesi exercise zone 10",
+      "location": {
+        "lat": 28.1644625,
+        "lon": 85.3426
+      },
+      "address_note": "Fictional exercise location 10 \u2014 not a surveyed address",
+      "needs": [
+        "evacuation"
+      ],
+      "people_count": 6,
+      "reporter_language": "english",
+      "contact_phone": "DEMO-nepal-2026-010",
+      "last_contact_at": "2026-10-02T07:02:00+07:00",
+      "source": "sms",
+      "original_message": "SYNTHETIC Syabrubesi exercise: 6 people requesting evacuation.",
+      "ai_extracted": true,
+      "verified_by_human": false
+    },
+    {
+      "id": "INC-011",
+      "created_at": "2026-10-02T07:10:00+07:00",
+      "updated_at": "2026-10-02T07:20:00+07:00",
+      "status": "verified",
+      "severity": "high",
+      "access_type": "boat_only",
+      "district": "Syabrubesi exercise zone 01",
+      "location": {
+        "lat": 28.1653375,
+        "lon": 85.3394
+      },
+      "address_note": "Fictional exercise location 11 \u2014 not a surveyed address",
+      "needs": [
+        "medical",
+        "evacuation"
+      ],
+      "people_count": 2,
+      "reporter_language": "nepali",
+      "contact_phone": "DEMO-nepal-2026-011",
+      "last_contact_at": "2026-10-02T07:18:00+07:00",
+      "source": "sms",
+      "original_message": "SYNTHETIC Syabrubesi exercise: 2 people requesting medical, evacuation.",
+      "ai_extracted": true,
+      "verified_by_human": true
+    },
+    {
+      "id": "INC-012",
+      "created_at": "2026-10-02T07:15:00+07:00",
+      "updated_at": "2026-10-02T07:15:00+07:00",
+      "status": "new",
+      "severity": "medium",
+      "access_type": "truck",
+      "district": "Syabrubesi exercise zone 02",
+      "location": {
+        "lat": 28.1653375,
+        "lon": 85.3402
+      },
+      "address_note": "Fictional exercise location 12 \u2014 not a surveyed address",
+      "needs": [
+        "medication"
+      ],
+      "people_count": 1,
+      "reporter_language": "nepali",
+      "contact_phone": "DEMO-nepal-2026-012",
+      "last_contact_at": "2026-10-02T07:15:00+07:00",
+      "source": "sms",
+      "original_message": "SYNTHETIC Syabrubesi exercise: 1 people requesting medication.",
+      "ai_extracted": true,
+      "verified_by_human": false
+    },
+    {
+      "id": "INC-013",
+      "created_at": "2026-10-02T07:25:00+07:00",
+      "updated_at": "2026-10-02T07:25:00+07:00",
+      "status": "new",
+      "severity": "low",
+      "access_type": "truck",
+      "district": "Syabrubesi exercise zone 03",
+      "location": {
+        "lat": 28.1653375,
+        "lon": 85.341
+      },
+      "address_note": "Fictional exercise location 13 \u2014 not a surveyed address",
+      "needs": [
+        "power"
+      ],
+      "people_count": 2,
+      "reporter_language": "english",
+      "contact_phone": "DEMO-nepal-2026-013",
+      "last_contact_at": "2026-10-02T07:25:00+07:00",
+      "source": "sms",
+      "original_message": "SYNTHETIC Syabrubesi exercise: 2 people requesting power.",
+      "ai_extracted": true,
+      "verified_by_human": false
+    },
+    {
+      "id": "INC-014",
+      "created_at": "2026-10-02T07:30:00+07:00",
+      "updated_at": "2026-10-02T07:45:00+07:00",
+      "status": "verified",
+      "severity": "medium",
+      "access_type": "walk_only",
+      "district": "Syabrubesi exercise zone 04",
+      "location": {
+        "lat": 28.1653375,
+        "lon": 85.3418
+      },
+      "address_note": "Fictional exercise location 14 \u2014 not a surveyed address",
+      "needs": [
+        "food_water"
+      ],
+      "people_count": 10,
+      "reporter_language": "nepali",
+      "contact_phone": "DEMO-nepal-2026-014",
+      "last_contact_at": "2026-10-02T07:40:00+07:00",
+      "source": "phone",
+      "original_message": null,
+      "ai_extracted": false,
+      "verified_by_human": true
+    },
+    {
+      "id": "INC-015",
+      "created_at": "2026-10-02T07:35:00+07:00",
+      "updated_at": "2026-10-02T07:50:00+07:00",
+      "status": "verified",
+      "severity": "high",
+      "access_type": "truck",
+      "district": "Syabrubesi exercise zone 05",
+      "location": {
+        "lat": 28.1653375,
+        "lon": 85.3426
+      },
+      "address_note": "Fictional exercise location 15 \u2014 not a surveyed address",
+      "needs": [
+        "evacuation"
+      ],
+      "people_count": 12,
+      "reporter_language": "nepali",
+      "contact_phone": "DEMO-nepal-2026-015",
+      "last_contact_at": "2026-10-02T07:48:00+07:00",
+      "source": "dispatcher",
+      "original_message": null,
+      "ai_extracted": false,
+      "verified_by_human": true
+    },
+    {
+      "id": "INC-016",
+      "created_at": "2026-10-02T07:40:00+07:00",
+      "updated_at": "2026-10-02T07:40:00+07:00",
+      "status": "new",
+      "severity": "high",
+      "access_type": "boat_only",
+      "district": "Syabrubesi exercise zone 06",
+      "location": {
+        "lat": 28.1662125,
+        "lon": 85.3394
+      },
+      "address_note": "Fictional exercise location 16 \u2014 not a surveyed address",
+      "needs": [
+        "rescue"
+      ],
+      "people_count": 4,
+      "reporter_language": "english",
+      "contact_phone": "DEMO-nepal-2026-016",
+      "last_contact_at": "2026-10-02T07:40:00+07:00",
+      "source": "sms",
+      "original_message": "SYNTHETIC Syabrubesi exercise: 4 people requesting rescue.",
+      "ai_extracted": true,
+      "verified_by_human": false
+    },
+    {
+      "id": "INC-017",
+      "created_at": "2026-10-02T07:45:00+07:00",
+      "updated_at": "2026-10-02T08:00:00+07:00",
+      "status": "cancelled",
+      "severity": "low",
+      "access_type": "truck",
+      "district": "Syabrubesi exercise zone 07",
+      "location": {
+        "lat": 28.1662125,
+        "lon": 85.3402
+      },
+      "address_note": "Fictional exercise location 17 \u2014 not a surveyed address",
+      "needs": [
+        "food_water"
+      ],
+      "people_count": 3,
+      "reporter_language": "nepali",
+      "contact_phone": "DEMO-nepal-2026-017",
+      "last_contact_at": "2026-10-02T07:58:00+07:00",
+      "source": "phone",
+      "original_message": null,
+      "ai_extracted": false,
+      "verified_by_human": true
+    },
+    {
+      "id": "INC-018",
+      "created_at": "2026-10-02T07:55:00+07:00",
+      "updated_at": "2026-10-02T07:55:00+07:00",
+      "status": "new",
+      "severity": "medium",
+      "access_type": "walk_only",
+      "district": "Syabrubesi exercise zone 08",
+      "location": {
+        "lat": 28.1662125,
+        "lon": 85.341
+      },
+      "address_note": "Fictional exercise location 18 \u2014 not a surveyed address",
+      "needs": [
+        "medical"
+      ],
+      "people_count": 1,
+      "reporter_language": "nepali",
+      "contact_phone": "DEMO-nepal-2026-018",
+      "last_contact_at": "2026-10-02T07:55:00+07:00",
+      "source": "sms",
+      "original_message": "SYNTHETIC Syabrubesi exercise: 1 people requesting medical.",
+      "ai_extracted": true,
+      "verified_by_human": false
+    },
+    {
+      "id": "INC-019",
+      "created_at": "2026-10-02T08:05:00+07:00",
+      "updated_at": "2026-10-02T08:15:00+07:00",
+      "status": "verified",
+      "severity": "high",
+      "access_type": "boat_only",
+      "district": "Syabrubesi exercise zone 09",
+      "location": {
+        "lat": 28.1662125,
+        "lon": 85.3418
+      },
+      "address_note": "Fictional exercise location 19 \u2014 not a surveyed address",
+      "needs": [
+        "evacuation",
+        "medication"
+      ],
+      "people_count": 5,
+      "reporter_language": "english",
+      "contact_phone": "DEMO-nepal-2026-019",
+      "last_contact_at": "2026-10-02T08:12:00+07:00",
+      "source": "phone",
+      "original_message": null,
+      "ai_extracted": false,
+      "verified_by_human": true
+    },
+    {
+      "id": "INC-020",
+      "created_at": "2026-10-02T08:10:00+07:00",
+      "updated_at": "2026-10-02T08:10:00+07:00",
+      "status": "new",
+      "severity": "low",
+      "access_type": "walk_only",
+      "district": "Syabrubesi exercise zone 10",
+      "location": {
+        "lat": 28.1662125,
+        "lon": 85.3426
+      },
+      "address_note": "Fictional exercise location 20 \u2014 not a surveyed address",
+      "needs": [
+        "food_water",
+        "power"
+      ],
+      "people_count": 4,
+      "reporter_language": "nepali",
+      "contact_phone": "DEMO-nepal-2026-020",
+      "last_contact_at": "2026-10-02T08:10:00+07:00",
+      "source": "sms",
+      "original_message": "SYNTHETIC Syabrubesi exercise: 4 people requesting food_water, power.",
+      "ai_extracted": true,
+      "verified_by_human": false
+    }
+  ],
+  "teams": [
+    {
+      "id": "TEAM-01",
+      "name": "Syabrubesi Truck 1",
+      "status": "available",
+      "vehicle": "truck",
+      "skills": [
+        "first_aid"
+      ],
+      "languages": [
+        "nepali",
+        "english"
+      ],
+      "members_count": 4,
+      "carry_capacity": 10,
+      "equipment": [
+        "first aid kit",
+        "life jackets",
+        "tow rope"
+      ],
+      "base_location": {
+        "lat": 28.1644625,
+        "lon": 85.3394
+      },
+      "current_location": {
+        "lat": 28.1644625,
+        "lon": 85.3394
+      },
+      "on_duty_since": "2026-10-02T04:00:00+07:00",
+      "last_check_in_at": "2026-10-02T08:00:00+07:00"
+    },
+    {
+      "id": "TEAM-02",
+      "name": "Syabrubesi Flat Boat 1",
+      "status": "available",
+      "vehicle": "flat_boat",
+      "skills": [
+        "boat_operator",
+        "swimmer",
+        "first_aid"
+      ],
+      "languages": [
+        "nepali",
+        "english"
+      ],
+      "members_count": 4,
+      "carry_capacity": 8,
+      "equipment": [
+        "life jackets",
+        "throw bag",
+        "stretcher",
+        "first aid kit"
+      ],
+      "base_location": {
+        "lat": 28.1644625,
+        "lon": 85.3402
+      },
+      "current_location": {
+        "lat": 28.1644625,
+        "lon": 85.3402
+      },
+      "on_duty_since": "2026-10-02T05:00:00+07:00",
+      "last_check_in_at": "2026-10-02T08:05:00+07:00"
+    },
+    {
+      "id": "TEAM-03",
+      "name": "Syabrubesi Flat Boat 2",
+      "status": "available",
+      "vehicle": "flat_boat",
+      "skills": [
+        "boat_operator",
+        "swimmer"
+      ],
+      "languages": [
+        "nepali",
+        "english"
+      ],
+      "members_count": 3,
+      "carry_capacity": 8,
+      "equipment": [
+        "life jackets",
+        "throw bag"
+      ],
+      "base_location": {
+        "lat": 28.1644625,
+        "lon": 85.341
+      },
+      "current_location": {
+        "lat": 28.1644625,
+        "lon": 85.341
+      },
+      "on_duty_since": "2026-10-01T20:00:00+07:00",
+      "last_check_in_at": "2026-10-02T06:30:00+07:00"
+    },
+    {
+      "id": "TEAM-04",
+      "name": "Syabrubesi Kayak 1",
+      "status": "available",
+      "vehicle": "kayak",
+      "skills": [
+        "boat_operator",
+        "swimmer"
+      ],
+      "languages": [
+        "nepali",
+        "english"
+      ],
+      "members_count": 2,
+      "carry_capacity": 1,
+      "equipment": [
+        "life jackets",
+        "throw bag",
+        "headlamps"
+      ],
+      "base_location": {
+        "lat": 28.1644625,
+        "lon": 85.3418
+      },
+      "current_location": {
+        "lat": 28.1644625,
+        "lon": 85.3418
+      },
+      "on_duty_since": "2026-10-02T06:00:00+07:00",
+      "last_check_in_at": "2026-10-02T07:55:00+07:00"
+    },
+    {
+      "id": "TEAM-05",
+      "name": "Syabrubesi Walking Team 1",
+      "status": "resting",
+      "vehicle": "on_foot",
+      "skills": [
+        "first_aid",
+        "swimmer"
+      ],
+      "languages": [
+        "nepali",
+        "english"
+      ],
+      "members_count": 3,
+      "carry_capacity": 0,
+      "equipment": [
+        "first aid kit",
+        "wading poles",
+        "headlamps"
+      ],
+      "base_location": {
+        "lat": 28.1644625,
+        "lon": 85.3426
+      },
+      "current_location": {
+        "lat": 28.1644625,
+        "lon": 85.3426
+      },
+      "on_duty_since": "2026-10-02T02:00:00+07:00",
+      "last_check_in_at": "2026-10-02T07:00:00+07:00"
+    },
+    {
+      "id": "TEAM-06",
+      "name": "Syabrubesi Truck 2",
+      "status": "off_duty",
+      "vehicle": "truck",
+      "skills": [
+        "first_aid"
+      ],
+      "languages": [
+        "nepali",
+        "english"
+      ],
+      "members_count": 5,
+      "carry_capacity": 12,
+      "equipment": [
+        "first aid kit",
+        "drinking water",
+        "stretcher"
+      ],
+      "base_location": {
+        "lat": 28.1653375,
+        "lon": 85.3394
+      },
+      "current_location": {
+        "lat": 28.1653375,
+        "lon": 85.3394
+      },
+      "on_duty_since": null,
+      "last_check_in_at": null
+    }
+  ],
+  "health": [
+    {
+      "incident_id": "INC-001",
+      "priority": "critical",
+      "medical_needs": [
+        "dialysis",
+        "mobility"
+      ],
+      "mobility": "assisted",
+      "vulnerable": {
+        "elderly": 1,
+        "children": 0,
+        "pregnant": 0,
+        "disabled": 0
+      },
+      "injuries": [],
+      "supplies_left": "Missed today's dialysis session",
+      "notes": "SYNTHETIC exercise medical record. Woman, 67. Hemodialysis 3x/week; today's session missed. Needs transfer to a dialysis unit today.",
+      "ai_extracted": true,
+      "verified_by_human": true,
+      "updated_at": "2026-10-02T05:30:00+07:00"
+    },
+    {
+      "incident_id": "INC-002",
+      "priority": "critical",
+      "medical_needs": [
+        "oxygen",
+        "mobility"
+      ],
+      "mobility": "bedridden",
+      "vulnerable": {
+        "elderly": 1,
+        "children": 0,
+        "pregnant": 0,
+        "disabled": 1
+      },
+      "injuries": [],
+      "supplies_left": "Backup oxygen cylinder, a few hours left",
+      "notes": "SYNTHETIC exercise medical record. Man, 81, bedridden, home oxygen concentrator. Power out, backup cylinder running low.",
+      "ai_extracted": false,
+      "verified_by_human": true,
+      "updated_at": "2026-10-02T05:52:00+07:00"
+    },
+    {
+      "incident_id": "INC-006",
+      "priority": "high",
+      "medical_needs": [
+        "insulin"
+      ],
+      "mobility": "independent",
+      "vulnerable": {
+        "elderly": 0,
+        "children": 0,
+        "pregnant": 0,
+        "disabled": 0
+      },
+      "injuries": [],
+      "supplies_left": "About 1 day of insulin",
+      "notes": "SYNTHETIC exercise medical record. Man, 58, type 1 diabetes. About one day of insulin left.",
+      "ai_extracted": true,
+      "verified_by_human": false,
+      "updated_at": "2026-10-02T06:22:00+07:00"
+    },
+    {
+      "incident_id": "INC-011",
+      "priority": "high",
+      "medical_needs": [
+        "pregnancy"
+      ],
+      "mobility": "assisted",
+      "vulnerable": {
+        "elderly": 0,
+        "children": 0,
+        "pregnant": 1,
+        "disabled": 0
+      },
+      "injuries": [],
+      "supplies_left": null,
+      "notes": "SYNTHETIC exercise medical record. Woman, about 8 months pregnant (per SMS). No complications reported yet.",
+      "ai_extracted": true,
+      "verified_by_human": true,
+      "updated_at": "2026-10-02T07:20:00+07:00"
+    },
+    {
+      "incident_id": "INC-012",
+      "priority": "medium",
+      "medical_needs": [
+        "mobility"
+      ],
+      "mobility": "assisted",
+      "vulnerable": {
+        "elderly": 1,
+        "children": 0,
+        "pregnant": 0,
+        "disabled": 0
+      },
+      "injuries": [],
+      "supplies_left": "Out of heart medication since yesterday",
+      "notes": "SYNTHETIC exercise medical record. Woman, 79. Out of regular heart medication since yesterday.",
+      "ai_extracted": true,
+      "verified_by_human": false,
+      "updated_at": "2026-10-02T07:15:00+07:00"
+    },
+    {
+      "incident_id": "INC-018",
+      "priority": "medium",
+      "medical_needs": [
+        "injury"
+      ],
+      "mobility": "assisted",
+      "vulnerable": {
+        "elderly": 0,
+        "children": 0,
+        "pregnant": 0,
+        "disabled": 0
+      },
+      "injuries": [
+        "Cut on lower leg from glass, bleeding"
+      ],
+      "supplies_left": null,
+      "notes": "SYNTHETIC exercise medical record. Laceration on lower leg from glass, bleeding. Walked through floodwater.",
+      "ai_extracted": true,
+      "verified_by_human": false,
+      "updated_at": "2026-10-02T07:55:00+07:00"
+    },
+    {
+      "incident_id": "INC-019",
+      "priority": "high",
+      "medical_needs": [
+        "mobility"
+      ],
+      "mobility": "bedridden",
+      "vulnerable": {
+        "elderly": 1,
+        "children": 2,
+        "pregnant": 0,
+        "disabled": 1
+      },
+      "injuries": [],
+      "supplies_left": "Food and water for about 1 day",
+      "notes": "SYNTHETIC exercise medical record. Bedridden elderly woman after stroke. Family of 5, ground floor flooded.",
+      "ai_extracted": false,
+      "verified_by_human": true,
+      "updated_at": "2026-10-02T08:15:00+07:00"
+    }
+  ],
+  "travelTimes": [
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-001",
+      "minutes": 14
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-002",
+      "minutes": 15
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-003",
+      "minutes": 16
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-004",
+      "minutes": 17
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-005",
+      "minutes": 18
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-006",
+      "minutes": 19
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-007",
+      "minutes": 20
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-008",
+      "minutes": 21
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-009",
+      "minutes": 22
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-010",
+      "minutes": 23
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-011",
+      "minutes": 24
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-012",
+      "minutes": 13
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-013",
+      "minutes": 14
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-014",
+      "minutes": 15
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-015",
+      "minutes": 16
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-016",
+      "minutes": 17
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-017",
+      "minutes": 18
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-018",
+      "minutes": 19
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-019",
+      "minutes": 20
+    },
+    {
+      "team_id": "TEAM-01",
+      "incident_id": "INC-020",
+      "minutes": 21
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-001",
+      "minutes": 17
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-002",
+      "minutes": 18
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-003",
+      "minutes": 19
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-004",
+      "minutes": 20
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-005",
+      "minutes": 21
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-006",
+      "minutes": 22
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-007",
+      "minutes": 23
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-008",
+      "minutes": 24
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-009",
+      "minutes": 25
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-010",
+      "minutes": 26
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-011",
+      "minutes": 27
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-012",
+      "minutes": 16
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-013",
+      "minutes": 17
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-014",
+      "minutes": 18
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-015",
+      "minutes": 19
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-016",
+      "minutes": 20
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-017",
+      "minutes": 21
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-018",
+      "minutes": 22
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-019",
+      "minutes": 23
+    },
+    {
+      "team_id": "TEAM-02",
+      "incident_id": "INC-020",
+      "minutes": 24
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-001",
+      "minutes": 20
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-002",
+      "minutes": 21
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-003",
+      "minutes": 22
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-004",
+      "minutes": 23
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-005",
+      "minutes": 24
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-006",
+      "minutes": 25
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-007",
+      "minutes": 26
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-008",
+      "minutes": 27
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-009",
+      "minutes": 28
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-010",
+      "minutes": 29
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-011",
+      "minutes": 30
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-012",
+      "minutes": 19
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-013",
+      "minutes": 20
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-014",
+      "minutes": 21
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-015",
+      "minutes": 22
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-016",
+      "minutes": 23
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-017",
+      "minutes": 24
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-018",
+      "minutes": 25
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-019",
+      "minutes": 26
+    },
+    {
+      "team_id": "TEAM-03",
+      "incident_id": "INC-020",
+      "minutes": 27
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-001",
+      "minutes": 23
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-002",
+      "minutes": 24
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-003",
+      "minutes": 25
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-004",
+      "minutes": 26
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-005",
+      "minutes": 27
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-006",
+      "minutes": 28
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-007",
+      "minutes": 29
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-008",
+      "minutes": 30
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-009",
+      "minutes": 31
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-010",
+      "minutes": 32
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-011",
+      "minutes": 33
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-012",
+      "minutes": 22
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-013",
+      "minutes": 23
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-014",
+      "minutes": 24
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-015",
+      "minutes": 25
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-016",
+      "minutes": 26
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-017",
+      "minutes": 27
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-018",
+      "minutes": 28
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-019",
+      "minutes": 29
+    },
+    {
+      "team_id": "TEAM-04",
+      "incident_id": "INC-020",
+      "minutes": 30
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-001",
+      "minutes": 26
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-002",
+      "minutes": 27
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-003",
+      "minutes": 28
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-004",
+      "minutes": 29
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-005",
+      "minutes": 30
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-006",
+      "minutes": 31
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-007",
+      "minutes": 32
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-008",
+      "minutes": 33
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-009",
+      "minutes": 34
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-010",
+      "minutes": 35
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-011",
+      "minutes": 36
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-012",
+      "minutes": 25
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-013",
+      "minutes": 26
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-014",
+      "minutes": 27
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-015",
+      "minutes": 28
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-016",
+      "minutes": 29
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-017",
+      "minutes": 30
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-018",
+      "minutes": 31
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-019",
+      "minutes": 32
+    },
+    {
+      "team_id": "TEAM-05",
+      "incident_id": "INC-020",
+      "minutes": 33
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-001",
+      "minutes": 29
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-002",
+      "minutes": 30
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-003",
+      "minutes": 31
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-004",
+      "minutes": 32
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-005",
+      "minutes": 33
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-006",
+      "minutes": 34
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-007",
+      "minutes": 35
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-008",
+      "minutes": 36
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-009",
+      "minutes": 37
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-010",
+      "minutes": 38
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-011",
+      "minutes": 39
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-012",
+      "minutes": 28
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-013",
+      "minutes": 29
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-014",
+      "minutes": 30
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-015",
+      "minutes": 31
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-016",
+      "minutes": 32
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-017",
+      "minutes": 33
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-018",
+      "minutes": 34
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-019",
+      "minutes": 35
+    },
+    {
+      "team_id": "TEAM-06",
+      "incident_id": "INC-020",
+      "minutes": 36
+    }
+  ],
+  "script": {
+    "version": 1,
+    "title": "Syabrubesi synthetic rescue exercise",
+    "description": "Fictional dispatch exercise. Reports, travel times, closures and water depths are invented, not historical observations.",
+    "steps": [
+      {
+        "id": "S1",
+        "at_minutes": 0,
+        "type": "note",
+        "label": "Normal incidents loaded"
+      },
+      {
+        "id": "S2",
+        "at_minutes": 60,
+        "type": "incident_reported",
+        "label": "Synthetic medical evacuation report arrives in Syabrubesi",
+        "incident": {
+          "id": "INC-021",
+          "status": "new",
+          "severity": "critical",
+          "access_type": "boat_only",
+          "district": "Syabrubesi exercise zone 01",
+          "location": {
+            "lat": 28.1653375,
+            "lon": 85.3394
+          },
+          "address_note": "Fictional exercise household near the study area",
+          "needs": [
+            "medical",
+            "evacuation"
+          ],
+          "people_count": 2,
+          "reporter_language": "nepali",
+          "contact_phone": "DEMO-nepal-2026-021",
+          "source": "sms",
+          "original_message": "SYNTHETIC exercise: two people need evacuation and medical transport.",
+          "ai_extracted": true,
+          "verified_by_human": false
+        },
+        "health": {
+          "incident_id": "INC-021",
+          "priority": "critical",
+          "medical_needs": [
+            "dialysis",
+            "mobility"
+          ],
+          "mobility": "assisted",
+          "vulnerable": {
+            "elderly": 1,
+            "children": 0,
+            "pregnant": 0,
+            "disabled": 0
+          },
+          "injuries": [],
+          "supplies_left": "Dialysis due tomorrow morning",
+          "notes": "Man, 72, on hemodialysis. Chest-deep water at the house.",
+          "ai_extracted": true,
+          "verified_by_human": false
+        },
+        "travel_times": [
+          {
+            "team_id": "TEAM-01",
+            "incident_id": "INC-021",
+            "minutes": 13
+          },
+          {
+            "team_id": "TEAM-02",
+            "incident_id": "INC-021",
+            "minutes": 16
+          },
+          {
+            "team_id": "TEAM-03",
+            "incident_id": "INC-021",
+            "minutes": 19
+          },
+          {
+            "team_id": "TEAM-04",
+            "incident_id": "INC-021",
+            "minutes": 22
+          },
+          {
+            "team_id": "TEAM-05",
+            "incident_id": "INC-021",
+            "minutes": 25
+          },
+          {
+            "team_id": "TEAM-06",
+            "incident_id": "INC-021",
+            "minutes": 28
+          }
+        ]
+      },
+      {
+        "id": "S3",
+        "at_minutes": 85,
+        "type": "verify_incident",
+        "label": "Dispatcher verifies the SMS",
+        "incident_id": "INC-021"
+      },
+      {
+        "id": "S4",
+        "at_minutes": 90,
+        "type": "assign_suggested",
+        "label": "Dispatcher assigns the suggested boat team",
+        "incident_id": "INC-021",
+        "vehicles": [
+          "flat_boat",
+          "kayak"
+        ]
+      },
+      {
+        "id": "S5",
+        "at_minutes": 95,
+        "type": "field_report",
+        "label": "Boat team sets off",
+        "incident_id": "INC-021",
+        "to": "en_route"
+      },
+      {
+        "id": "S6",
+        "at_minutes": 120,
+        "type": "route_change",
+        "label": "Simulated obstruction: exercise route changes",
+        "incident_id": "INC-021",
+        "reason": "Fictional route obstruction for the exercise; not an observed bridge closure",
+        "legs": [
+          {
+            "mode": "truck",
+            "minutes": 25
+          },
+          {
+            "mode": "boat",
+            "minutes": 30
+          }
+        ]
+      },
+      {
+        "id": "S7",
+        "at_minutes": 180,
+        "type": "field_report",
+        "label": "Team on scene",
+        "incident_id": "INC-021",
+        "to": "on_scene"
+      },
+      {
+        "id": "S8",
+        "at_minutes": 210,
+        "type": "feedback",
+        "label": "Resolved with field feedback",
+        "incident_id": "INC-021",
+        "feedback": {
+          "water_depth_cm": 120,
+          "route_worked": false,
+          "blocked_routes": "Fictional exercise route obstruction; alternative transfer simulated",
+          "people_helped": 2,
+          "outcome": "evacuated",
+          "photo_ref": null
+        }
+      }
+    ]
+  }
+}

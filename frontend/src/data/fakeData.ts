@@ -1,3 +1,6 @@
+import derna from '../../data/scenarios/derna-2023.json';
+import nepal from '../../data/scenarios/nepal-2026.json';
+import type { SiteId } from './sites';
 import incidentsJson from '../../data/fake/incidents.json';
 import healthJson from '../../data/fake/health.json';
 import teamsJson from '../../data/fake/teams.json';
@@ -22,19 +25,23 @@ const SHIFT_LEAD_MS = 5 * 60 * 1000;
 
 /**
  * Loads the fake data and checks it against src/types/ before anything uses it.
- * Stand-in for the PostgreSQL source; UI imports data only through this folder.
+ * Selects one of the three fictional exercises; no database is involved.
  *
  * With `shiftTo`, every timestamp moves forward by the same amount so the
  * newest one is 5 minutes before that time (gaps unchanged). The app passes the
  * real clock so the 2 Oct fake data reads as recent; tests pass nothing.
  */
-export function loadFakeData(options: { shiftTo?: Date } = {}): DispatchData {
-  const errors = validateDataset({ incidents: incidentsJson, health: healthJson, teams: teamsJson });
+export function loadFakeData(options: { shiftTo?: Date; siteId?: SiteId } = {}): DispatchData {
+  const dataset = options.siteId === 'derna-2023' ? derna : options.siteId === 'nepal-2026' ? nepal : {
+    incidents: incidentsJson, health: healthJson, teams: teamsJson, travelTimes: travelTimesJson,
+  };
+  const { incidents: incidentsData, health: healthData, teams: teamsData, travelTimes: travelTimesData } = dataset;
+  const errors = validateDataset({ incidents: incidentsData, health: healthData, teams: teamsData });
   errors.push(
     ...validateTravelTimes(
-      travelTimesJson,
-      new Set(teamsJson.map((t) => t.id)),
-      new Set(incidentsJson.map((i) => i.id)),
+      travelTimesData,
+      new Set(teamsData.map((t) => t.id)),
+      new Set(incidentsData.map((i) => i.id)),
     ),
   );
   if (errors.length > 0) {
@@ -42,10 +49,10 @@ export function loadFakeData(options: { shiftTo?: Date } = {}): DispatchData {
     throw new Error(`Fake data is invalid:\n${errors.join('\n')}`);
   }
   // Safe after validation: JSON imports are typed with plain strings, not the enum unions.
-  let incidents = incidentsJson as Incident[];
-  let health = healthJson as Health[];
-  let teams = teamsJson as Team[];
-  const travelTimes = travelTimesJson as TravelTime[];
+  let incidents = incidentsData as Incident[];
+  let health = healthData as Health[];
+  let teams = teamsData as Team[];
+  const travelTimes = travelTimesData as TravelTime[];
 
   if (options.shiftTo) {
     const latest = latestTimestamp([

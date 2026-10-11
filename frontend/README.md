@@ -1,10 +1,11 @@
-> **Live SMS integration:** The default screen now connects to the Twilio/Gemini intake backend.
-> Start the Python API and worker, run `npm run dev` here, and enter your operator key.
-> See [INTAKE.md](INTAKE.md) for setup and testing. Original demo: `?demo=1`.
+> The default frontend is a static demo. Dispatch records are synthetic, actions run in
+> browser memory, and refreshing resets changes. Historical satellite imagery is bundled
+> locally. No operator key, Twilio, Python API, or PostgreSQL is required.
+> See [Cloudflare deployment](DEPLOYMENT.md). [INTAKE.md](INTAKE.md) describes the previous backend integration.
 
-# FloodBeacon — Bangkok flood response (dispatch layer)
+# FloodBeacon — Ahr Valley, Derna, and Nepal flood response (dispatch layer)
 
-A web app for a community organisation responding to floods in Bangkok (all 50 districts).
+A web app for a community organisation responding to floods in Ahr Valley, Derna, and Nepal (three satellite study areas).
 This repository is the **dispatch layer**: dispatchers see incidents (people needing help) and
 response teams on a map, assign teams, track each incident until it is resolved, and keep
 responders safe.
@@ -12,24 +13,36 @@ responders safe.
 It does **not** forecast floods and does **not** diagnose medical conditions. **The system
 suggests; the dispatcher decides.** Nothing is assigned automatically.
 
-> All data in `data/fake/` is invented for development and demos. Phone numbers are deliberately
-> invalid (`+660000000NN`).
+> Dispatch data in `data/fake/` and `data/scenarios/` is invented. Contact identifiers
+> start with `DEMO-` and are not phone numbers.
 
 ## Quick start
 
 ```bash
-npm install
-npm run dev      # http://localhost:5173
-npm test         # Vitest, 165 tests
-npm run build    # type-check + production build
+pnpm install --frozen-lockfile
+pnpm run dev      # http://localhost:5173
+pnpm test        # Vitest
+pnpm run build    # type-check + production build
 ```
 
 - **Dispatch console:** `http://localhost:5173/`
 - **Team view (phone):** `http://localhost:5173/#/team/TEAM-02`
-- **Demo:** click **▶ Demo**, then **Start**. The scripted story (`data/fake/demo_script.json`)
-  plays at 1 hour = 10 seconds: a dialysis patient's SMS arrives in Bang Kapi, a boat team is
+- **Demo:** click **▶ Scripted demo**, then **Start**. The scripted story (`data/fake/demo_script.json`)
+  plays at 1 hour = 10 seconds: a dialysis patient's SMS arrives in the selected study area, a boat team is
   suggested and assigned, a bridge closes and the route changes, and the case is resolved with
   field feedback. You can still act manually during the demo.
+
+## Site selection
+
+Ahr Valley is selected on first load. The map selector switches between Ahr Valley,
+Derna, and Syabrubesi, Nepal. Switching resets the incidents, teams, assignments, event
+log, and scripted exercise for that site. All rescue locations and travel times are
+invented exercises within the imagery study bounds, not historical rescue records.
+The header and event times use UTC.
+
+The **Scripted demo** button loads the selected site's exercise, initially paused.
+**Start** runs its incoming-report, assignment, route-change, and field-feedback steps
+on a simulated clock. Manual dispatch actions also work without starting the script.
 
 ## Severity and priority criteria
 
@@ -65,8 +78,8 @@ These are fixed in code (`src/logic/`) and covered by tests.
 
 | What | Rule | Constant |
 |---|---|---|
-| Call **1669** (emergency medical) | Health priority is `critical` | `src/logic/emergencyReminder.ts` |
-| Call **1784** (DDPM rescue) | The incident needs `rescue` | `src/logic/emergencyReminder.ts` |
+| Medical escalation label | Health priority is `critical` | `src/logic/emergencyReminder.ts` |
+| Rescue escalation label | The incident needs `rescue` | `src/logic/emergencyReminder.ts` |
 | Critical incident flashes and moves to the top | Critical, no team (`new`, `verified` or `could_not_reach`), reported **more than 30 min** ago | `CRITICAL_UNASSIGNED_MINUTES = 30` |
 | Contact badge turns red | Last contact **more than 6 h** ago | `CONTACT_OVERDUE_HOURS = 6` |
 | Missed check-in (red row and alert) | A team in the field (`en_route`, `on_scene`, `returning`) has not checked in for **more than 60 min** | `CHECK_IN_INTERVAL_MINUTES = 60` |
@@ -117,7 +130,7 @@ Every change writes an event to the log, which can be exported as JSON or CSV.
 ```
 src/types/       data contracts (incidents, health, teams, assignments, events, feedback, routes)
 src/logic/       all rules as pure functions, with tests in tests/logic/
-src/data/        loads and validates data/fake/ (PostgreSQL later)
+src/data/        loads and validates synthetic data/fake/
 src/state/       app clock (live or demo) and the in-memory store
 src/components/  UI pieces (queue, map, detail panel, team board, event log, dialogs)
 src/pages/       DispatchPage (console) and TeamView (phone)
@@ -129,6 +142,10 @@ Tech: React, TypeScript, Vite, MapLibre GL JS (OpenFreeMap basemap, no API key),
 
 ## Status
 
-Built with fake data only. Not yet connected: the PostgreSQL database, real SMS intake (Person 3), real flood
-maps (Person 1), real severity scores and routes (Person 2). See `PROGRESS.md` for what each
-session did and `PLAN.md` for open questions.
+The static demo combines synthetic Ahr Valley, Derna, and Nepal dispatch/team interactions with historical
+Ahr, Derna, and Nepal imagery. Select a study area on the map to review dated images,
+manual bridge findings, and agency flood evidence. Rescue records are fictional;
+historical imagery does not establish present route safety.
+
+The street basemap is fetched from OpenFreeMap, so an internet connection is required.
+Backend integration files remain available for future work but are not used by the demo.

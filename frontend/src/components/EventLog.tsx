@@ -4,7 +4,7 @@ import { eventsToCsv, eventsToJson, exportFileName } from '../logic/exportEvents
 import { downloadText } from './download';
 
 const timeFormat = new Intl.DateTimeFormat('en-GB', {
-  timeZone: 'Asia/Bangkok',
+  timeZone: 'UTC',
   hour: '2-digit',
   minute: '2-digit',
   hourCycle: 'h23',

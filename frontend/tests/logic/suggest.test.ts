@@ -214,7 +214,10 @@ describe('suggestTeams', () => {
   it('does not let a skill bonus beat a much closer team (fake dialysis case)', () => {
     const inc001 = fake.incidents.find((i) => i.id === 'INC-001')!;
     const at = new Date('2026-10-02T08:30:00+07:00');
-    const [best] = suggestTeams(inc001, fake.teams, fake.travelTimes, at);
+    const travelTimes = fake.travelTimes.map(t => t.incident_id !== inc001.id ? t : {
+      ...t, minutes: t.team_id === 'TEAM-03' ? 21 : 327,
+    });
+    const [best] = suggestTeams(inc001, fake.teams, travelTimes, at);
     // Flat Boat 2 is ~21 min away without first aid; Flat Boat 1 has first aid but is ~5 h away.
     expect(best!.team.id).toBe('TEAM-03');
   });

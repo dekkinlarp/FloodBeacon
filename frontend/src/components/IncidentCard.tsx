@@ -19,7 +19,7 @@ interface Props {
 const words = (s: string) => s.replace(/_/g, ' ');
 
 const timeFormat = new Intl.DateTimeFormat('en-GB', {
-  timeZone: 'Asia/Bangkok',
+  timeZone: 'UTC',
   hour: '2-digit',
   minute: '2-digit',
   hourCycle: 'h23',
@@ -54,9 +54,9 @@ export function IncidentCard({ incident, health, now, onClose, onConfirmHealth, 
 
       <div className="detail__body">
         {reminders.map((r) => (
-          <p key={r.number} className="callout" role="alert">
-            <span className="callout__number">CALL {r.number}</span>
-            <span>{r.label.replace(/^Call \d+ — /, '')}</span>
+          <p key={r.kind} className="callout" role="alert">
+            <span className="callout__number">{r.kind.toUpperCase()}</span>
+            <span>{r.label}</span>
           </p>
         ))}
 
@@ -101,7 +101,7 @@ export function IncidentCard({ incident, health, now, onClose, onConfirmHealth, 
             </p>
           )}
           {incident.original_message ? (
-            <blockquote className="quote" lang={incident.reporter_language === 'thai' ? 'th' : undefined}>
+            <blockquote className="quote" lang={({ german: 'de', arabic: 'ar', nepali: 'ne', english: 'en', thai: 'th', burmese: 'my' } as const)[incident.reporter_language]}>
               {incident.original_message}
             </blockquote>
           ) : (

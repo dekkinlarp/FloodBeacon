@@ -6,7 +6,7 @@ import { MAX_BLOCKED_ROUTES_CHARS, MAX_WATER_DEPTH_CM, validateFeedbackInput } f
 const OUTCOME_LABELS: Record<FeedbackOutcome, string> = {
   evacuated: 'Evacuated',
   supplied: 'Supplied (food, water, medicine)',
-  referred_1669: 'Referred to 1669',
+  referred_1669: 'Referred for medical support',
   no_one_found: 'No one found',
   could_not_reach: 'Could not reach',
 };

@@ -48,7 +48,7 @@ describe('fake data meets the Session 1 brief', () => {
       new Set(['first_aid', 'boat_operator', 'swimmer']),
     );
     expect(new Set(teams.flatMap((t) => t.languages))).toEqual(
-      new Set(['thai', 'english', 'burmese']),
+      new Set(['german', 'english']),
     );
   });
 });
@@ -59,9 +59,9 @@ describe('validators reject bad data', () => {
     expect(errors).toEqual([expect.stringContaining('.status:')]);
   });
 
-  it('rejects a location outside Bangkok', () => {
-    const errors = validateIncident({ ...firstIncident, location: { lat: 18.79, lon: 98.98 } });
-    expect(errors).toEqual([expect.stringContaining('outside Bangkok bounds')]);
+  it('rejects an invalid geographic location', () => {
+    const errors = validateIncident({ ...firstIncident, location: { lat: 91, lon: 181 } });
+    expect(errors).toEqual([expect.stringContaining('outside finite WGS84 bounds')]);
   });
 
   it('requires the original message for AI-extracted incidents', () => {

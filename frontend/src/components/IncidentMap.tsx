@@ -1,3 +1,5 @@
+import { useSite } from '../state/Site';
+import { SatelliteLayers } from './SatelliteLayers';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AttributionControl, Map as MapLibreMap, Marker, NavigationControl, setWorkerUrl } from 'maplibre-gl';
@@ -12,8 +14,6 @@ import { NeedIcon, needLabel } from './NeedIcon';
 
 /** OpenFreeMap "Dark": free, no API key. Map data © OpenStreetMap contributors. */
 export const BASEMAP_STYLE_URL = 'https://tiles.openfreemap.org/styles/liberty';
-const BANGKOK_CENTER: [number, number] = [100.6, 13.77]; // [lon, lat]
-const BANGKOK_ZOOM = 10;
 /** 2.5D view: tilted camera, slightly rotated so the river and roads read in depth. */
 export const TILTED = { pitch: 50, bearing: -17 };
 export const FLAT = { pitch: 0, bearing: 0 };
@@ -60,18 +60,19 @@ interface MarkerSlot {
  * contact. No health details here (CLAUDE.md rule 7).
  */
 export function IncidentMap({ incidents, selectedId, onSelect, now }: Props) {
+  const { site } = useSite();
   const containerRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<MapLibreMap | null>(null);
   const [slots, setSlots] = useState<MarkerSlot[]>([]);
-  const [tilted, setTilted] = useState(true);
+  const [tilted, setTilted] = useState(false);
 
   useEffect(() => {
     const m = new MapLibreMap({
       container: containerRef.current!,
       style: BASEMAP_STYLE_URL,
-      center: BANGKOK_CENTER,
-      zoom: BANGKOK_ZOOM,
-      ...TILTED,
+      center: [...site.center],
+      zoom: site.zoom,
+      ...FLAT,
       attributionControl: false,
     });
     m.on('load', () => {
@@ -122,6 +123,17 @@ export function IncidentMap({ incidents, selectedId, onSelect, now }: Props) {
 
   return (
     <div className="incident-map-wrap">
+      <SatelliteLayers map={map} onReturn={() => {
+        if (!map) return;
+        if (!incidents.length) {
+          map.easeTo({ center: [...site.center], zoom: site.zoom });
+          return;
+        }
+        map.fitBounds([
+          [Math.min(...incidents.map(i => i.location.lon)), Math.min(...incidents.map(i => i.location.lat))],
+          [Math.max(...incidents.map(i => i.location.lon)), Math.max(...incidents.map(i => i.location.lat))],
+        ], { padding: 70, maxZoom: 14 });
+      }} />
       <button
         type="button"
         className="map-tilt"

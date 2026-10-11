@@ -35,7 +35,7 @@ export function DemoBar({ script, data, demoLog, demoDone, now, onStartDemo, onR
         title={script.title}
         onClick={() => onStartDemo(new Date(Math.floor(Date.now() / 60_000) * 60_000))}
       >
-        ▶ Demo
+        ▶ Scripted demo
       </button>
     );
   }

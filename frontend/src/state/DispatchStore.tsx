@@ -1,10 +1,9 @@
-import { createContext, useContext, useEffect, useMemo, useReducer, useRef, useState, type ReactNode } from 'react';
+import { createContext, useContext, useMemo, useReducer, type ReactNode } from 'react';
 import type { IncidentStatus, TeamStatus } from '../types';
 import type { DispatchResult, DispatchState } from '../logic/dispatch';
 import type { FeedbackInput } from '../logic/feedback';
 import type { ActionBody } from '../logic/actions';
 import { runAction } from '../logic/actions';
-import { fetchState, postAction, subscribeToChanges } from '../data/api';
 import type { DemoLogEntry, DemoScript } from '../logic/demo';
 import { runDueSteps } from '../logic/demo';
 
@@ -77,7 +76,7 @@ interface StoreApi {
   /** From the team view; the team is the actor. */
   fieldReport: (teamId: string, to: IncidentStatus) => void;
   submitFeedback: (input: FeedbackInput) => Promise<DispatchResult>;
-  /** Where live data comes from: the database server, or fake data when it is unreachable. */
+  /** All records are synthetic and changes remain in this tab. */
   source: DataSource;
   acknowledgeAlert: (alertId: string) => void;
   clearError: () => void;
@@ -87,77 +86,29 @@ interface StoreApi {
   demoTick: (script: DemoScript, simStart: number, now: number) => void;
 }
 
-export type DataSource = 'connecting' | 'database' | 'fake';
+export type DataSource = 'demo';
 
 const StoreContext = createContext<StoreApi | null>(null);
 
-/**
- * Dispatch state for the app. In live mode it comes from the API server
- * (PostgreSQL): every change is sent there, run through the same rules, saved,
- * and pushed to every open screen. In demo mode, or when the server cannot be
- * reached, changes run locally in memory on fake data.
- * `getNow` is the app clock (simulated in demo mode); local actions are stamped with it.
- */
+/** Synthetic dispatch state and actions live in browser memory; refresh resets them. */
 export function DispatchStoreProvider({
   initial,
   getNow,
-  live,
   children,
 }: {
   initial: DispatchState;
   getNow: () => Date;
-  /** False during the demo: the demo always runs locally. */
-  live: boolean;
   children: ReactNode;
 }) {
   const [store, send] = useReducer(reducer, initial, fresh);
-  const [source, setSource] = useState<DataSource>('connecting');
-  const liveRef = useRef(live);
-  liveRef.current = live;
-
-  // Load from the server whenever live mode starts, and follow its changes.
-  useEffect(() => {
-    if (!live) return;
-    const abort = new AbortController();
-    const load = () =>
-      fetchState(abort.signal)
-        .then((data) => {
-          if (!liveRef.current) return; // the demo started meanwhile; keep its data
-          send({ type: 'replace', data });
-          setSource('database');
-        })
-        .catch((err: unknown) => {
-          if ((err as Error).name === 'AbortError' || !liveRef.current) return;
-          setSource('fake');
-        });
-    load();
-    const unsubscribe = subscribeToChanges(load, () => {});
-    return () => {
-      abort.abort();
-      unsubscribe();
-    };
-  }, [live]);
-
-  const remote = live && source === 'database';
-
   const api = useMemo<StoreApi>(() => {
     const at = getNow;
-    /** Runs a change on the server (live) or locally (demo / fake data). */
+    /** Apply the shared dispatch rules locally. */
     const act = async (actor: string, body: ActionBody): Promise<DispatchResult> => {
-      if (!remote) {
-        const action = { ...body, at: at(), actor } as Action;
-        const result = run(store.data, action);
-        send(action);
-        return result;
-      }
-      const r = await postAction(actor, body);
-      if (r.ok) {
-        send({ type: 'replace', data: r.state });
-        send({ type: 'clearError' });
-        return { ok: true, state: r.state, events: [] };
-      }
-      send({ type: 'setError', reasons: r.reasons });
-      return r;
+      const action = { ...body, at: at(), actor } as Action;
+      const result = run(store.data, action);
+      send(action);
+      return result;
     };
     const fire = (actor: string, body: ActionBody) => void act(actor, body);
     return {
@@ -165,7 +116,7 @@ export function DispatchStoreProvider({
       error: store.error,
       demoLog: store.demoLog,
       demoDone: new Set(store.demoDone),
-      source,
+      source: 'demo',
       assign: (incidentId, teamId, backup) => fire(CURRENT_ACTOR, { type: 'assign', incidentId, teamId, backup }),
       setIncidentStatus: (incidentId, to) => fire(CURRENT_ACTOR, { type: 'incidentStatus', incidentId, to }),
       setTeamStatus: (teamId, to) => fire(CURRENT_ACTOR, { type: 'teamStatus', teamId, to }),
@@ -179,7 +130,7 @@ export function DispatchStoreProvider({
       reset: (data) => send({ type: 'reset', data }),
       demoTick: (script, simStart, now) => send({ type: 'demoTick', script, simStart, now }),
     };
-  }, [store, getNow, remote, source]);
+  }, [store, getNow]);
   return <StoreContext.Provider value={api}>{children}</StoreContext.Provider>;
 }
 
