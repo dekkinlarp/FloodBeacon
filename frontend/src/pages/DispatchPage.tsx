@@ -26,6 +26,27 @@ const MOBILE_TABS: { id: MobileTab; label: string }[] = [
   { id: 'log', label: 'Log' },
 ];
 
+/** Remembered per browser; storage can be unavailable (private mode), so failures are ignored. */
+function usePersistentFlag(key: string): [boolean, () => void] {
+  const [value, setValue] = useState(() => {
+    try {
+      return localStorage.getItem(key) === '1';
+    } catch {
+      return false;
+    }
+  });
+  const toggle = () =>
+    setValue((v) => {
+      try {
+        localStorage.setItem(key, v ? '0' : '1');
+      } catch {
+        // Not persisted; the toggle still works for this session.
+      }
+      return !v;
+    });
+  return [value, toggle];
+}
+
 const timeFormat = new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
 
 export function DispatchPage({ demoScript }: { demoScript: DemoScript }) {
@@ -38,6 +59,8 @@ export function DispatchPage({ demoScript }: { demoScript: DemoScript }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   // Phones show one panel at a time (see .mobile-tabs in styles.css); desktop ignores this.
   const [tab, setTab] = useState<MobileTab>('queue');
+  const [queueCollapsed, toggleQueue] = usePersistentFlag('floodbeacon:queue-collapsed');
+  const [bottomCollapsed, toggleBottom] = usePersistentFlag('floodbeacon:bottom-collapsed');
 
   // Fresh fake data whose newest timestamp sits just before `at`.
   const freshData = (at: Date) => initialDispatchState(loadFakeData({ shiftTo: at, siteId }));
@@ -65,7 +88,17 @@ export function DispatchPage({ demoScript }: { demoScript: DemoScript }) {
   const alertCount = missed.length + openAlerts.length + (store.error ? 1 : 0);
 
   return (
-    <div className={`dispatch dispatch--tab-${tab}${selected ? ' dispatch--detail' : ''}`}>
+    <div
+      className={[
+        'dispatch',
+        `dispatch--tab-${tab}`,
+        selected && 'dispatch--detail',
+        queueCollapsed && 'dispatch--queue-collapsed',
+        bottomCollapsed && 'dispatch--bottom-collapsed',
+      ]
+        .filter(Boolean)
+        .join(' ')}
+    >
       <TopBar summary={boardSummary(incidents, teams, now)} now={now} mode={clock.mode}>
         <DemoBar
           script={demoScript}
@@ -88,7 +121,14 @@ export function DispatchPage({ demoScript }: { demoScript: DemoScript }) {
         />
       </TopBar>
 
-      <IncidentList incidents={sorted} selectedId={selectedId} onSelect={setSelectedId} now={now} />
+      <IncidentList
+        incidents={sorted}
+        selectedId={selectedId}
+        onSelect={setSelectedId}
+        now={now}
+        collapsed={queueCollapsed}
+        onToggleCollapsed={toggleQueue}
+      />
 
       <main className="mapzone">
         <IncidentMap incidents={incidents} selectedId={selectedId} onSelect={setSelectedId} now={now} />
@@ -149,7 +189,7 @@ export function DispatchPage({ demoScript }: { demoScript: DemoScript }) {
         </IncidentCard>
       )}
 
-      <div className="bottom">
+      <div className="bottom" id="bottom-panels">
         <TeamBoard
           teams={teams}
           assignments={assignments}
@@ -159,6 +199,8 @@ export function DispatchPage({ demoScript }: { demoScript: DemoScript }) {
           onRecall={store.recall}
           onStatus={store.setTeamStatus}
           onCheckIn={(teamId) => store.checkIn(teamId)}
+          collapsed={bottomCollapsed}
+          onToggleCollapsed={toggleBottom}
         />
         <EventLog events={events} />
       </div>

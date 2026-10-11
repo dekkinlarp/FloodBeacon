@@ -965,6 +965,80 @@ select.btn {
 .sat__sources a { color: var(--muted); text-underline-offset: 2px; }
 .sat__error { margin: 0; padding: 7px 10px; border: 1px solid var(--tint-orange-border); border-radius: var(--r-md); background: var(--tint-orange-bg); color: var(--tint-orange-text); font-size: 12px; }
 
+/* --------------------------------------------------------------------------
+   Collapsible panels (tablet and desktop; phones use the tab bar)
+   -------------------------------------------------------------------------- */
+.panel-toggle {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition-property: background-color, color, scale;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+}
+@media (hover: hover) { .panel-toggle:hover { background: var(--wash-2); color: var(--ink); } }
+@media (prefers-reduced-motion: no-preference) { .panel-toggle:active { scale: 0.96; } }
+.panel-toggle svg { transition: rotate 150ms ease-out; }
+.panel-toggle--down svg { rotate: -90deg; }
+.panel-toggle--down[aria-expanded='false'] svg { rotate: 90deg; }
+
+.queue__rail { display: none; }
+
+@media (min-width: 761px) {
+  .dispatch.dispatch--queue-collapsed { grid-template-columns: 52px minmax(0, 1fr); }
+  .dispatch.dispatch--queue-collapsed.dispatch--detail { grid-template-columns: 52px minmax(0, 1fr) 420px; }
+  .dispatch--queue-collapsed .queue { overflow: hidden; }
+  .dispatch--queue-collapsed .queue > :not(.queue__rail) { display: none; }
+  .dispatch--queue-collapsed .queue__rail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 12px 0;
+    border: 0;
+    background: none;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 120ms ease-out;
+  }
+  @media (hover: hover) { .dispatch--queue-collapsed .queue__rail:hover { background: var(--raised); } }
+  .queue__rail-chevron { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; color: var(--muted); }
+  .queue__rail-label { writing-mode: vertical-rl; rotate: 180deg; letter-spacing: 0.01em; }
+  .queue__rail-overdue {
+    min-width: 20px;
+    padding: 1px 6px;
+    border: 1px solid var(--tint-red-border);
+    border-radius: var(--r-pill);
+    background: var(--tint-red-bg);
+    color: var(--tint-red-text);
+    font-size: 11.5px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Bottom tray: Teams and Event log fold down to their header bars. */
+  .dispatch.dispatch--bottom-collapsed { grid-template-rows: auto minmax(0, 1fr) auto; }
+  .dispatch--bottom-collapsed .board__scroll,
+  .dispatch--bottom-collapsed .log__list,
+  .dispatch--bottom-collapsed .log__empty { display: none; }
+  .dispatch--bottom-collapsed .bottom .panel-title { padding-bottom: 12px; }
+}
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  .dispatch.dispatch--queue-collapsed.dispatch--detail { grid-template-columns: 52px minmax(0, 1fr); }
+}
+
 /* ==========================================================================
    Responsive dispatch console
    ========================================================================== */
@@ -1025,6 +1099,7 @@ select.btn {
   .dispatch--tab-teams .log,
   .dispatch--tab-log .board { display: none; }
   .bottom .log { flex: 1; width: auto; border-left: 0; }
+  .panel-toggle { display: none; }
   .dispatch--detail .detail { width: 100%; box-shadow: none; }
 
   /* Top bar: brand and clock on one line, counters scroll sideways underneath. */
