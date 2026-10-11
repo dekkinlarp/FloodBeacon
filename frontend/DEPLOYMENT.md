@@ -47,8 +47,8 @@ served at `floodbeacon.tech` and `www.floodbeacon.tech` through the `routes` cus
 in `wrangler.jsonc`; Cloudflare creates the DNS records and certificates on deploy. The zone
 must be on the same Cloudflare account, with no existing A/AAAA/CNAME record for either name.
 
-`worker/index.ts` 301-redirects page requests on HTTP, `www`, or `workers.dev` to
-`https://floodbeacon.tech`. Built assets (`/assets/*`) and imagery (`/static/*`) skip the
+`worker/index.ts` 301-redirects page requests on HTTP or `www` to `https://floodbeacon.tech`;
+`workers.dev` and Preview URLs are served as-is (the canonical link tag covers SEO). Built assets (`/assets/*`) and imagery (`/static/*`) skip the
 script via `run_worker_first`, so tile loads do not count as Worker invocations.
 `public/_headers` sets HSTS. `preview:worker` passes `CANONICAL_REDIRECTS:off` because local
 `wrangler dev` presents requests as `http://floodbeacon.tech`.
