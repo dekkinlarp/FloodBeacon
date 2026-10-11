@@ -3,6 +3,7 @@ import { SITES, type SiteId } from '../data/sites';
 import { useEffect, useState } from 'react';
 import type { Map as MapLibreMap } from 'maplibre-gl';
 import type { FeatureCollection } from 'geojson';
+import { labelBlockStart } from './mapLayers';
 type Bounds = [number, number, number, number];
 type Image = { id: string; url: string; image_coordinates: [[number, number], [number, number], [number, number], [number, number]]; attribution: string; license: string; license_url: string };
 type Observation = { id: string; label: string; acquired_date: string; images: Image[]; bridges: FeatureCollection; regional_tiles?: { url: string; bounds: Bounds; minzoom: number; maxzoom: number; tile_size: number; attribution: string; license: string; license_url: string } };
@@ -36,8 +37,9 @@ export function SatelliteLayers({ map, onReturn }: { map: MapLibreMap | null; on
   useEffect(() => {
     if (!map || !ready || !observation || !current) return;
     const sources: string[] = [], layers: string[] = [];
-    // Imagery drapes the ground: below the 3D buildings (BUILDINGS_3D in IncidentMap) and the labels.
-    const before = map.getLayer('buildings-3d') ? 'buildings-3d' : map.getStyle().layers.find(l => l.type === 'symbol')?.id;
+    // Imagery covers the style's flat buildings and roads, and sits below the 3D buildings
+    // (BUILDINGS_3D in IncidentMap) and the labels.
+    const before = map.getLayer('buildings-3d') ? 'buildings-3d' : labelBlockStart(map);
     setError('');
     const failure = (event: unknown) => { if ((event as { sourceId?: string }).sourceId?.startsWith('sat-')) setError('Some satellite imagery could not load; gaps remain unknown.'); };
     map.on('error', failure);

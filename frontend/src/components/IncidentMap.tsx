@@ -1,5 +1,6 @@
 import { useSite } from '../state/Site';
 import { SatelliteLayers } from './SatelliteLayers';
+import { labelBlockStart } from './mapLayers';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AttributionControl, Map as MapLibreMap, Marker, NavigationControl, setWorkerUrl } from 'maplibre-gl';
@@ -76,9 +77,8 @@ export function IncidentMap({ incidents, selectedId, onSelect, now }: Props) {
       attributionControl: false,
     });
     m.on('load', () => {
-      // Under the first label layer, so street and place names stay on top of buildings.
-      const firstLabel = m.getStyle().layers.find((l) => l.type === 'symbol')?.id;
-      if (!m.getLayer(BUILDINGS_3D.id)) m.addLayer(BUILDINGS_3D, firstLabel);
+      // Above the style's flat buildings and roads, under the labels.
+      if (!m.getLayer(BUILDINGS_3D.id)) m.addLayer(BUILDINGS_3D, labelBlockStart(m));
     });
     // Keep the toggle in sync when the user tilts with the mouse or the compass.
     m.on('pitchend', () => setTilted(m.getPitch() > 5));
