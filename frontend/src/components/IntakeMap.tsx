@@ -4,6 +4,7 @@ import { AttributionControl, Map as MapLibreMap, Marker, NavigationControl, setW
 import maplibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import { hasMapLocation, type IntakeIncident } from '../data/intake';
 import { BASEMAP_STYLE_URL, BUILDINGS_3D, TILTED, FLAT } from './IncidentMap';
+import { labelBlockStart } from './mapLayers';
 setWorkerUrl(maplibreWorkerUrl);
 
 export function IntakeMap({ incidents, selectedId, onSelect }: {
@@ -20,8 +21,7 @@ export function IntakeMap({ incidents, selectedId, onSelect }: {
       instance = new MapLibreMap({ container: container.current!, style: BASEMAP_STYLE_URL,
         center: [7.0362, 50.5141], zoom: 10, ...TILTED, attributionControl: false });
       instance.on('load', () => {
-        const firstLabel = instance.getStyle().layers.find(layer => layer.type === 'symbol')?.id;
-        if (!instance.getLayer(BUILDINGS_3D.id)) instance.addLayer(BUILDINGS_3D, firstLabel);
+        if (!instance.getLayer(BUILDINGS_3D.id)) instance.addLayer(BUILDINGS_3D, labelBlockStart(instance));
       });
       instance.on('pitchend', () => setTilted(instance.getPitch() > 5));
       instance.setMissingStyleImageResolver(id => {

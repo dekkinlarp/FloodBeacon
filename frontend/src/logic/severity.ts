@@ -3,13 +3,13 @@ import { SEVERITIES } from '../types';
 
 /** Fill colour per severity: critical red, high orange, medium yellow, low green. */
 export const SEVERITY_COLOURS: Record<Severity, string> = {
-  critical: '#d32f2f',
-  high: '#ef6c00',
-  medium: '#f9c80e',
-  low: '#2e7d32',
+  critical: '#e5484d',
+  high: '#f76b15',
+  medium: '#f5c518',
+  low: '#30a46c',
 };
 
-export const RESOLVED_COLOUR = '#9e9e9e';
+export const RESOLVED_COLOUR = '#6b6b6b';
 
 export interface MarkerStyle {
   fill: string;

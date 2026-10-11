@@ -1,4 +1,5 @@
-// Canonicalizes page requests to https://floodbeacon.tech; everything else is static assets.
+// Canonicalizes floodbeacon.tech page requests (www and plain HTTP) to https://floodbeacon.tech.
+// workers.dev and Preview hosts are served as-is so PR previews stay on their own URL.
 // Only navigations reach this script (see run_worker_first in wrangler.jsonc).
 const CANONICAL_HOST = 'floodbeacon.tech';
 
@@ -11,7 +12,8 @@ interface Env {
 export default {
   fetch(request: Request, env: Env): Promise<Response> | Response {
     const url = new URL(request.url);
-    if (env.CANONICAL_REDIRECTS !== 'off' && (url.protocol !== 'https:' || url.hostname !== CANONICAL_HOST)) {
+    const ownDomain = url.hostname === CANONICAL_HOST || url.hostname.endsWith(`.${CANONICAL_HOST}`);
+    if (env.CANONICAL_REDIRECTS !== 'off' && ownDomain && (url.protocol !== 'https:' || url.hostname !== CANONICAL_HOST)) {
       url.protocol = 'https:';
       url.hostname = CANONICAL_HOST;
       url.port = '';

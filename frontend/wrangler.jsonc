@@ -14,6 +14,8 @@
         // Pages go through the Worker for HTTPS/www redirects; built assets and tiles stay direct.
         "run_worker_first": ["/*", "!/assets/*", "!/static/*"],
     },
+    // Enables `wrangler preview` (PR preview deployments); inherits the top-level settings.
+    "previews": {},
     "observability": {
         "logs": {
             "enabled": false,

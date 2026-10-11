@@ -9,8 +9,8 @@
       "access_type": "boat_only",
       "district": "Syabrubesi exercise zone 01",
       "location": {
-        "lat": 28.1635875,
-        "lon": 85.3394
+        "lat": 28.1646357,
+        "lon": 85.3401405
       },
       "address_note": "Fictional exercise location 1 \u2014 not a surveyed address",
       "needs": [
@@ -35,8 +35,8 @@
       "access_type": "boat_only",
       "district": "Syabrubesi exercise zone 02",
       "location": {
-        "lat": 28.1635875,
-        "lon": 85.3402
+        "lat": 28.1646758,
+        "lon": 85.342475
       },
       "address_note": "Fictional exercise location 2 \u2014 not a surveyed address",
       "needs": [
@@ -61,8 +61,8 @@
       "access_type": "walk_only",
       "district": "Syabrubesi exercise zone 03",
       "location": {
-        "lat": 28.1635875,
-        "lon": 85.341
+        "lat": 28.1640602,
+        "lon": 85.3436529
       },
       "address_note": "Fictional exercise location 3 \u2014 not a surveyed address",
       "needs": [
@@ -86,8 +86,8 @@
       "access_type": "boat_only",
       "district": "Syabrubesi exercise zone 04",
       "location": {
-        "lat": 28.1635875,
-        "lon": 85.3418
+        "lat": 28.1641739,
+        "lon": 85.3432625
       },
       "address_note": "Fictional exercise location 4 \u2014 not a surveyed address",
       "needs": [
@@ -112,8 +112,8 @@
       "access_type": "truck",
       "district": "Syabrubesi exercise zone 05",
       "location": {
-        "lat": 28.1635875,
-        "lon": 85.3426
+        "lat": 28.1636766,
+        "lon": 85.3380568
       },
       "address_note": "Fictional exercise location 5 \u2014 not a surveyed address",
       "needs": [
@@ -137,8 +137,8 @@
       "access_type": "boat_only",
       "district": "Syabrubesi exercise zone 06",
       "location": {
-        "lat": 28.1644625,
-        "lon": 85.3394
+        "lat": 28.1643682,
+        "lon": 85.3426207
       },
       "address_note": "Fictional exercise location 6 \u2014 not a surveyed address",
       "needs": [
@@ -163,8 +163,8 @@
       "access_type": "truck",
       "district": "Syabrubesi exercise zone 07",
       "location": {
-        "lat": 28.1644625,
-        "lon": 85.3402
+        "lat": 28.163785,
+        "lon": 85.3384339
       },
       "address_note": "Fictional exercise location 7 \u2014 not a surveyed address",
       "needs": [
@@ -189,8 +189,8 @@
       "access_type": "truck",
       "district": "Syabrubesi exercise zone 08",
       "location": {
-        "lat": 28.1644625,
-        "lon": 85.341
+        "lat": 28.1659625,
+        "lon": 85.3412817
       },
       "address_note": "Fictional exercise location 8 \u2014 not a surveyed address",
       "needs": [
@@ -214,8 +214,8 @@
       "access_type": "walk_only",
       "district": "Syabrubesi exercise zone 09",
       "location": {
-        "lat": 28.1644625,
-        "lon": 85.3418
+        "lat": 28.1648094,
+        "lon": 85.3405691
       },
       "address_note": "Fictional exercise location 9 \u2014 not a surveyed address",
       "needs": [
@@ -239,8 +239,8 @@
       "access_type": "walk_only",
       "district": "Syabrubesi exercise zone 10",
       "location": {
-        "lat": 28.1644625,
-        "lon": 85.3426
+        "lat": 28.164676,
+        "lon": 85.343061
       },
       "address_note": "Fictional exercise location 10 \u2014 not a surveyed address",
       "needs": [
@@ -264,8 +264,8 @@
       "access_type": "boat_only",
       "district": "Syabrubesi exercise zone 01",
       "location": {
-        "lat": 28.1653375,
-        "lon": 85.3394
+        "lat": 28.1649928,
+        "lon": 85.3428891
       },
       "address_note": "Fictional exercise location 11 \u2014 not a surveyed address",
       "needs": [
@@ -290,8 +290,8 @@
       "access_type": "truck",
       "district": "Syabrubesi exercise zone 02",
       "location": {
-        "lat": 28.1653375,
-        "lon": 85.3402
+        "lat": 28.1650323,
+        "lon": 85.3409026
       },
       "address_note": "Fictional exercise location 12 \u2014 not a surveyed address",
       "needs": [
@@ -315,8 +315,8 @@
       "access_type": "truck",
       "district": "Syabrubesi exercise zone 03",
       "location": {
-        "lat": 28.1653375,
-        "lon": 85.341
+        "lat": 28.1667549,
+        "lon": 85.3415787
       },
       "address_note": "Fictional exercise location 13 \u2014 not a surveyed address",
       "needs": [
@@ -340,8 +340,8 @@
       "access_type": "walk_only",
       "district": "Syabrubesi exercise zone 04",
       "location": {
-        "lat": 28.1653375,
-        "lon": 85.3418
+        "lat": 28.1643439,
+        "lon": 85.3387806
       },
       "address_note": "Fictional exercise location 14 \u2014 not a surveyed address",
       "needs": [
@@ -365,8 +365,8 @@
       "access_type": "truck",
       "district": "Syabrubesi exercise zone 05",
       "location": {
-        "lat": 28.1653375,
-        "lon": 85.3426
+        "lat": 28.16449,
+        "lon": 85.3391884
       },
       "address_note": "Fictional exercise location 15 \u2014 not a surveyed address",
       "needs": [
@@ -390,8 +390,8 @@
       "access_type": "boat_only",
       "district": "Syabrubesi exercise zone 06",
       "location": {
-        "lat": 28.1662125,
-        "lon": 85.3394
+        "lat": 28.1655896,
+        "lon": 85.3417736
       },
       "address_note": "Fictional exercise location 16 \u2014 not a surveyed address",
       "needs": [
@@ -415,8 +415,8 @@
       "access_type": "truck",
       "district": "Syabrubesi exercise zone 07",
       "location": {
-        "lat": 28.1662125,
-        "lon": 85.3402
+        "lat": 28.1658751,
+        "lon": 85.340647
       },
       "address_note": "Fictional exercise location 17 \u2014 not a surveyed address",
       "needs": [
@@ -440,8 +440,8 @@
       "access_type": "walk_only",
       "district": "Syabrubesi exercise zone 08",
       "location": {
-        "lat": 28.1662125,
-        "lon": 85.341
+        "lat": 28.1650332,
+        "lon": 85.3392548
       },
       "address_note": "Fictional exercise location 18 \u2014 not a surveyed address",
       "needs": [
@@ -465,8 +465,8 @@
       "access_type": "boat_only",
       "district": "Syabrubesi exercise zone 09",
       "location": {
-        "lat": 28.1662125,
-        "lon": 85.3418
+        "lat": 28.1651721,
+        "lon": 85.3414313
       },
       "address_note": "Fictional exercise location 19 \u2014 not a surveyed address",
       "needs": [
@@ -491,8 +491,8 @@
       "access_type": "walk_only",
       "district": "Syabrubesi exercise zone 10",
       "location": {
-        "lat": 28.1662125,
-        "lon": 85.3426
+        "lat": 28.166299,
+        "lon": 85.3408227
       },
       "address_note": "Fictional exercise location 20 \u2014 not a surveyed address",
       "needs": [

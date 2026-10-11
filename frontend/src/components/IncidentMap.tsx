@@ -1,5 +1,6 @@
 import { useSite } from '../state/Site';
 import { SatelliteLayers } from './SatelliteLayers';
+import { labelBlockStart } from './mapLayers';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AttributionControl, Map as MapLibreMap, Marker, NavigationControl, setWorkerUrl } from 'maplibre-gl';
@@ -13,7 +14,7 @@ import { isOverdueCritical } from '../logic/warnings';
 import { NeedIcon, needLabel } from './NeedIcon';
 
 /** OpenFreeMap "Dark": free, no API key. Map data © OpenStreetMap contributors. */
-export const BASEMAP_STYLE_URL = 'https://tiles.openfreemap.org/styles/liberty';
+export const BASEMAP_STYLE_URL = 'https://tiles.openfreemap.org/styles/dark';
 /** 2.5D view: tilted camera, slightly rotated so the river and roads read in depth. */
 export const TILTED = { pitch: 50, bearing: -17 };
 export const FLAT = { pitch: 0, bearing: 0 };
@@ -30,11 +31,11 @@ export const BUILDINGS_3D: AddLayerObject = {
   minzoom: 13,
   filter: ['!=', ['get', 'hide_3d'], true],
   paint: {
-    // Muted blue buildings stay distinct from the light basemap.
-    'fill-extrusion-color': ['interpolate', ['linear'], ['coalesce', ['get', 'render_height'], 6], 0, '#cbd5e1', 40, '#94a3b8', 150, '#64748b'],
+    // Mid-grey buildings, light enough to read against the dark basemap and imagery.
+    'fill-extrusion-color': ['interpolate', ['linear'], ['coalesce', ['get', 'render_height'], 6], 0, '#5a5a5a', 40, '#6e6e6e', 150, '#858585'],
     'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 13, 0, 14, ['coalesce', ['get', 'render_height'], 6]],
     'fill-extrusion-base': ['interpolate', ['linear'], ['zoom'], 13, 0, 14, ['coalesce', ['get', 'render_min_height'], 0]],
-    'fill-extrusion-opacity': 0.85,
+    'fill-extrusion-opacity': 0.9,
   },
 };
 
@@ -76,9 +77,8 @@ export function IncidentMap({ incidents, selectedId, onSelect, now }: Props) {
       attributionControl: false,
     });
     m.on('load', () => {
-      // Under the first label layer, so street and place names stay on top of buildings.
-      const firstLabel = m.getStyle().layers.find((l) => l.type === 'symbol')?.id;
-      if (!m.getLayer(BUILDINGS_3D.id)) m.addLayer(BUILDINGS_3D, firstLabel);
+      // Above the style's flat buildings and roads, under the labels.
+      if (!m.getLayer(BUILDINGS_3D.id)) m.addLayer(BUILDINGS_3D, labelBlockStart(m));
     });
     // Keep the toggle in sync when the user tilts with the mouse or the compass.
     m.on('pitchend', () => setTilted(m.getPitch() > 5));

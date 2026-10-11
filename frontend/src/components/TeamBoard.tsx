@@ -3,6 +3,7 @@ import { TEAM_TRANSITIONS } from '../logic/dispatch';
 import { formatHours } from '../logic/contactBadge';
 import { BLOCK_ASSIGNMENT_HOURS, SUGGEST_REST_HOURS, checkInState, fatigue, formatCheckInAge } from '../logic/safety';
 import { teamViewHref } from '../logic/route';
+import { PanelToggle } from './PanelToggle';
 
 interface Props {
   teams: readonly Team[];
@@ -16,18 +17,24 @@ interface Props {
   onStatus: (teamId: string, to: TeamStatus) => void;
   /** Dispatcher logs a check-in received by radio/phone. */
   onCheckIn: (teamId: string) => void;
+  /** Desktop only: Teams and Event log fold down to their headers. */
+  collapsed: boolean;
+  onToggleCollapsed: () => void;
 }
 
 const words = (s: string) => s.replace(/_/g, ' ');
 
 /** One row per team: status, job, fatigue, check-in, actions. */
-export function TeamBoard({ teams, assignments, now, bestTeamId = null, excluded, onRecall, onStatus, onCheckIn }: Props) {
+export function TeamBoard({ teams, assignments, now, bestTeamId = null, excluded, onRecall, onStatus, onCheckIn, collapsed, onToggleCollapsed }: Props) {
   return (
     <section className="board" aria-label="Teams">
       <h2 className="panel-title">
         Teams{' '}
         <span className="panel-title__count">
           {teams.filter((t) => t.status === 'available').length} free · {teams.length} total
+        </span>
+        <span className="panel-title__actions">
+          <PanelToggle label="teams and event log" expanded={!collapsed} controls="bottom-panels" toward="down" onToggle={onToggleCollapsed} />
         </span>
       </h2>
       <div className="board__scroll">
