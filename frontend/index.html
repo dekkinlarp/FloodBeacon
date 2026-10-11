@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FloodBeacon</title>
+    <title>FloodBeacon — Flood response dispatch on one map</title>
+    <meta name="description" content="Triage flood help requests, assign rescue teams, and compare satellite imagery on one map. Interactive demo for Ahr Valley, Derna, and Nepal." />
+    <link rel="canonical" href="https://floodbeacon.tech/" />
+    <meta name="theme-color" content="#0b1f33" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
@@ -22,9 +25,29 @@
     <meta name="twitter:description" content="Triage help requests, assign rescue teams, and compare satellite imagery. The system suggests; the dispatcher decides." />
     <meta name="twitter:image" content="https://floodbeacon.tech/og.png" />
     <meta name="twitter:image:alt" content="FloodBeacon logo and headline beside a flood map with color-coded incident pins." />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "FloodBeacon",
+        "url": "https://floodbeacon.tech/",
+        "description": "Flood response dispatch demo: triage help requests, assign rescue teams, and compare satellite imagery on one map.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "image": "https://floodbeacon.tech/og.png",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <h1>FloodBeacon — Flood response dispatch on one map</h1>
+      <p>FloodBeacon is an interactive flood response dispatch demo. Dispatchers triage help
+        requests, assign rescue teams, and compare historical satellite imagery for Ahr Valley,
+        Derna, and Nepal. The system suggests; the dispatcher decides. Enable JavaScript to use it.</p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
