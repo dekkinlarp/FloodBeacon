@@ -992,25 +992,64 @@ select.btn {
 .queue__rail { display: none; }
 
 @media (min-width: 761px) {
-  .dispatch.dispatch--queue-collapsed { grid-template-columns: 52px minmax(0, 1fr); }
-  .dispatch.dispatch--queue-collapsed.dispatch--detail { grid-template-columns: 52px minmax(0, 1fr) 420px; }
+  /* Tracks animate so the map visibly takes the space; content cross-fades at fixed width
+     (clipped, never reflowed) so text doesn't squeeze while the column narrows. */
+  .dispatch {
+    --queue-w: 320px;
+    --rail-w: 52px;
+    --tray-h: 260px;
+    --tray-collapsed-h: 56px;
+    --panel-ease: cubic-bezier(0.77, 0, 0.175, 1);
+    grid-template-columns: var(--queue-w) minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) var(--tray-h);
+  }
+  .dispatch--detail { grid-template-columns: var(--queue-w) minmax(0, 1fr) 420px; }
+  .dispatch.dispatch--queue-collapsed { grid-template-columns: var(--rail-w) minmax(0, 1fr); }
+  .dispatch.dispatch--queue-collapsed.dispatch--detail { grid-template-columns: var(--rail-w) minmax(0, 1fr) 420px; }
+  .dispatch.dispatch--bottom-collapsed { grid-template-rows: auto minmax(0, 1fr) var(--tray-collapsed-h); }
+
+  .queue { position: relative; overflow-x: hidden; }
+  .queue > .panel-title, .queue > .queue__list { min-width: var(--queue-w); }
+  /* Expanding: content arrives a beat after the track starts opening. */
+  .queue > .panel-title, .queue > .queue__list, .board__scroll, .log__list, .log__empty {
+    transition: opacity 160ms ease-out 80ms, visibility 0s linear 0s;
+  }
   .dispatch--queue-collapsed .queue { overflow: hidden; }
-  .dispatch--queue-collapsed .queue > :not(.queue__rail) { display: none; }
-  .dispatch--queue-collapsed .queue__rail {
+  .dispatch--queue-collapsed .queue > .panel-title,
+  .dispatch--queue-collapsed .queue > .queue__list,
+  .dispatch--bottom-collapsed .board__scroll,
+  .dispatch--bottom-collapsed .log__list,
+  .dispatch--bottom-collapsed .log__empty {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 120ms ease-out, visibility 0s linear 120ms;
+  }
+
+  .queue__rail {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    width: 100%;
-    height: 100%;
+    width: var(--rail-w);
     padding: 12px 0;
     border: 0;
-    background: none;
+    background: var(--paper);
     color: var(--ink);
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 120ms ease-out;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 100ms ease-out, visibility 0s linear 100ms, background-color 120ms ease-out;
+  }
+  .dispatch--queue-collapsed .queue__rail {
+    opacity: 1;
+    visibility: visible;
+    /* Arrives once the column has mostly closed. */
+    transition: opacity 160ms ease-out 120ms, visibility 0s linear 0s, background-color 120ms ease-out;
   }
   @media (hover: hover) { .dispatch--queue-collapsed .queue__rail:hover { background: var(--raised); } }
   .queue__rail-chevron { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; color: var(--muted); }
@@ -1028,15 +1067,18 @@ select.btn {
   }
 
   /* Bottom tray: Teams and Event log fold down to their header bars. */
-  .dispatch.dispatch--bottom-collapsed { grid-template-rows: auto minmax(0, 1fr) auto; }
-  .dispatch--bottom-collapsed .board__scroll,
-  .dispatch--bottom-collapsed .log__list,
-  .dispatch--bottom-collapsed .log__empty { display: none; }
-  .dispatch--bottom-collapsed .bottom .panel-title { padding-bottom: 12px; }
+  .bottom { overflow: hidden; }
+  .bottom .panel-title { min-height: var(--tray-collapsed-h); padding-bottom: 12px; }
+}
+
+@media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+  .dispatch { transition: grid-template-columns 240ms var(--panel-ease), grid-template-rows 240ms var(--panel-ease); }
 }
 
 @media (min-width: 761px) and (max-width: 1100px) {
-  .dispatch.dispatch--queue-collapsed.dispatch--detail { grid-template-columns: 52px minmax(0, 1fr); }
+  .dispatch { --queue-w: 300px; }
+  .dispatch.dispatch--detail { grid-template-columns: var(--queue-w) minmax(0, 1fr); }
+  .dispatch.dispatch--queue-collapsed.dispatch--detail { grid-template-columns: var(--rail-w) minmax(0, 1fr); }
 }
 
 /* ==========================================================================
