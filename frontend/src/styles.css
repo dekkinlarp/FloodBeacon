@@ -670,10 +670,11 @@ select.btn { appearance: auto; }
 .satellite-controls summary { cursor: pointer; }
 .satellite-controls:not([open]) { width: auto; }
 
-
 /* ==========================================================================
    Responsive dispatch console
    ========================================================================== */
+.mobile-tabs { display: none; }
+
 /* Tablets: the detail panel slides over the map instead of taking a third column. */
 @media (max-width: 1100px) {
   .dispatch--detail {
@@ -694,3 +695,98 @@ select.btn { appearance: auto; }
   }
 }
 
+/* Phones: one panel at a time, chosen from a bottom tab bar; details open full screen. */
+@media (max-width: 760px) {
+  .dispatch,
+  .dispatch--detail {
+    height: 100dvh;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-areas: 'top' 'panel' 'tabs';
+  }
+  .dispatch .queue,
+  .dispatch .mapzone,
+  .dispatch .bottom { grid-area: panel; }
+  .dispatch:not(.dispatch--tab-queue) .queue,
+  .dispatch:not(.dispatch--tab-map) .mapzone,
+  .dispatch--tab-queue .bottom,
+  .dispatch--tab-map .bottom { display: none; }
+  .dispatch--tab-teams .log,
+  .dispatch--tab-log .board { display: none; }
+  .bottom .log { flex: 1; width: auto; border-left: 0; }
+  .dispatch--detail .detail { width: 100%; box-shadow: none; }
+
+  /* Top bar: brand and clock on one line, counters scroll sideways underneath. */
+  .topbar { flex-wrap: wrap; gap: 6px 12px; padding: 6px 12px; }
+  .topbar__clock { gap: 6px; }
+  .topbar__clock strong { font-size: 16px; }
+  .topbar__stats { order: 5; flex: 1 1 100%; overflow-x: auto; scrollbar-width: none; }
+  .topbar__stats::-webkit-scrollbar { display: none; }
+  .source--fake { white-space: normal; max-width: 120px; line-height: 1.2; }
+  .topbar:has(.demo) .topbar__demo { margin: 0 -12px; }
+  .demo { flex-wrap: wrap; gap: 6px 12px; padding: 6px 12px; }
+  .demo__controls { flex: 1 1 100%; flex-wrap: wrap; }
+  .demo__story { flex-basis: 100%; flex-direction: column; gap: 2px; }
+  .demo__score { flex-wrap: wrap; }
+
+  /* Bigger touch targets. */
+  .qrow { padding: 10px 12px 10px 14px; }
+  .btn--tiny, .btn--small { min-height: 36px; padding: 6px 10px; font-size: 13px; }
+  .detail__close { min-width: 44px; min-height: 44px; }
+
+  .alerts { right: 10px; }
+  .alertrow { flex-wrap: wrap; }
+
+  /* Team board: each team becomes a card instead of a wide table row. */
+  .board__table thead { display: none; }
+  .board__table, .board__table tbody { display: block; }
+  .trow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: 'name actions' 'job job' 'duty duty';
+    gap: 4px 10px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .trow td { display: block; padding: 0; border: 0; }
+  .trow td:first-child { grid-area: name; white-space: normal; }
+  .trow__job { grid-area: job; max-width: none; }
+  .trow td.trow__duty { grid-area: duty; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+  .trow td.trow__actions { grid-area: actions; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px; }
+  .trow__actions > * + * { margin-left: 0; }
+  .trow--best, .trow--missed { box-shadow: inset 3px 0 0 var(--accent); }
+  .trow--missed { box-shadow: inset 3px 0 0 var(--danger); background: var(--danger-bg); }
+  .trow--best td:first-child, .trow--missed td:first-child { box-shadow: none; }
+
+  .mobile-tabs {
+    grid-area: tabs;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .mobile-tabs__tab {
+    position: relative;
+    min-height: 52px;
+    border: 0;
+    background: var(--panel);
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+  }
+  .mobile-tabs__tab[aria-pressed='true'] { color: var(--accent); box-shadow: inset 0 3px 0 var(--accent); }
+  .mobile-tabs__badge {
+    display: inline-block;
+    min-width: 18px;
+    margin-left: 5px;
+    padding: 1px 5px;
+    border-radius: 9px;
+    background: var(--danger);
+    color: #ffffff;
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 16px;
+  }
+}

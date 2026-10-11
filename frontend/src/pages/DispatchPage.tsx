@@ -18,6 +18,14 @@ import { IncidentDispatchPanel } from '../components/IncidentDispatchPanel';
 import { TeamBoard } from '../components/TeamBoard';
 import { EventLog } from '../components/EventLog';
 
+type MobileTab = 'queue' | 'map' | 'teams' | 'log';
+const MOBILE_TABS: { id: MobileTab; label: string }[] = [
+  { id: 'queue', label: 'Queue' },
+  { id: 'map', label: 'Map' },
+  { id: 'teams', label: 'Teams' },
+  { id: 'log', label: 'Log' },
+];
+
 const timeFormat = new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
 
 export function DispatchPage({ demoScript }: { demoScript: DemoScript }) {
@@ -28,6 +36,8 @@ export function DispatchPage({ demoScript }: { demoScript: DemoScript }) {
   const { incidents, health, teams, assignments, events, travelTimes, alerts } = store.data;
   const openAlerts = alerts.filter((a) => a.acknowledged_at === null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  // Phones show one panel at a time (see .mobile-tabs in styles.css); desktop ignores this.
+  const [tab, setTab] = useState<MobileTab>('queue');
 
   // Fresh fake data whose newest timestamp sits just before `at`.
   const freshData = (at: Date) => initialDispatchState(loadFakeData({ shiftTo: at, siteId }));
@@ -52,9 +62,10 @@ export function DispatchPage({ demoScript }: { demoScript: DemoScript }) {
   const needsTeam = !!selected && activeAssignmentsForIncident(store.data, selected.id).length === 0;
   const missed = missedCheckIns(teams, now);
   const hasAlerts = missed.length > 0 || openAlerts.length > 0 || !!store.error;
+  const alertCount = missed.length + openAlerts.length + (store.error ? 1 : 0);
 
   return (
-    <div className={selected ? 'dispatch dispatch--detail' : 'dispatch'}>
+    <div className={`dispatch dispatch--tab-${tab}${selected ? ' dispatch--detail' : ''}`}>
       <TopBar summary={boardSummary(incidents, teams, now)} now={now} mode={clock.mode}>
         <DemoBar
           script={demoScript}
@@ -156,6 +167,25 @@ export function DispatchPage({ demoScript }: { demoScript: DemoScript }) {
         />
         <EventLog events={events} />
       </div>
+
+      <nav className="mobile-tabs" aria-label="Panels">
+        {MOBILE_TABS.map(({ id, label }) => (
+          <button
+            key={id}
+            type="button"
+            className="mobile-tabs__tab"
+            aria-pressed={tab === id}
+            onClick={() => setTab(id)}
+          >
+            {label}
+            {id === 'map' && alertCount > 0 && (
+              <span className="mobile-tabs__badge" aria-label={`${alertCount} alerts`}>
+                {alertCount}
+              </span>
+            )}
+          </button>
+        ))}
+      </nav>
     </div>
   );
 }
