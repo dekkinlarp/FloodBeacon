@@ -13,7 +13,7 @@ import { isOverdueCritical } from '../logic/warnings';
 import { NeedIcon, needLabel } from './NeedIcon';
 
 /** OpenFreeMap "Dark": free, no API key. Map data © OpenStreetMap contributors. */
-export const BASEMAP_STYLE_URL = 'https://tiles.openfreemap.org/styles/liberty';
+export const BASEMAP_STYLE_URL = 'https://tiles.openfreemap.org/styles/dark';
 /** 2.5D view: tilted camera, slightly rotated so the river and roads read in depth. */
 export const TILTED = { pitch: 50, bearing: -17 };
 export const FLAT = { pitch: 0, bearing: 0 };
@@ -30,8 +30,8 @@ export const BUILDINGS_3D: AddLayerObject = {
   minzoom: 13,
   filter: ['!=', ['get', 'hide_3d'], true],
   paint: {
-    // Muted blue buildings stay distinct from the light basemap.
-    'fill-extrusion-color': ['interpolate', ['linear'], ['coalesce', ['get', 'render_height'], 6], 0, '#cbd5e1', 40, '#94a3b8', 150, '#64748b'],
+    // Charcoal buildings, a step lighter than the dark basemap.
+    'fill-extrusion-color': ['interpolate', ['linear'], ['coalesce', ['get', 'render_height'], 6], 0, '#2a2a2a', 40, '#333333', 150, '#3d3d3d'],
     'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 13, 0, 14, ['coalesce', ['get', 'render_height'], 6]],
     'fill-extrusion-base': ['interpolate', ['linear'], ['zoom'], 13, 0, 14, ['coalesce', ['get', 'render_min_height'], 0]],
     'fill-extrusion-opacity': 0.85,
