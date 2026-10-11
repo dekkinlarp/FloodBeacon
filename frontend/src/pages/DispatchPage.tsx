@@ -1,3 +1,4 @@
+import { useSite } from '../state/Site';
 import { useMemo, useState } from 'react';
 import { sortIncidents } from '../logic/sortIncidents';
 import { evaluateTeams, suggestTeams } from '../logic/suggest';
@@ -17,9 +18,10 @@ import { IncidentDispatchPanel } from '../components/IncidentDispatchPanel';
 import { TeamBoard } from '../components/TeamBoard';
 import { EventLog } from '../components/EventLog';
 
-const timeFormat = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Bangkok', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+const timeFormat = new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
 
 export function DispatchPage({ demoScript }: { demoScript: DemoScript }) {
+  const { siteId } = useSite();
   const now = useNow();
   const clock = useClock();
   const store = useDispatchStore();
@@ -28,7 +30,7 @@ export function DispatchPage({ demoScript }: { demoScript: DemoScript }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   // Fresh fake data whose newest timestamp sits just before `at`.
-  const freshData = (at: Date) => initialDispatchState(loadFakeData({ shiftTo: at }));
+  const freshData = (at: Date) => initialDispatchState(loadFakeData({ shiftTo: at, siteId }));
 
   const sorted = useMemo(() => sortIncidents(incidents, now), [incidents, now]);
   const selected = incidents.find((i) => i.id === selectedId);
@@ -53,7 +55,7 @@ export function DispatchPage({ demoScript }: { demoScript: DemoScript }) {
 
   return (
     <div className={selected ? 'dispatch dispatch--detail' : 'dispatch'}>
-      <TopBar summary={boardSummary(incidents, teams, now)} now={now} mode={clock.mode} source={store.source}>
+      <TopBar summary={boardSummary(incidents, teams, now)} now={now} mode={clock.mode}>
         <DemoBar
           script={demoScript}
           data={store.data}

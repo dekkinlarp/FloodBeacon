@@ -14,7 +14,7 @@ const words = (s: string) => s.replace(/_/g, ' ');
 
 /**
  * One team's current job, for a phone in the field. Shows no health details
- * beyond the 1669/1784 reminder (CLAUDE.md rule 7).
+ * beyond the demo escalation reminder (CLAUDE.md rule 7).
  */
 export function TeamView({ teamId }: { teamId: string }) {
   const now = useNow();
@@ -86,9 +86,9 @@ export function TeamView({ teamId }: { teamId: string }) {
       ) : (
         <>
           {emergencyReminders(incident, health.find((h) => h.incident_id === incident.id)).map((r) => (
-            <p key={r.number} className="reminder" role="alert">
-              <span className="reminder__number">Call {r.number}</span>
-              <span>{r.label.replace(/^Call \d+ — /, '')}</span>
+            <p key={r.kind} className="reminder" role="alert">
+              <span className="reminder__number">{r.kind.toUpperCase()}</span>
+              <span>{r.label}</span>
             </p>
           ))}
 

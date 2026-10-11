@@ -1,3 +1,7 @@
+> Historical integration reference: the current default app is a static demo.
+> The live intake screen and proxy are not enabled. Use [README.md](README.md) and
+> [DEPLOYMENT.md](DEPLOYMENT.md) for the current frontend workflow.
+
 # Live Twilio / Gemini integration
 
 The default dashboard now reads the Python intake service. Its existing synthetic dispatcher is
@@ -24,8 +28,8 @@ Keep your ngrok tunnel and Twilio webhook configuration for incoming SMS as desc
 From `FloodBeacon/frontend`, using **Node 22.12+** (Node 22.13 was used for testing):
 
 ```sh
-npm install
-npm run dev
+pnpm install --frozen-lockfile
+pnpm run dev
 ```
 
 Open the local Vite URL (normally `http://localhost:5173`). Enter the `OPERATOR_API_KEY` from
@@ -73,8 +77,8 @@ panel still work. No geocoding service or SMS data is sent to the basemap provid
 ## Verify
 
 ```sh
-npm test
-npm run build
+pnpm test
+pnpm run build
 ```
 
 For end-to-end testing: connect the dashboard, send a synthetic SMS, wait for the worker to log

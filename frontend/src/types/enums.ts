@@ -63,7 +63,7 @@ export type Vehicle = (typeof VEHICLES)[number];
 export const SKILLS = ['first_aid', 'boat_operator', 'swimmer'] as const;
 export type Skill = (typeof SKILLS)[number];
 
-export const LANGUAGES = ['thai', 'english', 'burmese'] as const;
+export const LANGUAGES = ['german', 'english', 'arabic', 'nepali', 'thai', 'burmese'] as const;
 export type Language = (typeof LANGUAGES)[number];
 
 export const ASSIGNMENT_END_REASONS = [

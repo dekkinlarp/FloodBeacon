@@ -1,3 +1,5 @@
+import { useSite } from '../state/Site';
+import { SITES, type SiteId } from '../data/sites';
 import { useEffect, useState } from 'react';
 import type { Map as MapLibreMap } from 'maplibre-gl';
 import type { FeatureCollection } from 'geojson';
@@ -7,7 +9,7 @@ type Observation = { id: string; label: string; acquired_date: string; images: I
 type CatalogCase = { observations: Observation[]; metadata: { imagery: { name: string; case_id: string; bounds: Bounds; flood_extent?: FeatureCollection; bridges: { name: string; coordinate: [number, number]; comparison_url: string }[] } } };
 export function SatelliteLayers({ map, onReturn }: { map: MapLibreMap | null; onReturn: () => void }) {
   const [cases, setCases] = useState<CatalogCase[]>([]);
-  const [caseId, setCaseId] = useState('');
+  const { siteId: caseId, selectSite } = useSite();
   const [date, setDate] = useState('');
   const [error, setError] = useState('');
   const [ready, setReady] = useState(false);
@@ -65,10 +67,8 @@ export function SatelliteLayers({ map, onReturn }: { map: MapLibreMap | null; on
   return <section className="satellite-controls" aria-label="Historical satellite imagery">
     <strong>Historical satellite imagery</strong>
     <select aria-label="Satellite study area" value={caseId} onChange={e => {
-      setCaseId(e.target.value); setDate('');
-      const next = cases.find(c => c.metadata.imagery.case_id === e.target.value);
-      if (next) fit(next); else onReturn();
-    }}><option value="">Off — rescue reports</option>{cases.map(c => <option key={c.metadata.imagery.case_id} value={c.metadata.imagery.case_id}>{c.metadata.imagery.name}</option>)}</select>
+      if (e.target.value in SITES) selectSite(e.target.value as SiteId);
+    }}>{Object.entries(SITES).map(([id, site]) => <option key={id} value={id}>{site.name}</option>)}</select>
     {current && observation && <>
       <select aria-label="Satellite observation date" value={observation.id} onChange={e => setDate(e.target.value)}>{current.observations.map(o => <option key={o.id} value={o.id}>{o.acquired_date} · {o.label}</option>)}</select>
       <div><button onClick={() => fit(current)}>Whole study area</button> <button onClick={onReturn}>Rescue reports</button></div>

@@ -18,9 +18,6 @@ import {
 
 const VULNERABLE_GROUPS = ['elderly', 'children', 'pregnant', 'disabled'] as const;
 
-/** Bounding box used for fake data. Covers all 50 Bangkok districts. */
-export const BANGKOK_BOUNDS = { minLat: 13.6, maxLat: 13.95, minLon: 100.35, maxLon: 100.95 };
-
 type Rec = Record<string, unknown>;
 
 function isRecord(v: unknown): v is Rec {
@@ -95,9 +92,8 @@ class Checker {
     if (!isRecord(v) || typeof v.lat !== 'number' || typeof v.lon !== 'number') {
       return this.fail(field, 'expected { lat: number, lon: number }');
     }
-    const b = BANGKOK_BOUNDS;
-    if (v.lat < b.minLat || v.lat > b.maxLat || v.lon < b.minLon || v.lon > b.maxLon) {
-      this.fail(field, 'outside Bangkok bounds');
+    if (!Number.isFinite(v.lat) || !Number.isFinite(v.lon) || Math.abs(v.lat) > 90 || Math.abs(v.lon) > 180) {
+      this.fail(field, 'outside finite WGS84 bounds');
     }
   }
 }

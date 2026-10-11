@@ -13,7 +13,7 @@ describe('runAction', () => {
 
   it('returns the rule refusal unchanged', () => {
     const r = runAction(initialDispatchState(loadFakeData()), { type: 'assign', incidentId: 'INC-001', teamId: 'TEAM-01', backup: false }, ctx);
-    expect(r).toEqual({ ok: false, reasons: ['Truck 1 (truck) cannot reach boat only incidents.'] });
+    expect(r).toEqual({ ok: false, reasons: ['Rech Truck 1 (truck) cannot reach boat only incidents.'] });
   });
 });
 

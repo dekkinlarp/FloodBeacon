@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "title": "Bang Kapi dialysis rescue",
-  "description": "Stand-in demo story for Person 4's demo script. Times are minutes after T+0 (demo start).",
+  "title": "Ahr Valley synthetic rescue exercise",
+  "description": "Fictional dispatch exercise. Reports, travel times, closures and water depths are invented, not historical observations.",
   "steps": [
     {
       "id": "S1",
@@ -13,27 +13,27 @@
       "id": "S2",
       "at_minutes": 60,
       "type": "incident_reported",
-      "label": "Dialysis patient SMS arrives in Bang Kapi",
+      "label": "Synthetic medical evacuation report arrives in Rech",
       "incident": {
         "id": "INC-021",
         "status": "new",
         "severity": "critical",
         "access_type": "boat_only",
-        "district": "Bang Kapi",
+        "district": "Rech exercise zone 01",
         "location": {
-          "lat": 13.776,
-          "lon": 100.662
+          "lat": 50.5147289,
+          "lon": 7.0330272
         },
-        "address_note": "Soi Ramkhamhaeng 24, house beside the canal, second floor",
+        "address_note": "Fictional exercise household near the study area",
         "needs": [
           "medical",
           "evacuation"
         ],
         "people_count": 2,
-        "reporter_language": "thai",
-        "contact_phone": "+66000000021",
+        "reporter_language": "german",
+        "contact_phone": "DEMO-ahr-2021-021",
         "source": "sms",
-        "original_message": "ช่วยด้วยค่ะ พ่ออายุ 72 ต้องฟอกไตพรุ่งนี้เช้า น้ำท่วมถึงอก ออกจากบ้านไม่ได้ ซอยรามคำแหง 24 บางกะปิ มี 2 คน",
+        "original_message": "SYNTHETIC exercise: two people need evacuation and medical transport.",
         "ai_extracted": true,
         "verified_by_human": false
       },
@@ -61,32 +61,32 @@
         {
           "team_id": "TEAM-01",
           "incident_id": "INC-021",
-          "minutes": 14
+          "minutes": 13
         },
         {
           "team_id": "TEAM-02",
           "incident_id": "INC-021",
-          "minutes": 74
+          "minutes": 16
         },
         {
           "team_id": "TEAM-03",
           "incident_id": "INC-021",
-          "minutes": 256
+          "minutes": 19
         },
         {
           "team_id": "TEAM-04",
           "incident_id": "INC-021",
-          "minutes": 258
+          "minutes": 22
         },
         {
           "team_id": "TEAM-05",
           "incident_id": "INC-021",
-          "minutes": 469
+          "minutes": 25
         },
         {
           "team_id": "TEAM-06",
           "incident_id": "INC-021",
-          "minutes": 137
+          "minutes": 28
         }
       ]
     },
@@ -120,9 +120,9 @@
       "id": "S6",
       "at_minutes": 120,
       "type": "route_change",
-      "label": "Bridge closed: route changes to truck then boat",
+      "label": "Simulated obstruction: exercise route changes",
       "incident_id": "INC-021",
-      "reason": "Ramkhamhaeng 24 canal bridge closed to boats",
+      "reason": "Fictional route obstruction for the exercise; not an observed bridge closure",
       "legs": [
         {
           "mode": "truck",
@@ -151,10 +151,10 @@
       "feedback": {
         "water_depth_cm": 120,
         "route_worked": false,
-        "blocked_routes": "Ramkhamhaeng 24 canal bridge closed to boats; launched from Soi 26 by truck",
+        "blocked_routes": "Fictional exercise route obstruction; alternative transfer simulated",
         "people_helped": 2,
         "outcome": "evacuated",
-        "photo_ref": "demo_bridge.jpg"
+        "photo_ref": null
       }
     }
   ]

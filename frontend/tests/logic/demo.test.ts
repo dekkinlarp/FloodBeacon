@@ -33,10 +33,10 @@ describe('demo script file', () => {
     ]);
   });
 
-  it('reports a critical, boat-only dialysis case in Bang Kapi', () => {
+  it('reports a critical, boat-only dialysis case in Rech exercise zone 01', () => {
     const step = script.steps.find((s) => s.type === 'incident_reported');
     expect(step?.type === 'incident_reported' && step.incident).toMatchObject({
-      district: 'Bang Kapi',
+      district: 'Rech exercise zone 01',
       severity: 'critical',
       access_type: 'boat_only',
       ai_extracted: true,

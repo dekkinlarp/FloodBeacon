@@ -9,7 +9,7 @@ export interface Incident {
   status: IncidentStatus;
   severity: Severity;
   access_type: AccessType;
-  district: string; // Bangkok district (khet), English name
+  district: string; // Study area or fictional exercise zone
   location: LatLon;
   address_note: string;
   needs: Need[];
