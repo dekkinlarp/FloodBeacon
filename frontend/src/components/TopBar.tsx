@@ -26,7 +26,7 @@ export function TopBar({ summary, now, mode, children }: Props) {
     { label: 'Open', value: String(summary.open) },
     { label: 'Critical', value: String(summary.critical), tone: summary.critical ? 'danger' : undefined },
     { label: 'Waiting', value: String(summary.waiting), tone: summary.waiting ? 'warn' : undefined },
-    { label: 'No team >30m', value: String(summary.overdueCritical), tone: summary.overdueCritical ? 'danger' : undefined },
+    { label: 'No team 30m+', value: String(summary.overdueCritical), tone: summary.overdueCritical ? 'danger' : undefined },
     { label: 'Teams free', value: `${summary.teamsAvailable}/${summary.teamsOnDuty}` },
   ];
   return (
@@ -34,7 +34,7 @@ export function TopBar({ summary, now, mode, children }: Props) {
       <div className="topbar__brand">
         <span className="topbar__logo" aria-hidden="true" />
         <span>
-          <strong>FLOODBEACON</strong>
+          <strong>FloodBeacon</strong>
           <small>Dispatch · {site.name}</small>
         </span>
       </div>
@@ -49,7 +49,7 @@ export function TopBar({ summary, now, mode, children }: Props) {
       <div className="topbar__clock">
         {mode === 'demo' && <span className="mode mode--demo">Scripted demo</span>}
         <span className="source source--fake" title="Fictional rescue records. Changes reset on refresh.">
-          Synthetic data · changes reset on refresh
+          Synthetic data
         </span>
         <time dateTime={now.toISOString()}>
           <strong>{clockFormat.format(now)}</strong>
