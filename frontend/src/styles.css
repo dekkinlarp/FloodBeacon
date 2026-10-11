@@ -670,3 +670,27 @@ select.btn { appearance: auto; }
 .satellite-controls summary { cursor: pointer; }
 .satellite-controls:not([open]) { width: auto; }
 
+
+/* ==========================================================================
+   Responsive dispatch console
+   ========================================================================== */
+/* Tablets: the detail panel slides over the map instead of taking a third column. */
+@media (max-width: 1100px) {
+  .dispatch--detail {
+    grid-template-columns: 300px minmax(0, 1fr);
+    grid-template-areas:
+      'top   top'
+      'queue map'
+      'queue bottom';
+  }
+  .dispatch--detail .detail {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    width: min(420px, 100%);
+    box-shadow: -8px 0 24px rgba(15, 23, 42, 0.18);
+  }
+}
+
