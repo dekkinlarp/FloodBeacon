@@ -42,8 +42,10 @@ for Node. Disable non-production branch builds if only main should deploy, and o
 set build watch paths to `frontend/**` to skip backend-only changes.
 
 Cloudflare Workers Builds generates/manages its deployment API token. No Cloudflare
-secret needs to be added to this repository or provided to the frontend. The initial
-site can use the generated workers.dev address; a custom domain is optional.
+secret needs to be added to this repository or provided to the frontend. The Worker is
+served at `floodbeacon.tech` and `www.floodbeacon.tech` through the `routes` custom domains
+in `wrangler.jsonc`; Cloudflare creates the DNS records and certificates on deploy. The zone
+must be on the same Cloudflare account, with no existing A/AAAA/CNAME record for either name.
 
 Merge the reviewed frontend changes to main before triggering the first build.
 Every subsequent main push will build and deploy through the Git integration.
