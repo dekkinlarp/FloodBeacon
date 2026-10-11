@@ -1,17 +1,23 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "floodbeacon-demo",
-  "main": "worker/index.ts",
-  "compatibility_date": "2026-10-10",
-  "routes": [
-    { "pattern": "floodbeacon.tech", "custom_domain": true },
-    { "pattern": "www.floodbeacon.tech", "custom_domain": true }
-  ],
-  "assets": {
-    "directory": "./dist",
-    "binding": "ASSETS",
-    "not_found_handling": "single-page-application",
-    // Pages go through the Worker for HTTPS/www redirects; built assets and tiles stay direct.
-    "run_worker_first": ["/*", "!/assets/*", "!/static/*"]
-  }
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "floodbeacon-demo",
+    "main": "worker/index.ts",
+    "compatibility_date": "2026-10-10",
+    "routes": [
+        { "pattern": "floodbeacon.tech", "custom_domain": true },
+        { "pattern": "www.floodbeacon.tech", "custom_domain": true },
+    ],
+    "assets": {
+        "directory": "./dist",
+        "binding": "ASSETS",
+        "not_found_handling": "single-page-application",
+        // Pages go through the Worker for HTTPS/www redirects; built assets and tiles stay direct.
+        "run_worker_first": ["/*", "!/assets/*", "!/static/*"],
+    },
+    "observability": {
+        "logs": {
+            "enabled": false,
+            "invocation_logs": true,
+        },
+    },
 }
