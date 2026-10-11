@@ -305,6 +305,7 @@ select.btn {
 .source::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--sev-medium); }
 .source--db { color: var(--ink); }
 .topbar__demo { display: flex; align-items: center; min-width: 0; }
+.topbar__demo:empty { display: none; }
 /* In demo mode the controls get their own strip under the operational header. */
 .topbar:has(.demo) { flex-wrap: wrap; row-gap: 12px; padding-bottom: 0; }
 .topbar:has(.demo) .topbar__demo { order: 10; flex-basis: 100%; margin: 0 -20px; }

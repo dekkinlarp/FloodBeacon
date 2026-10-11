@@ -73,11 +73,6 @@ export function DispatchPage({ demoScript }: { demoScript: DemoScript }) {
           demoLog={store.demoLog}
           demoDone={store.demoDone}
           now={now}
-          onStartDemo={(simStart) => {
-            store.reset(freshData(simStart));
-            clock.enterDemo(simStart.getTime());
-            setSelectedId(null);
-          }}
           onReset={() => {
             if (!clock.clock) return;
             const simStart = new Date(clock.clock.simStart);

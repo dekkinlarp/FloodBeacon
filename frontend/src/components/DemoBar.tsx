@@ -16,29 +16,16 @@ interface Props {
   demoLog: readonly DemoLogEntry[];
   demoDone: ReadonlySet<string>;
   now: Date;
-  /** Start demo mode: fresh data with T+0 at `simStart`. */
-  onStartDemo: (simStart: Date) => void;
   onReset: () => void;
   onExit: () => void;
 }
 
-/** Demo controls for the header. In live mode, only the start button. */
-export function DemoBar({ script, data, demoLog, demoDone, now, onStartDemo, onReset, onExit }: Props) {
+/** Demo controls for the header, shown only while the scripted demo clock runs. */
+export function DemoBar({ script, data, demoLog, demoDone, now, onReset, onExit }: Props) {
   const clock = useClock();
   const c = clock.clock;
 
-  if (!c) {
-    return (
-      <button
-        type="button"
-        className="btn btn--ghost"
-        title={script.title}
-        onClick={() => onStartDemo(new Date(Math.floor(Date.now() / 60_000) * 60_000))}
-      >
-        ▶ Scripted demo
-      </button>
-    );
-  }
+  if (!c) return null;
 
   // `now` is already simulated time.
   const elapsed = (now.getTime() - c.simStart) / 60_000;
