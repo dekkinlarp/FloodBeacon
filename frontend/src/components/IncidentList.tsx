@@ -1,7 +1,8 @@
 import type { Incident } from '../types';
 import { formatHours, hoursSince } from '../logic/contactBadge';
 import { mainNeed } from '../logic/mainNeed';
-import { isOverdueCritical } from '../logic/warnings';
+import { CRITICAL_UNASSIGNED_MINUTES, isOverdueCritical } from '../logic/warnings';
+import type { CSSProperties } from 'react';
 import { NeedIcon, needLabel } from './NeedIcon';
 
 interface Props {
@@ -14,7 +15,10 @@ interface Props {
 
 const words = (s: string) => s.replace(/_/g, ' ');
 
-/** Incident queue: one dense row per incident, severity stripe on the left. */
+/**
+ * Incident queue. Each row carries a waterline along its bottom edge that rises as the
+ * wait approaches the 30-minute no-team limit, and turns red once a critical case passes it.
+ */
 export function IncidentList({ incidents, selectedId, onSelect, now }: Props) {
   const open = incidents.filter((i) => i.status !== 'resolved' && i.status !== 'cancelled').length;
   return (
@@ -27,6 +31,8 @@ export function IncidentList({ incidents, selectedId, onSelect, now }: Props) {
           const overdue = isOverdueCritical(incident, now);
           const need = mainNeed(incident);
           const closed = incident.status === 'resolved' || incident.status === 'cancelled';
+          const waited = hoursSince(incident.created_at, now);
+          const level = closed ? 0 : Math.min(1, (waited * 60) / CRITICAL_UNASSIGNED_MINUTES);
           const cls = [
             'qrow',
             `qrow--${incident.severity}`,
@@ -38,22 +44,33 @@ export function IncidentList({ incidents, selectedId, onSelect, now }: Props) {
             .join(' ');
           return (
             <li key={incident.id}>
-              <button type="button" className={cls} aria-current={incident.id === selectedId} onClick={() => onSelect(incident.id)}>
+              <button
+                type="button"
+                className={cls}
+                style={{ '--level': level } as CSSProperties}
+                aria-current={incident.id === selectedId}
+                onClick={() => onSelect(incident.id)}
+              >
                 <span className="qrow__line">
-                  <span className="qrow__id">{incident.id}</span>
                   <span className="qrow__district">{incident.district}</span>
                   <span className="qrow__wait" title="Waiting since report">
-                    {formatHours(hoursSince(incident.created_at, now))}
+                    {formatHours(waited)}
                   </span>
                 </span>
                 <span className="qrow__line qrow__meta">
+                  <span className="qrow__sev" aria-hidden="true" />
                   <span className="qrow__need">
                     <NeedIcon need={need} size={12} />
                     {need ? needLabel(need) : '—'}
                   </span>
-                  <span className={`pill pill--${incident.status}`}>{words(incident.status)}</span>
-                  {overdue && <span className="tag tag--danger">No team</span>}
+                  <span className="qrow__id">{incident.id}</span>
+                  {overdue ? (
+                    <span className="tag tag--danger">No team</span>
+                  ) : (
+                    <span className={`pill pill--${incident.status}`}>{words(incident.status)}</span>
+                  )}
                 </span>
+                <span className="qrow__waterline" aria-hidden="true" />
               </button>
             </li>
           );
