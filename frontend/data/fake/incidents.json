@@ -8,8 +8,8 @@
     "access_type": "boat_only",
     "district": "Rech exercise zone 01",
     "location": {
-      "lat": 50.5122289,
-      "lon": 7.0330272
+      "lat": 50.5136627,
+      "lon": 7.0378054
     },
     "address_note": "Fictional exercise location 1 \u2014 not a surveyed address",
     "needs": [
@@ -34,8 +34,8 @@
     "access_type": "boat_only",
     "district": "Rech exercise zone 02",
     "location": {
-      "lat": 50.5122289,
-      "lon": 7.0346272
+      "lat": 50.5147351,
+      "lon": 7.035765
     },
     "address_note": "Fictional exercise location 2 \u2014 not a surveyed address",
     "needs": [
@@ -60,8 +60,8 @@
     "access_type": "walk_only",
     "district": "Rech exercise zone 03",
     "location": {
-      "lat": 50.5122289,
-      "lon": 7.0362272
+      "lat": 50.5148902,
+      "lon": 7.0349739
     },
     "address_note": "Fictional exercise location 3 \u2014 not a surveyed address",
     "needs": [
@@ -85,8 +85,8 @@
     "access_type": "boat_only",
     "district": "Rech exercise zone 04",
     "location": {
-      "lat": 50.5122289,
-      "lon": 7.0378272
+      "lat": 50.5131373,
+      "lon": 7.0388476
     },
     "address_note": "Fictional exercise location 4 \u2014 not a surveyed address",
     "needs": [
@@ -111,8 +111,8 @@
     "access_type": "truck",
     "district": "Rech exercise zone 05",
     "location": {
-      "lat": 50.5122289,
-      "lon": 7.0394271
+      "lat": 50.5152241,
+      "lon": 7.0383666
     },
     "address_note": "Fictional exercise location 5 \u2014 not a surveyed address",
     "needs": [
@@ -136,8 +136,8 @@
     "access_type": "boat_only",
     "district": "Rech exercise zone 06",
     "location": {
-      "lat": 50.5134789,
-      "lon": 7.0330272
+      "lat": 50.5148817,
+      "lon": 7.0372728
     },
     "address_note": "Fictional exercise location 6 \u2014 not a surveyed address",
     "needs": [
@@ -162,8 +162,8 @@
     "access_type": "truck",
     "district": "Rech exercise zone 07",
     "location": {
-      "lat": 50.5134789,
-      "lon": 7.0346272
+      "lat": 50.5127681,
+      "lon": 7.0374374
     },
     "address_note": "Fictional exercise location 7 \u2014 not a surveyed address",
     "needs": [
@@ -188,8 +188,8 @@
     "access_type": "truck",
     "district": "Rech exercise zone 08",
     "location": {
-      "lat": 50.5134789,
-      "lon": 7.0362272
+      "lat": 50.5123024,
+      "lon": 7.0381435
     },
     "address_note": "Fictional exercise location 8 \u2014 not a surveyed address",
     "needs": [
@@ -213,8 +213,8 @@
     "access_type": "walk_only",
     "district": "Rech exercise zone 09",
     "location": {
-      "lat": 50.5134789,
-      "lon": 7.0378272
+      "lat": 50.514576,
+      "lon": 7.0365013
     },
     "address_note": "Fictional exercise location 9 \u2014 not a surveyed address",
     "needs": [
@@ -238,8 +238,8 @@
     "access_type": "walk_only",
     "district": "Rech exercise zone 10",
     "location": {
-      "lat": 50.5134789,
-      "lon": 7.0394271
+      "lat": 50.5129343,
+      "lon": 7.0381813
     },
     "address_note": "Fictional exercise location 10 \u2014 not a surveyed address",
     "needs": [
@@ -263,8 +263,8 @@
     "access_type": "boat_only",
     "district": "Rech exercise zone 01",
     "location": {
-      "lat": 50.5147289,
-      "lon": 7.0330272
+      "lat": 50.5132014,
+      "lon": 7.0377307
     },
     "address_note": "Fictional exercise location 11 \u2014 not a surveyed address",
     "needs": [
@@ -289,8 +289,8 @@
     "access_type": "truck",
     "district": "Rech exercise zone 02",
     "location": {
-      "lat": 50.5147289,
-      "lon": 7.0346272
+      "lat": 50.5125018,
+      "lon": 7.0385648
     },
     "address_note": "Fictional exercise location 12 \u2014 not a surveyed address",
     "needs": [
@@ -314,8 +314,8 @@
     "access_type": "truck",
     "district": "Rech exercise zone 03",
     "location": {
-      "lat": 50.5147289,
-      "lon": 7.0362272
+      "lat": 50.512435,
+      "lon": 7.0372408
     },
     "address_note": "Fictional exercise location 13 \u2014 not a surveyed address",
     "needs": [
@@ -339,8 +339,8 @@
     "access_type": "walk_only",
     "district": "Rech exercise zone 04",
     "location": {
-      "lat": 50.5147289,
-      "lon": 7.0378272
+      "lat": 50.5122785,
+      "lon": 7.0391921
     },
     "address_note": "Fictional exercise location 14 \u2014 not a surveyed address",
     "needs": [
@@ -364,8 +364,8 @@
     "access_type": "truck",
     "district": "Rech exercise zone 05",
     "location": {
-      "lat": 50.5147289,
-      "lon": 7.0394271
+      "lat": 50.5126314,
+      "lon": 7.0390928
     },
     "address_note": "Fictional exercise location 15 \u2014 not a surveyed address",
     "needs": [
@@ -389,8 +389,8 @@
     "access_type": "boat_only",
     "district": "Rech exercise zone 06",
     "location": {
-      "lat": 50.5159789,
-      "lon": 7.0330272
+      "lat": 50.5151549,
+      "lon": 7.0361119
     },
     "address_note": "Fictional exercise location 16 \u2014 not a surveyed address",
     "needs": [
@@ -414,8 +414,8 @@
     "access_type": "truck",
     "district": "Rech exercise zone 07",
     "location": {
-      "lat": 50.5159789,
-      "lon": 7.0346272
+      "lat": 50.5156051,
+      "lon": 7.0383495
     },
     "address_note": "Fictional exercise location 17 \u2014 not a surveyed address",
     "needs": [
@@ -439,8 +439,8 @@
     "access_type": "walk_only",
     "district": "Rech exercise zone 08",
     "location": {
-      "lat": 50.5159789,
-      "lon": 7.0362272
+      "lat": 50.5156409,
+      "lon": 7.0378259
     },
     "address_note": "Fictional exercise location 18 \u2014 not a surveyed address",
     "needs": [
@@ -464,8 +464,8 @@
     "access_type": "boat_only",
     "district": "Rech exercise zone 09",
     "location": {
-      "lat": 50.5159789,
-      "lon": 7.0378272
+      "lat": 50.512917,
+      "lon": 7.0367967
     },
     "address_note": "Fictional exercise location 19 \u2014 not a surveyed address",
     "needs": [
@@ -490,8 +490,8 @@
     "access_type": "walk_only",
     "district": "Rech exercise zone 10",
     "location": {
-      "lat": 50.5159789,
-      "lon": 7.0394271
+      "lat": 50.5123881,
+      "lon": 7.0366482
     },
     "address_note": "Fictional exercise location 20 \u2014 not a surveyed address",
     "needs": [
