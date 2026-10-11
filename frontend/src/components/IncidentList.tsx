@@ -2,7 +2,6 @@ import type { Incident } from '../types';
 import { formatHours, hoursSince } from '../logic/contactBadge';
 import { mainNeed } from '../logic/mainNeed';
 import { CRITICAL_UNASSIGNED_MINUTES, isOverdueCritical } from '../logic/warnings';
-import type { CSSProperties } from 'react';
 import { NeedIcon, needLabel } from './NeedIcon';
 
 interface Props {
@@ -16,8 +15,8 @@ interface Props {
 const words = (s: string) => s.replace(/_/g, ' ');
 
 /**
- * Incident queue. Each row carries a waterline along its bottom edge that rises as the
- * wait approaches the 30-minute no-team limit, and turns red once a critical case passes it.
+ * Incident queue. Each row carries a segmented meter that fills toward the 30-minute
+ * no-team limit; overdue critical cases also get a red row tint and a "No team" tag.
  */
 export function IncidentList({ incidents, selectedId, onSelect, now }: Props) {
   const open = incidents.filter((i) => i.status !== 'resolved' && i.status !== 'cancelled').length;
@@ -47,12 +46,21 @@ export function IncidentList({ incidents, selectedId, onSelect, now }: Props) {
               <button
                 type="button"
                 className={cls}
-                style={{ '--level': level } as CSSProperties}
                 aria-current={incident.id === selectedId}
                 onClick={() => onSelect(incident.id)}
               >
                 <span className="qrow__line">
                   <span className="qrow__district">{incident.district}</span>
+                  <span
+                    className="meter"
+                    role="meter"
+                    aria-label={`Wait toward the ${CRITICAL_UNASSIGNED_MINUTES}-minute no-team limit`}
+                    aria-valuemin={0}
+                    aria-valuemax={1}
+                    aria-valuenow={Math.round(level * 100) / 100}
+                  >
+                    <span style={{ width: `${level * 100}%` }} />
+                  </span>
                   <span className="qrow__wait" title="Waiting since report">
                     {formatHours(waited)}
                   </span>
@@ -70,7 +78,6 @@ export function IncidentList({ incidents, selectedId, onSelect, now }: Props) {
                     <span className={`pill pill--${incident.status}`}>{words(incident.status)}</span>
                   )}
                 </span>
-                <span className="qrow__waterline" aria-hidden="true" />
               </button>
             </li>
           );
