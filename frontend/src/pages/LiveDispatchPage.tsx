@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react'
 import { addressLabel, hasMapLocation, intakeRequest, normalizeIncidents,
   type IntakeIncident, type IntakeDetail, type IntakePatch } from '../data/intake';
 import { IntakeMap } from '../components/IntakeMap';
+import { BrandMark } from '../components/BrandMark';
 
 const date = (value: number) => new Date(value * 1000).toLocaleString();
 const words = (value: string) => value.replace(/_/g, ' ');
@@ -48,7 +49,7 @@ export function LiveDispatchPage() {
 
   return <div className={`dispatch intake-dispatch ${selected ? 'dispatch--detail' : ''}`}>
     <header className="topbar intake-header">
-      <div className="topbar__brand"><span className="topbar__logo" aria-hidden="true" /><span>
+      <div className="topbar__brand"><BrandMark /><span>
         <strong>FLOODBEACON</strong><small>Dispatch · live SMS reports</small>
       </span></div>
       <dl className="topbar__stats">

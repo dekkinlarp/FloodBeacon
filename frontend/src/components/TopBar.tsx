@@ -1,6 +1,7 @@
 import { useSite } from '../state/Site';
 import type { ReactNode } from 'react';
 import type { BoardSummary } from '../logic/summary';
+import { BrandMark } from './BrandMark';
 
 const clockFormat = new Intl.DateTimeFormat('en-GB', {
   timeZone: 'UTC',
@@ -32,7 +33,7 @@ export function TopBar({ summary, now, mode, children }: Props) {
   return (
     <header className="topbar">
       <div className="topbar__brand">
-        <span className="topbar__logo" aria-hidden="true" />
+        <BrandMark />
         <span>
           <strong>FloodBeacon</strong>
           <small>Dispatch · {site.name}</small>

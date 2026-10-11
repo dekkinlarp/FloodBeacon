@@ -263,13 +263,7 @@ select.btn {
 .topbar__brand > span:last-child { display: flex; align-items: baseline; gap: 10px; }
 .topbar__brand strong { font-size: 15px; font-weight: 500; letter-spacing: -0.01em; }
 .topbar__brand small { font-size: 13px; color: var(--muted); }
-.topbar__logo {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--wash-2) radial-gradient(circle at 50% 50%, transparent 5px, var(--ink) 5.5px 7px, transparent 7.5px);
-  box-shadow: inset 0 0 0 1px var(--hairline-strong);
-}
+.topbar__logo { display: block; flex: none; }
 .topbar__stats { display: flex; gap: 28px; margin: 0; flex: none; }
 .stat { display: flex; flex-direction: column; gap: 2px; white-space: nowrap; }
 .stat dt { font-size: 11.5px; color: var(--muted); }
