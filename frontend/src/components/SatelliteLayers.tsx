@@ -36,7 +36,8 @@ export function SatelliteLayers({ map, onReturn }: { map: MapLibreMap | null; on
   useEffect(() => {
     if (!map || !ready || !observation || !current) return;
     const sources: string[] = [], layers: string[] = [];
-    const before = map.getStyle().layers.find(l => l.type === 'symbol')?.id;
+    // Imagery drapes the ground: below the 3D buildings (BUILDINGS_3D in IncidentMap) and the labels.
+    const before = map.getLayer('buildings-3d') ? 'buildings-3d' : map.getStyle().layers.find(l => l.type === 'symbol')?.id;
     setError('');
     const failure = (event: unknown) => { if ((event as { sourceId?: string }).sourceId?.startsWith('sat-')) setError('Some satellite imagery could not load; gaps remain unknown.'); };
     map.on('error', failure);

@@ -30,11 +30,11 @@ export const BUILDINGS_3D: AddLayerObject = {
   minzoom: 13,
   filter: ['!=', ['get', 'hide_3d'], true],
   paint: {
-    // Charcoal buildings, a step lighter than the dark basemap.
-    'fill-extrusion-color': ['interpolate', ['linear'], ['coalesce', ['get', 'render_height'], 6], 0, '#2a2a2a', 40, '#333333', 150, '#3d3d3d'],
+    // Mid-grey buildings, light enough to read against the dark basemap and imagery.
+    'fill-extrusion-color': ['interpolate', ['linear'], ['coalesce', ['get', 'render_height'], 6], 0, '#5a5a5a', 40, '#6e6e6e', 150, '#858585'],
     'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 13, 0, 14, ['coalesce', ['get', 'render_height'], 6]],
     'fill-extrusion-base': ['interpolate', ['linear'], ['zoom'], 13, 0, 14, ['coalesce', ['get', 'render_min_height'], 0]],
-    'fill-extrusion-opacity': 0.85,
+    'fill-extrusion-opacity': 0.9,
   },
 };
 
