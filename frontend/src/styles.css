@@ -394,7 +394,8 @@ select.btn {
 .dispatch .maplibregl-ctrl-group button + button { border-top-color: var(--hairline-strong); }
 .dispatch .maplibregl-ctrl-group button .maplibregl-ctrl-icon { filter: invert(1) brightness(0.95); }
 @media (hover: hover) { .dispatch .maplibregl-ctrl-group button:not(:disabled):hover { background-color: var(--wash-2); } }
-.dispatch .maplibregl-ctrl-attrib { border-radius: var(--r-sm) 0 0 0; background: oklch(0.17 0 0 / 0.88); color: var(--muted); font-size: 11px; }
+/* Compact attribution: a 24px circle when collapsed, a pill when open (MapLibre's 12px radius). */
+.dispatch .maplibregl-ctrl-attrib { border-radius: 12px; background: oklch(0.17 0 0 / 0.88); box-shadow: 0 0 0 1px var(--hairline-strong); color: var(--muted); font-size: 11px; }
 .dispatch .maplibregl-ctrl-attrib-button { filter: invert(1); background-color: transparent; }
 .dispatch .maplibregl-ctrl-attrib a { color: var(--muted); }
 
